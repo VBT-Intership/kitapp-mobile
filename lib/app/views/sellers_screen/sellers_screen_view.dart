@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfoodapp/sellers_screen/model/sellers_screen_model.dart';
-import 'package:flutterfoodapp/sellers_screen/view/sellers_screen.dart';
-import 'package:flutterfoodapp/sellers_screen/view_model/sellers_screen_view_model.dart';
+import 'package:flutterfoodapp/app/models/sellers_screen_model.dart';
+import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen_view_model.dart';
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 
 class SellersScreenView extends SellersScreenViewModel {
