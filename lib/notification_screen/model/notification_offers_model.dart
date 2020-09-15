@@ -1,7 +1,7 @@
-class NotificationGeneral {
+class NotificationOffers {
   String book;
   int price;
   int time;
 
-  NotificationGeneral(this.book, this.price, this.time, this.time);
+  NotificationOffers(this.book, this.price, this.time);
 }
