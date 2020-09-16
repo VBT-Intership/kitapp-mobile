@@ -1,6 +1,6 @@
 import 'dart:ui';
-import 'package:flutterfoodapp/app/components/loginRadiusButton.dart';
-import 'package:flutterfoodapp/core/components/card/book-card.dart';
+// import 'package:flutterfoodapp/app/components/loginRadiusButton.dart';
+// import 'package:flutterfoodapp/core/components/card/book-card.dart';
 
 import 'book_detail_view_model.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -9,8 +9,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../../components/card/book-card.dart';
 import '../../../core/base/model/generalSettingsButton.dart';
-import '../../../core/components/button/shadow_button.dart';
+// import '../../../core/components/button/shadow_button.dart';
 import '../../../core/constants/app/app_constants.dart';
 import '../../../core/extensions/extensions_provider.dart';
 import '../../../core/extensions/future_builder.dart';
@@ -28,6 +29,7 @@ class BookDetailView extends BookDetailViewModel
   ];
 
   TabController _tabController;
+
   @override
   void dispose() {
     _tabController.dispose();
@@ -55,38 +57,153 @@ class BookDetailView extends BookDetailViewModel
           children: [
             topCard(context),
             tabBarArea(context),
-            Padding(
-              padding: EdgeInsets.only(
-                top: context.mediumValue,
-                left: context.mediumValue,
-                right: context.mediumValue,
-              ),
-              child: Container(
-                child: Column(children: [
-                  Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "İlgili Ürünler",
-                        style: context.textTheme.headline5
-                            .copyWith(fontWeight: FontWeight.bold),
-                      )),
-                  SingleChildScrollView (child:
-                    BookCardView(
-                        book: BookCard(
-                            author: "fatih emre",
-                            name: "Çile",
-                            imageURL:
-                                "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500",
-                            rating: 3))
-                  ),
-                ]),
-              ),
-            )
+            otherBooksArea(context)
           ],
         ),
       ),
     );
   }
+
+//---------------TOPCARD---------------
+//-------------------------------------
+  Container topCard(BuildContext context) {
+    return Container(
+      child: ClipRRect(
+        borderRadius: topCarddBorderRadius(),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+          child: Container(
+              color: Colors.white.withOpacity(0),
+              child: Stack(
+                children: [appbar(), topCardBookCard()],
+              )),
+        ),
+      ),
+      width: context.width,
+      height: context.height * 0.45,
+      decoration: BoxDecoration(
+        borderRadius: topCarddBorderRadius(),
+        image: imageArea(),
+      ),
+    );
+  }
+
+  Padding appbar() {
+    return Padding(
+      padding: EdgeInsets.all(context.normalValue),
+      child: AppBar(
+        actions: [
+          topCardCircleButton(Icons.favorite_border, Colors.black),
+        ],
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: topCardCircleButton(Icons.chevron_left, Colors.black),
+      ),
+    );
+  }
+
+  Ink topCardCircleButton(IconData icon, Color color) {
+    return Ink(
+      decoration: const ShapeDecoration(
+        color: Colors.white,
+        shape: CircleBorder(),
+      ),
+      child: IconButton(
+        color: Colors.white,
+        icon: Icon(icon, color: color),
+        onPressed: () {},
+      ),
+    );
+  }
+
+  Widget topCardBookCard() {
+    return Align(
+      alignment: Alignment(0, 0.8),
+      child: Container(
+        height: context.height * 0.35,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            topCardBookCardImage(),
+            topCardBookCardTitle(),
+            topCardBookCardAuthorName(),
+            topCardBuyButton()
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container topCardBookCardImage() {
+    return Container(
+      width: context.width * 0.25,
+      height: context.width * 0.35,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        image: imageArea(),
+      ),
+    );
+  }
+
+  DecorationImage imageArea() {
+    return DecorationImage(
+      fit: BoxFit.cover,
+      image: NetworkImage(
+          "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500"),
+    );
+  }
+
+  Widget topCardBookCardTitle() {
+    return SizedBox(
+      width: context.width * 0.5,
+      child: Center(
+        child: AutoSizeText("İnsan Güzeldir",
+            style: context.textTheme.headline5
+                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+            maxLines: 1),
+      ),
+    );
+  }
+
+  Widget topCardBookCardAuthorName() {
+    return SizedBox(
+      width: context.width * 0.6,
+      child: Center(
+        child: AutoSizeText("Sena Demirci",
+            style: context.textTheme.headline6
+                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+            maxLines: 1),
+      ),
+    );
+  }
+
+  RaisedButton topCardBuyButton() {
+    return RaisedButton(
+      disabledColor: Colors.white,
+      focusColor: Colors.white,
+      color: Colors.white,
+      onPressed: null,
+      child: Text(
+        "Satın Al",
+        style: TextStyle(color: Colors.green),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+    );
+  }
+
+  BorderRadius topCarddBorderRadius() {
+    return BorderRadius.only(
+        bottomLeft: Radius.circular(35), bottomRight: Radius.circular(35));
+  }
+
+//---------------//TOPCARD---------------
+//---------------------------------------
+
+//---------------//TABBAR AREA---------------
+//-------------------------------------------
 
   Column tabBarArea(BuildContext context) {
     return Column(
@@ -103,25 +220,65 @@ class BookDetailView extends BookDetailViewModel
             child: [
               tabBarAttributeTab(),
               tabBarDescTab(),
-              Container(
-                child: Column(
-                  children: [
-                    tabBarCommentHeader(context),
-                    Divider(),
-                    ListView.separated(
-                        physics: ClampingScrollPhysics(),
-                        shrinkWrap: true,
-                        separatorBuilder: (context, index) => Divider(),
-                        itemCount: 8,
-                        itemBuilder: (context, index) =>
-                            tabBarCommentCard(context))
-                  ],
-                ),
-              ),
+              tabBarCommentTab(context),
             ][_tabController.index],
           ),
         )
       ],
+    );
+  }
+
+  Container tabBarDescTab() => Container(child: ReadMoreText(descText));
+
+//---------------tabBarAttribute---------------
+//---------------------------------------------
+
+  ListView tabBarAttributeTab() {
+    return ListView.separated(
+        physics: ClampingScrollPhysics(),
+        shrinkWrap: true,
+        separatorBuilder: (context, index) => Divider(),
+        itemCount: 8,
+        itemBuilder: (context, index) => tabBarAttributeCard(context));
+  }
+
+  Container tabBarAttributeCard(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Text(
+            "Yayın Tarihi",
+            style: context.textTheme.subtitle1,
+          ),
+          Spacer(),
+          Text(
+            "01.05.2020",
+          ),
+        ],
+      ),
+    );
+  }
+
+  //---------------//tabbarAttribute---------------
+  //-----------------------------------------------
+
+  //---------------tabbarComment---------------
+  //-------------------------------------------
+
+  Container tabBarCommentTab(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          tabBarCommentHeader(context),
+          Divider(),
+          ListView.separated(
+              physics: ClampingScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => Divider(),
+              itemCount: 8,
+              itemBuilder: (context, index) => tabBarCommentCard(context))
+        ],
+      ),
     );
   }
 
@@ -203,174 +360,57 @@ class BookDetailView extends BookDetailViewModel
     );
   }
 
-  Container tabBarDescTab() => Container(child: ReadMoreText(descText));
+//---------------//tabbarComments---------------
+//----------------------------------------------
 
-  ListView tabBarAttributeTab() {
-    return ListView.separated(
-        physics: ClampingScrollPhysics(),
-        shrinkWrap: true,
-        separatorBuilder: (context, index) => Divider(),
-        itemCount: 8,
-        itemBuilder: (context, index) => tabBarAttributeCard(context));
-  }
+//---------------//TABBAR AREA---------------
+//-------------------------------------------
 
-  Container tabBarAttributeCard(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Text(
-            "Yayın Tarihi",
-            style: context.textTheme.subtitle1,
-          ),
-          Spacer(),
-          Text(
-            "01.05.2020",
-          ),
-        ],
-      ),
-    );
-  }
+//---------------OTHERBOOKS---------------
+//----------------------------------------
 
-  Container topCard(BuildContext context) {
-    return Container(
-      child: ClipRRect(
-        borderRadius: topCarddBorderRadius(),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-          child: Container(
-              color: Colors.white.withOpacity(0),
-              child: Stack(
-                children: [appbar(), topCardBookCard()],
-              )),
-        ),
-      ),
-      width: context.width,
-      height: context.height * 0.45,
-      decoration: BoxDecoration(
-        borderRadius: topCarddBorderRadius(),
-        image: imageArea(),
-      ),
-    );
-  }
-
-  /*
-            * ------topCardBook-------
-            */
-
-  Widget topCardBookCard() {
-    return Align(
-      alignment: Alignment(0, 0.8),
-      child: Container(
-        height: context.height * 0.35,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            topCardBookCardImage(),
-            topCardBookCardTitle(),
-            topCardBookCardAuthorName(),
-            topCardBuyButton()
-          ],
-        ),
-      ),
-    );
-  }
-
-  RaisedButton topCardBuyButton() {
-    return RaisedButton(
-      disabledColor: Colors.white,
-      focusColor: Colors.white,
-      color: Colors.white,
-      onPressed: null,
-      child: Text(
-        "Satın Al",
-        style: TextStyle(color: Colors.green),
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-      ),
-    );
-  }
-
-  Container topCardBookCardImage() {
-    return Container(
-      width: context.width * 0.25,
-      height: context.width * 0.35,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        image: imageArea(),
-      ),
-    );
-  }
-
-  DecorationImage imageArea() {
-    return DecorationImage(
-      fit: BoxFit.cover,
-      image: NetworkImage(
-          "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500"),
-    );
-  }
-
-  Widget topCardBookCardTitle() {
-    return SizedBox(
-      width: context.width * 0.5,
-      child: Center(
-        child: AutoSizeText("İnsan Güzeldir",
-            style: context.textTheme.headline5
-                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-            maxLines: 1),
-      ),
-    );
-  }
-
-  Widget topCardBookCardAuthorName() {
-    return SizedBox(
-      width: context.width * 0.6,
-      child: Center(
-        child: AutoSizeText("Sena Demirci",
-            style: context.textTheme.headline6
-                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-            maxLines: 1),
-      ),
-    );
-  }
-
-  BorderRadius topCarddBorderRadius() {
-    return BorderRadius.only(
-        bottomLeft: Radius.circular(35), bottomRight: Radius.circular(35));
-  }
-
-  //     * -----//topCardBook-------
-
-  // * -----Appbar-------
-
-  Padding appbar() {
+  Padding otherBooksArea(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(context.normalValue),
-      child: AppBar(
-        actions: [
-          topCardCircleButton(Icons.favorite_border, Colors.black),
-        ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: topCardCircleButton(Icons.chevron_left, Colors.black),
+      padding: EdgeInsets.only(
+        top: context.mediumValue,
+        left: context.mediumValue,
+        right: context.mediumValue,
+      ),
+      child: Container(
+        child: Column(children: [
+          Container(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "İlgili Ürünler",
+                style: context.textTheme.headline5
+                    .copyWith(fontWeight: FontWeight.bold),
+              )),
+          Container(
+            width: double.infinity,
+            height: context.height * 0.35,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (context, book) => OtherBooksCardView(
+                book: OtherBooksCard(
+                    author: "fatih emre",
+                    name: "Çile",
+                    imageURL:
+                        "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500",
+                    rating: 3),
+              ),
+            ),
+          )
+        ]),
       ),
     );
   }
 
-  Ink topCardCircleButton(IconData icon, Color color) {
-    return Ink(
-      decoration: const ShapeDecoration(
-        color: Colors.white,
-        shape: CircleBorder(),
-      ),
-      child: IconButton(
-        color: Colors.white,
-        icon: Icon(icon, color: color),
-        onPressed: () {},
-      ),
-    );
-  }
+//---------------//OTHERBOOKS---------------
+//------------------------------------------
+
+//---------------commentModel---------------
+//------------------------------------------
 
   void _commentModal() {
     // flutter defined function
@@ -434,9 +474,8 @@ class BookDetailView extends BookDetailViewModel
     );
   }
 
-  /*
-  * -----//Appbar-------
-  */
+  //---------------//commentModal---------------
+  //--------------------------------------------
 
 }
 
@@ -487,5 +526,88 @@ class _ReadMoreTextState extends State<ReadMoreText>
         ],
       )
     ]);
+  }
+}
+
+class OtherBooksCard {
+  String author;
+  String name;
+  String imageURL;
+  double rating;
+
+  OtherBooksCard({this.author, this.name, this.imageURL, this.rating});
+}
+
+class OtherBooksCardView extends StatelessWidget {
+  final OtherBooksCard book;
+
+  const OtherBooksCardView({Key key, @required this.book}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        width: width * 0.35,
+        height: height * 0.35,
+        child: Padding(
+          padding: EdgeInsets.only(left: 10.0, top: 10.0),
+          child: Column(
+            children: [
+              Card(
+                child: Image.network(
+                  book.imageURL,
+                  fit: BoxFit.cover,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                elevation: 5,
+              ),
+              Spacer(),
+              Padding(
+                padding: EdgeInsets.only(left: 5),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    book.name,
+                    style: TextStyle(fontSize: 15, color: Colors.black),
+                    maxLines: 2,
+                  ),
+                ),
+              ),
+              Spacer(),
+              Padding(
+                padding: EdgeInsets.only(left: 5),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "by " + book.author,
+                    style: TextStyle(fontSize: 11, color: Colors.grey),
+                    maxLines: 1,
+                  ),
+                ),
+              ),
+              Spacer(),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: RatingBarIndicator(
+                  rating: book.rating,
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  itemCount: 5,
+                  itemSize: width * 0.045,
+                  direction: Axis.horizontal,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
