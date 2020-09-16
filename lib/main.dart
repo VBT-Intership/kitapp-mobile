@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfoodapp/app/views/book_detail/book_detail.dart';
 import 'package:flutterfoodapp/app/views/login_screen/login_screen.dart';
-
+import 'package:flutterfoodapp/app/views/book_result/book_result.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       home: Scaffold(
-        body: BookDetail(),
+        body: BookResult(),
       ),
     );
   }
