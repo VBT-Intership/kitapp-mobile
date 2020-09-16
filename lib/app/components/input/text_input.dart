@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatelessWidget {
@@ -7,6 +9,7 @@ class TextWidget extends StatelessWidget {
   final int minLength;
   final TextEditingController controller;
   final TextInputType inputType;
+  final bool isSecret;
   const TextWidget({
     Key key,
     @required this.labelText,
@@ -15,20 +18,35 @@ class TextWidget extends StatelessWidget {
     @required this.controller,
     this.inputType,
     this.icon,
+    this.isSecret,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: isSecret ?? false,
       decoration: new InputDecoration(
-        prefixIcon: icon != null ? Icon(icon) : null,
-        labelText: labelText,
-        border: new OutlineInputBorder(
-          borderRadius: new BorderRadius.circular(25.0),
-          borderSide: new BorderSide(),
-        ),
-        //fillColor: Colors.green
-      ),
+          prefixIcon: icon != null
+              ? Icon(
+                  icon,
+                  color: Colors.green[700],
+                )
+              : null,
+          labelText: labelText,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25.0),
+            borderSide: BorderSide(
+              color: Colors.green[500],
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25.0),
+            borderSide: BorderSide(
+              color: Colors.grey,
+              width: 2.0,
+            ),
+          ),
+          fillColor: Colors.green),
       validator: (val) {
         if (val.length <= minLength ?? 0) {
           return warningText;

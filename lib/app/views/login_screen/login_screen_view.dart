@@ -1,6 +1,7 @@
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterfoodapp/app/views/register_screen/register_screen.dart';
 
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
@@ -10,6 +11,7 @@ import 'login_screen_view_model.dart';
 class LoginScreenView extends LoginScreenViewModel {
   bool rememberMe = false;
   TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -56,7 +58,7 @@ class LoginScreenView extends LoginScreenViewModel {
       icon: Icons.security,
       inputType: TextInputType.emailAddress,
       minLength: 3,
-      controller: emailController,
+      controller: passwordController,
     );
   }
 
@@ -163,7 +165,12 @@ class LoginScreenView extends LoginScreenViewModel {
       child: OutlineIconButton(
         text: "Kayıt Ol",
         color: Colors.green[500],
-        onpressed: () {},
+        onpressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RegisterScreen()),
+          );
+        },
       ),
     );
   }
