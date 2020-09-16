@@ -1,9 +1,13 @@
 import 'dart:ui';
+import 'package:flutterfoodapp/app/components/loginRadiusButton.dart';
+import 'package:flutterfoodapp/core/components/card/book-card.dart';
+
 import 'book_detail_view_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../core/base/model/generalSettingsButton.dart';
 import '../../../core/components/button/shadow_button.dart';
@@ -43,7 +47,6 @@ class BookDetailView extends BookDetailViewModel
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,29 +54,152 @@ class BookDetailView extends BookDetailViewModel
         child: Column(
           children: [
             topCard(context),
-            TabBar(
-              controller: _tabController,
-              labelColor: Colors.black,
-              tabs: myTabs,
-            ),
+            tabBarArea(context),
             Padding(
               padding: EdgeInsets.only(
-                  left: context.mediumValue, right: context.mediumValue),
-              child: Center(
-                child: [
-                  tabBarAttributeTab(),
-                  tabBarDescTab(),
-                  Column(
-                    children: [ 
-                      
-                    ],
+                top: context.mediumValue,
+                left: context.mediumValue,
+                right: context.mediumValue,
+              ),
+              child: Container(
+                child: Column(children: [
+                  Container(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "İlgili Ürünler",
+                        style: context.textTheme.headline5
+                            .copyWith(fontWeight: FontWeight.bold),
+                      )),
+                  SingleChildScrollView (child:
+                    BookCardView(
+                        book: BookCard(
+                            author: "fatih emre",
+                            name: "Çile",
+                            imageURL:
+                                "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500",
+                            rating: 3))
                   ),
-                ][_tabController.index],
+                ]),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Column tabBarArea(BuildContext context) {
+    return Column(
+      children: [
+        TabBar(
+          controller: _tabController,
+          labelColor: Colors.black,
+          tabs: myTabs,
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+              left: context.mediumValue, right: context.mediumValue),
+          child: Center(
+            child: [
+              tabBarAttributeTab(),
+              tabBarDescTab(),
+              Container(
+                child: Column(
+                  children: [
+                    tabBarCommentHeader(context),
+                    Divider(),
+                    ListView.separated(
+                        physics: ClampingScrollPhysics(),
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) => Divider(),
+                        itemCount: 8,
+                        itemBuilder: (context, index) =>
+                            tabBarCommentCard(context))
+                  ],
+                ),
+              ),
+            ][_tabController.index],
+          ),
+        )
+      ],
+    );
+  }
+
+  Container tabBarCommentCard(BuildContext context) {
+    return Container(
+        child: Column(
+      children: [
+        Row(
+          children: [
+            Text("fatihemre",
+                style: context.textTheme.subtitle1
+                    .copyWith(fontWeight: FontWeight.w500)),
+            Spacer(),
+            RatingBar(
+              initialRating: 3,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemSize: context.width * 0.04,
+              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: Colors.green,
+              ),
+              onRatingUpdate: (rating) {
+                print(rating);
+              },
+            )
+          ],
+        ),
+        Container(child: ReadMoreText(descText, height: context.height * 0.10)),
+        Row(
+          children: [
+            Spacer(),
+            Text("11.10.2020",
+                style:
+                    context.textTheme.subtitle2.copyWith(color: Colors.grey)),
+          ],
+        )
+      ],
+    ));
+  }
+
+  Widget tabBarCommentHeader(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: context.normalValue),
+      child: Row(
+        children: [
+          commentLengthText(context),
+          Spacer(),
+          commentButton(context)
+        ],
+      ),
+    );
+  }
+
+  Text commentLengthText(BuildContext context) {
+    return Text(
+      "Yorum(8)",
+      style: context.textTheme.subtitle1
+          .copyWith(fontWeight: FontWeight.bold, color: Colors.grey),
+    );
+  }
+
+  Row commentButton(BuildContext context) {
+    return Row(
+      children: [
+        GestureDetector(
+          onTap: () {
+            _commentModal();
+          },
+          child: Text("Yorum Yaz",
+              style: context.textTheme.subtitle1
+                  .copyWith(fontWeight: FontWeight.bold, color: Colors.green)),
+        ),
+        Icon(Icons.chevron_right, color: Colors.green)
+      ],
     );
   }
 
@@ -127,9 +253,9 @@ class BookDetailView extends BookDetailViewModel
     );
   }
 
-/*
-* ------topCardBook-------
-*/
+  /*
+            * ------topCardBook-------
+            */
 
   Widget topCardBookCard() {
     return Align(
@@ -214,13 +340,9 @@ class BookDetailView extends BookDetailViewModel
         bottomLeft: Radius.circular(35), bottomRight: Radius.circular(35));
   }
 
-/*
-* -----//topCardBook-------
-*/
+  //     * -----//topCardBook-------
 
-/*
-* -----Appbar-------
-*/
+  // * -----Appbar-------
 
   Padding appbar() {
     return Padding(
@@ -250,6 +372,68 @@ class BookDetailView extends BookDetailViewModel
     );
   }
 
+  void _commentModal() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("Yorum Yaz",
+                    style: context.textTheme.headline6
+                        .copyWith(color: Colors.green)),
+                TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 5,
+                  maxLength: 500,
+                ),
+                RatingBar(
+                  initialRating: 3,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemSize: context.width * 0.10,
+                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                  itemBuilder: (context, _) => Icon(
+                    Icons.star,
+                    color: Colors.green,
+                  ),
+                  onRatingUpdate: (rating) {
+                    print(rating);
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: context.mediumValue),
+                  child: Container(
+                    child: RaisedButton(
+                      color: Colors.green,
+                      child: Text(
+                        "Gönder",
+                        style: context.textTheme.subtitle2
+                            .copyWith(color: Colors.white),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   /*
   * -----//Appbar-------
   */
@@ -259,7 +443,8 @@ class BookDetailView extends BookDetailViewModel
 class ReadMoreText extends StatefulWidget {
   final String text;
   final Color expandingButtonColor;
-  ReadMoreText(this.text, {this.expandingButtonColor});
+  final double height;
+  ReadMoreText(this.text, {this.expandingButtonColor, this.height});
 
   @override
   _ReadMoreTextState createState() => _ReadMoreTextState();
@@ -273,7 +458,10 @@ class _ReadMoreTextState extends State<ReadMoreText>
   Widget build(BuildContext context) {
     final expandingButtonColor = widget.expandingButtonColor != null
         ? widget.expandingButtonColor
-        : Colors.black;
+        : Colors.green;
+
+    final maxHeight =
+        widget.height != null ? widget.height : context.height * 0.25;
     return Column(children: <Widget>[
       AnimatedSize(
           vsync: this,
@@ -281,10 +469,10 @@ class _ReadMoreTextState extends State<ReadMoreText>
           child: ConstrainedBox(
               constraints: isExpanded
                   ? BoxConstraints()
-                  : BoxConstraints(maxHeight: context.height * 0.25),
+                  : BoxConstraints(maxHeight: maxHeight),
               child: Padding(
                 padding: EdgeInsets.all(5.0),
-                child: Text( 
+                child: Text(
                   widget.text,
                   softWrap: true,
                   overflow: TextOverflow.fade,
@@ -292,10 +480,10 @@ class _ReadMoreTextState extends State<ReadMoreText>
               ))),
       Row(
         children: <Widget>[
-          FlatButton(
+          GestureDetector(
               child: Text('${isExpanded ? 'Show less' : 'Read more'}',
                   style: TextStyle(color: expandingButtonColor)),
-              onPressed: () => setState(() => isExpanded = !isExpanded))
+              onTap: () => setState(() => isExpanded = !isExpanded))
         ],
       )
     ]);
