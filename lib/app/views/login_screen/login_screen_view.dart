@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/extensions/context_entension.dart';
-import '../../components/loginRadiusButton.dart';
-import '../../components/text_input.dart';
+import '../../components/button/loginRadiusButton.dart';
+import '../../components/input/text_input.dart';
 import 'login_screen_view_model.dart';
 
 class LoginScreenView extends LoginScreenViewModel {
