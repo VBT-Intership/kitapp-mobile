@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfoodapp/notification_screen/view/notification_screen.dart';
+
+import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen.dart';
+import 'package:flutterfoodapp/app/views/onboarding_screens/onboarding_screens.dart';
+
 
 import 'package:flutterfoodapp/app/views/book_detail/book_detail.dart';
 import 'package:flutterfoodapp/app/views/login_screen/login_screen.dart';
@@ -14,9 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-
-      home: NotificationScreen(),
-
+      home:OnBoardingScreens(),
     );
   }
 }
