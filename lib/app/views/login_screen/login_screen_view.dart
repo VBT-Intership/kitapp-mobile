@@ -15,34 +15,36 @@ class LoginScreenView extends LoginScreenViewModel {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-              width: context.width,
-              height: context.height,
-              padding: context.paddingMedium,
-              color: Colors.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Spacer(flex: 3),
-                  Expanded(flex: 22, child: loginHeadText),
-                  Spacer(flex: 5),
-                  Expanded(flex: 10, child: loginEmailInput),
-                  Spacer(flex: 1),
-                  Expanded(flex: 10, child: loginPasswordInput),
-                  Spacer(flex: 3),
-                  Expanded(flex: 5, child: loginChoices),
-                  Spacer(flex: 2),
-                  Expanded(flex: 12, child: loginButtons),
-                  Spacer(flex: 3),
-                  Expanded(flex: 10, child: loginButtonDivider),
-                  Spacer(flex: 1),
-                  Expanded(flex: 12, child: loginRegisterButton),
-                  Expanded(flex: 12, child: loginGuestButton),
-                ],
-              )),
-        ],
+      child: SafeArea(
+        child: Column(
+          children: [
+            Container(
+                width: context.width,
+                height: context.height,
+                padding: context.paddingMedium,
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Spacer(flex: 3),
+                    Expanded(flex: 22, child: loginHeadText),
+                    Spacer(flex: 5),
+                    Expanded(flex: 10, child: loginEmailInput),
+                    Spacer(flex: 1),
+                    Expanded(flex: 10, child: loginPasswordInput),
+                    Spacer(flex: 3),
+                    Expanded(flex: 5, child: loginChoices),
+                    Spacer(flex: 2),
+                    Expanded(flex: 12, child: loginButtons),
+                    Spacer(flex: 3),
+                    Expanded(flex: 10, child: loginButtonDivider),
+                    Spacer(flex: 1),
+                    Expanded(flex: 12, child: loginRegisterButton),
+                    Expanded(flex: 12, child: loginGuestButton),
+                  ],
+                )),
+          ],
+        ),
       ),
     );
   }
@@ -66,7 +68,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return TextWidget(
       labelText: "Email Giriniz",
       warningText: "Email Karakter Sayısı Yetersiz",
-      icon: Icons.email_outlined,
+      icon: Icons.ac_unit,
       inputType: TextInputType.visiblePassword,
       controller: emailController,
     );
@@ -101,7 +103,7 @@ class LoginScreenView extends LoginScreenViewModel {
         Expanded(
             child: OutlineIconButton(
           icon: Icon(
-            Icons.login_outlined,
+            Icons.ac_unit,
             color: Colors.white,
           ),
           text: "Giriş Yap",
