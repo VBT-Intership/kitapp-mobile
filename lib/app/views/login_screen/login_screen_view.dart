@@ -1,7 +1,9 @@
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/extensions/context_entension.dart';
+import '../../components/loginRadiusButton.dart';
 import '../../components/text_input.dart';
 import 'login_screen_view_model.dart';
 
@@ -21,154 +23,148 @@ class LoginScreenView extends LoginScreenViewModel {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Spacer(
-                    flex: 10,
-                  ),
-                  Expanded(
-                    flex: 10,
-                    child: Text(
-                      "Sign In",
-                      style: context.textTheme.headline4
-                          .copyWith(color: context.colors.onSurface),
-                    ),
-                  ),
-                  Spacer(
-                    flex: 5,
-                  ),
-                  Expanded(
-                    flex: 10,
-                    child: TextWidget(
-                      labelText: "Email Giriniz",
-                      warningText: "Email Karakter Sayısı Yetersiz",
-                      icon: Icons.email_outlined,
-                      inputType: TextInputType.emailAddress,
-                      controller: emailController,
-                    ),
-                  ),
+                  Spacer(flex: 3),
+                  Expanded(flex: 22, child: loginHeadText),
+                  Spacer(flex: 5),
+                  Expanded(flex: 10, child: loginEmailInput),
                   Spacer(flex: 1),
-                  Expanded(
-                    flex: 10,
-                    child: TextWidget(
-                      labelText: "Şifre Giriniz",
-                      warningText: "Şifre Karakter Sayısı Yetersiz",
-                      icon: Icons.email_outlined,
-                      inputType: TextInputType.emailAddress,
-                      minLength: 3,
-                      controller: emailController,
-                    ),
-                  ),
-                  Spacer(
-                    flex: 3,
-                  ),
-                  Expanded(
-                      flex: 5,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: CircularCheckBox(
-                                value: rememberMe,
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.padded,
-                                onChanged: (bool x) {
-                                  setState(() {
-                                    rememberMe = !rememberMe;
-                                  });
-                                }),
-                          ),
-                          Expanded(
-                              flex: 3,
-                              child: Text(
-                                "Stay Logged in",
-                                style: context.textTheme.bodyText2,
-                              )),
-                          Spacer(flex: 1),
-                          Expanded(
-                            flex: 3,
-                            child: Text(
-                              "Forgotten Password?",
-                              style: context.textTheme.bodyText2,
-                            ),
-                          )
-                        ],
-                      )),
-                  Spacer(
-                    flex: 2,
-                  ),
-                  Expanded(
-                      flex: 10,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: OutlineIconButton(
-                              icon: Icons.login_outlined,
-                              text: "Giriş Yap",
-                            ),
-                          ),
-                          Expanded(
-                            child: OutlineIconButton(
-                              icon: Icons.alarm,
-                              text: "Google",
-                            ),
-                          )
-                        ],
-                      )),
-                  Spacer(
-                    flex: 3,
-                  ),
-                  Expanded(
-                      flex: 6,
-                      child: Column(
-                        children: [
-                          Divider(
-                            color: Colors.black,
-                            height: 5,
-                            thickness: 1,
-                          ),
-                          Text(
-                            "ya da",
-                            style: context.textTheme.headline5,
-                          )
-                        ],
-                      )),
-                  Expanded(flex: 27, child: Container())
+                  Expanded(flex: 10, child: loginPasswordInput),
+                  Spacer(flex: 3),
+                  Expanded(flex: 5, child: loginChoices),
+                  Spacer(flex: 2),
+                  Expanded(flex: 12, child: loginButtons),
+                  Spacer(flex: 3),
+                  Expanded(flex: 10, child: loginButtonDivider),
+                  Spacer(flex: 1),
+                  Expanded(flex: 12, child: loginRegisterButton),
+                  Expanded(flex: 12, child: loginGuestButton),
                 ],
               )),
         ],
       ),
     );
   }
-}
 
-class OutlineIconButton extends StatelessWidget {
-  final IconData icon;
-  final String text;
-  const OutlineIconButton({
-    Key key,
-    this.icon,
-    this.text,
-  }) : super(key: key);
+  Widget get loginHeadText {
+    return SvgPicture.asset("assets/images/login_cat.svg");
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-          height: double.infinity,
-          child: RaisedButton.icon(
-              color: Colors.green[500],
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40.0)),
-              onPressed: () {},
-              icon: Icon(
-                icon,
-                color: context.colors.onSecondary,
-              ),
-              label: Text(
-                text,
-                style: context.textTheme.bodyText2
-                    .copyWith(color: context.colors.onSecondary),
-              ))),
+  TextWidget get loginPasswordInput {
+    return TextWidget(
+      labelText: "Şifre Giriniz",
+      warningText: "Şifre Karakter Sayısı Yetersiz",
+      icon: Icons.security,
+      inputType: TextInputType.emailAddress,
+      minLength: 3,
+      controller: emailController,
+    );
+  }
+
+  TextWidget get loginEmailInput {
+    return TextWidget(
+      labelText: "Email Giriniz",
+      warningText: "Email Karakter Sayısı Yetersiz",
+      icon: Icons.email_outlined,
+      inputType: TextInputType.visiblePassword,
+      controller: emailController,
+    );
+  }
+
+  Row get loginChoices {
+    return Row(
+      children: [
+        Spacer(),
+        Text(
+          "Forgotten Password?",
+          style: context.textTheme.bodyText2,
+        )
+      ],
+    );
+  }
+
+  CircularCheckBox get loginChoicesCheckBox {
+    return CircularCheckBox(
+        value: rememberMe,
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+        onChanged: (bool x) {
+          setState(() {
+            rememberMe = !rememberMe;
+          });
+        });
+  }
+
+  Row get loginButtons {
+    return Row(
+      children: [
+        Expanded(
+            child: OutlineIconButton(
+          icon: Icon(
+            Icons.login_outlined,
+            color: Colors.white,
+          ),
+          text: "Giriş Yap",
+          color: Colors.green[500],
+          onpressed: () {},
+        )),
+        Expanded(
+          child: OutlineIconButton(
+            icon: Image.asset('assets/images/google.ico'),
+            text: "oogle",
+            iconPadding: 0,
+            color: Colors.green[500],
+            onpressed: () {},
+          ),
+        )
+      ],
+    );
+  }
+
+  Row get loginButtonDivider {
+    return Row(
+      children: [
+        Expanded(
+          child: Divider(
+            color: Colors.black,
+            height: context.height * 0.01,
+            thickness: 1,
+          ),
+        ),
+        Expanded(
+          child: Text(
+            "     ya da",
+            style: context.textTheme.headline5,
+          ),
+        ),
+        Expanded(
+          child: Divider(
+            color: Colors.black,
+            height: context.height * 0.01,
+            thickness: 1,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container get loginGuestButton {
+    return Container(
+      width: double.infinity,
+      child: OutlineIconButton(
+        text: "Ziyaret Et",
+        color: Colors.green[500],
+        onpressed: () {},
+      ),
+    );
+  }
+
+  Container get loginRegisterButton {
+    return Container(
+      width: double.infinity,
+      child: OutlineIconButton(
+        text: "Kayıt Ol",
+        color: Colors.green[500],
+        onpressed: () {},
+      ),
     );
   }
 }

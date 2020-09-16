@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfoodapp/app/views/login_screen/login_screen.dart';
-import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen.dart';
 
 void main() => runApp(MyApp());
 
