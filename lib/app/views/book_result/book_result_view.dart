@@ -36,7 +36,7 @@ class BookResultView extends BookResultViewModel {
           Padding(
             padding: EdgeInsets.only(
                 left: context.lowValue, right: context.lowValue),
-            child: Icon(Icons.filter_alt, color: Colors.grey),
+            child: Icon(Icons.ac_unit, color: Colors.grey),
           ),
         ],
       ),

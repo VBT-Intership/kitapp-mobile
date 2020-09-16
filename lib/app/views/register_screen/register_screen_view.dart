@@ -104,7 +104,7 @@ class RegisterScreenView extends RegisterScreenViewModel {
     return TextWidget(
       labelText: "Email Giriniz",
       warningText: "Email Karakter Sayısı Yetersiz",
-      icon: Icons.email_outlined,
+      icon: Icons.ac_unit,
       inputType: TextInputType.emailAddress,
       minLength: 3,
       controller: emailController,
