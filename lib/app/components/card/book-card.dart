@@ -21,16 +21,18 @@ class BookCardView extends StatelessWidget {
           child: Column(
             children: [
               Card(
-                child: Image.network(
-                  book.urlimage,
-                  fit: BoxFit.cover,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    book.urlimage,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 elevation: 5,
               ),
-              Spacer(),
               Padding(
                 padding: EdgeInsets.only(left: 5),
                 child: Align(
@@ -42,7 +44,6 @@ class BookCardView extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(),
               Padding(
                 padding: EdgeInsets.only(left: 5),
                 child: Align(
@@ -54,7 +55,6 @@ class BookCardView extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(),
               Align(
                 alignment: Alignment.centerLeft,
                 child: RatingBarIndicator(
