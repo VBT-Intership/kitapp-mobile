@@ -1,4 +1,4 @@
-import 'package:sk_onboarding_screen/flutter_onboarding.dart';
+import 'package:flutterfoodapp/app/views/onboarding_screens/sk_onboarding_model.dart';
 import 'package:flutter/material.dart';
 
 final pages = [

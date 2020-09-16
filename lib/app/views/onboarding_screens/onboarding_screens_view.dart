@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sk_onboarding_screen/sk_onboarding_screen.dart';
+import 'package:flutterfoodapp/app/views/onboarding_screens/sk_onboarding_screen.dart';
 import 'package:flutterfoodapp/app/models/onboarding_screens_model.dart';
 import 'package:flutterfoodapp/app/views/onboarding_screens/onboarding_screens_view_model.dart';
 import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen.dart';
@@ -18,8 +18,10 @@ class OnBoardingScreensView extends OnBoardingScreensViewModel{
           print("Skip");
         },
         getStartedClicked: (value) {
-          print("get started");
-        //  SellersScreen();
+          Navigator.push(
+            context, 
+            MaterialPageRoute(builder: (context) => SellersScreen())
+            );          
         },
       ),
     );
