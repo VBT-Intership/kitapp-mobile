@@ -14,6 +14,9 @@ import '../../../core/init/notifier/theme_notifer.dart';
 
 class BookDetailView extends BookDetailViewModel
     with SingleTickerProviderStateMixin {
+  String descText =
+      "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.";
+
   final List<Widget> myTabs = [
     Tab(text: 'Künye'),
     Tab(text: 'Genel Bakış'),
@@ -21,7 +24,6 @@ class BookDetailView extends BookDetailViewModel
   ];
 
   TabController _tabController;
-
   @override
   void dispose() {
     _tabController.dispose();
@@ -41,12 +43,7 @@ class BookDetailView extends BookDetailViewModel
     }
   }
 
-  /* Divider(
-                      color: Colors.grey,
-                      height: 20,
-                      thickness: 1,
-                      endIndent: 0,
-                    ) */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,12 +61,11 @@ class BookDetailView extends BookDetailViewModel
                   left: context.mediumValue, right: context.mediumValue),
               child: Center(
                 child: [
-                  tabBarAttributeCardList(),
-                  Container(),
+                  tabBarAttributeTab(),
+                  tabBarDescTab(),
                   Column(
-                    children: [
-                      Text('third tab'),
-                      ...List.generate(20, (index) => Text('line: $index'))
+                    children: [ 
+                      
                     ],
                   ),
                 ][_tabController.index],
@@ -81,25 +77,32 @@ class BookDetailView extends BookDetailViewModel
     );
   }
 
-  ListView tabBarAttributeCardList() {
+  Container tabBarDescTab() => Container(child: ReadMoreText(descText));
+
+  ListView tabBarAttributeTab() {
     return ListView.separated(
-                    physics: ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    separatorBuilder: (context, index) => Divider(),
-                    itemCount: 8,
-                    itemBuilder: (context, index) => tabBarAttributeCard(context));
+        physics: ClampingScrollPhysics(),
+        shrinkWrap: true,
+        separatorBuilder: (context, index) => Divider(),
+        itemCount: 8,
+        itemBuilder: (context, index) => tabBarAttributeCard(context));
   }
 
   Container tabBarAttributeCard(BuildContext context) {
     return Container(
-                          child: Row(
-                            children: [
-                              Text("Yayın Tarihi",style:context.textTheme.subtitle1 ,),
-                              Spacer(),
-                              Text("01.05.2020",),
-                            ],
-                          ),
-                        );
+      child: Row(
+        children: [
+          Text(
+            "Yayın Tarihi",
+            style: context.textTheme.subtitle1,
+          ),
+          Spacer(),
+          Text(
+            "01.05.2020",
+          ),
+        ],
+      ),
+    );
   }
 
   Container topCard(BuildContext context) {
@@ -251,4 +254,50 @@ class BookDetailView extends BookDetailViewModel
   * -----//Appbar-------
   */
 
+}
+
+class ReadMoreText extends StatefulWidget {
+  final String text;
+  final Color expandingButtonColor;
+  ReadMoreText(this.text, {this.expandingButtonColor});
+
+  @override
+  _ReadMoreTextState createState() => _ReadMoreTextState();
+}
+
+class _ReadMoreTextState extends State<ReadMoreText>
+    with TickerProviderStateMixin<ReadMoreText> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final expandingButtonColor = widget.expandingButtonColor != null
+        ? widget.expandingButtonColor
+        : Colors.black;
+    return Column(children: <Widget>[
+      AnimatedSize(
+          vsync: this,
+          duration: const Duration(milliseconds: 500),
+          child: ConstrainedBox(
+              constraints: isExpanded
+                  ? BoxConstraints()
+                  : BoxConstraints(maxHeight: context.height * 0.25),
+              child: Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Text( 
+                  widget.text,
+                  softWrap: true,
+                  overflow: TextOverflow.fade,
+                ),
+              ))),
+      Row(
+        children: <Widget>[
+          FlatButton(
+              child: Text('${isExpanded ? 'Show less' : 'Read more'}',
+                  style: TextStyle(color: expandingButtonColor)),
+              onPressed: () => setState(() => isExpanded = !isExpanded))
+        ],
+      )
+    ]);
+  }
 }
