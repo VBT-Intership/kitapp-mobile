@@ -12,15 +12,95 @@ import '../../../core/extensions/extensions_provider.dart';
 import '../../../core/extensions/future_builder.dart';
 import '../../../core/init/notifier/theme_notifer.dart';
 
-class BookDetailView extends BookDetailViewModel {
+class BookDetailView extends BookDetailViewModel
+    with SingleTickerProviderStateMixin {
+  final List<Widget> myTabs = [
+    Tab(text: 'Künye'),
+    Tab(text: 'Genel Bakış'),
+    Tab(text: 'Yorumlar'),
+  ];
+
+  TabController _tabController;
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
+  /* Divider(
+                      color: Colors.grey,
+                      height: 20,
+                      thickness: 1,
+                      endIndent: 0,
+                    ) */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: topCard(context),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            topCard(context),
+            TabBar(
+              controller: _tabController,
+              labelColor: Colors.black,
+              tabs: myTabs,
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: context.mediumValue, right: context.mediumValue),
+              child: Center(
+                child: [
+                  tabBarAttributeCardList(),
+                  Container(),
+                  Column(
+                    children: [
+                      Text('third tab'),
+                      ...List.generate(20, (index) => Text('line: $index'))
+                    ],
+                  ),
+                ][_tabController.index],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
+  ListView tabBarAttributeCardList() {
+    return ListView.separated(
+                    physics: ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    separatorBuilder: (context, index) => Divider(),
+                    itemCount: 8,
+                    itemBuilder: (context, index) => tabBarAttributeCard(context));
+  }
 
+  Container tabBarAttributeCard(BuildContext context) {
+    return Container(
+                          child: Row(
+                            children: [
+                              Text("Yayın Tarihi",style:context.textTheme.subtitle1 ,),
+                              Spacer(),
+                              Text("01.05.2020",),
+                            ],
+                          ),
+                        );
+  }
 
   Container topCard(BuildContext context) {
     return Container(
@@ -102,16 +182,28 @@ class BookDetailView extends BookDetailViewModel {
     );
   }
 
-  Text topCardBookCardTitle() {
-    return Text("İnsan Güzeldir",
-        style: context.textTheme.headline5
-            .copyWith(color: Colors.white, fontWeight: FontWeight.bold));
+  Widget topCardBookCardTitle() {
+    return SizedBox(
+      width: context.width * 0.5,
+      child: Center(
+        child: AutoSizeText("İnsan Güzeldir",
+            style: context.textTheme.headline5
+                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+            maxLines: 1),
+      ),
+    );
   }
 
-  Text topCardBookCardAuthorName() {
-    return Text("Senai Demirci",
-        style: context.textTheme.headline6
-            .copyWith(color: Colors.white, fontWeight: FontWeight.bold));
+  Widget topCardBookCardAuthorName() {
+    return SizedBox(
+      width: context.width * 0.6,
+      child: Center(
+        child: AutoSizeText("Sena Demirci",
+            style: context.textTheme.headline6
+                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+            maxLines: 1),
+      ),
+    );
   }
 
   BorderRadius topCarddBorderRadius() {
