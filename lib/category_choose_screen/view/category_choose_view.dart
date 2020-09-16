@@ -7,20 +7,47 @@ List<String> indexList = new List();
 
 class CategoryChooseView extends CategoryChooseViewModel {
   Items item1 = new Items(
-      title: "Biography", index: 0, istrue: false, cardcolor: cardcolorgeneral);
+      title: "Biography",
+      index: 0,
+      istrue: false,
+      cardcolor: cardcolorgeneral,
+      description: "des1",
+      totalbook: 12);
   Items item2 = new Items(
-      title: "Business", index: 1, istrue: false, cardcolor: cardcolorgeneral);
+      title: "Business",
+      index: 1,
+      istrue: false,
+      cardcolor: cardcolorgeneral,
+      description: "des2",
+      totalbook: 14);
   Items item3 = new Items(
-      title: "Children", index: 2, istrue: false, cardcolor: cardcolorgeneral);
+      title: "Children",
+      index: 2,
+      istrue: false,
+      cardcolor: cardcolorgeneral,
+      description: "des3",
+      totalbook: 16);
   Items item4 = new Items(
-      title: "Cookery", index: 3, istrue: false, cardcolor: cardcolorgeneral);
+      title: "Cookery",
+      index: 3,
+      istrue: false,
+      cardcolor: cardcolorgeneral,
+      description: "des4",
+      totalbook: 18);
   Items item5 = new Items(
-      title: "Fiction", index: 4, istrue: false, cardcolor: cardcolorgeneral);
+      title: "Fiction",
+      index: 4,
+      istrue: false,
+      cardcolor: cardcolorgeneral,
+      description: "des5",
+      totalbook: 19);
   Items item6 = new Items(
       title: "Graphic novels",
       index: 5,
       istrue: false,
-      cardcolor: cardcolorgeneral);
+      cardcolor: cardcolorgeneral,
+      description: "des6",
+      totalbook: 23);
   @override
   Widget build(BuildContext context) {
     List<Items> myList = [item1, item2, item3, item4, item5, item6];
@@ -107,11 +134,13 @@ class CategoryChooseView extends CategoryChooseViewModel {
         return Material(
           child: new InkWell(
             child: Container(
+              padding: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                   color: data.cardcolor,
                   borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   CircularCheckBox(
                       value: data.istrue,
@@ -123,20 +152,52 @@ class CategoryChooseView extends CategoryChooseViewModel {
                           // print(data.istrue);
                         });
                       }),
-                  Text(
-                    data.title,
-                    style: TextStyle(
-                        fontFamily: "Roboto",
-                        fontSize: 15,
-                        color: Colors.white),
-                  )
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            data.title,
+                            style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 24,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            data.description.toString(),
+                            style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 15,
+                                color: Colors.white),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            data.totalbook.toString(),
+                            style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 15,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
             onTap: () {
               setState(() {
                 if (data.istrue == false) {
-                  data.cardcolor = Color(0xff90EE90);
+                  data.cardcolor = Color(0xff4DBD33);
                   data.istrue = true;
                   indexList.add(data.title);
                 } else {
@@ -160,5 +221,13 @@ class Items {
   bool istrue;
   int index;
   Color cardcolor;
-  Items({this.title, this.index, this.istrue, this.cardcolor});
+  String description;
+  int totalbook;
+  Items(
+      {this.title,
+      this.index,
+      this.istrue,
+      this.cardcolor,
+      this.description,
+      this.totalbook});
 }
