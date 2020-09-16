@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutterfoodapp/category_choose_screen/view_model/category_choose_viewmodel.dart';
 import 'package:circular_check_box/circular_check_box.dart';
+import 'package:flutter/material.dart';
+
+import '../view_model/category_choose_viewmodel.dart';
 
 Color cardcolorgeneral = Color(0xffD3D3D3);
 List<String> indexList = new List();
