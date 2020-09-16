@@ -18,7 +18,8 @@ class OnBoardingScreensView extends OnBoardingScreensViewModel{
           print("Skip");
         },
         getStartedClicked: (value) {
-          print("Get Started");
+          print("get started");
+        //  SellersScreen();
         },
       ),
     );
