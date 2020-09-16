@@ -5,15 +5,15 @@ import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
 import 'package:flutterfoodapp/notification_screen/view/tab_general_page_view.dart';
 
-BuildContext mtcontext;
+BuildContext mycontext;
 Container tab_offers_view_page(BuildContext context) {
   mycontext = context;
   List<NotificationOffers> offerslist = [
-    new NotificationOffers("book", 12, 2),
-    new NotificationOffers("book", 12, 2),
-    new NotificationOffers("book", 12, 2),
-    new NotificationOffers("book", 12, 2),
-    new NotificationOffers("book", 12, 2)
+    new NotificationOffers("book1", 12, 2),
+    new NotificationOffers("book2", 12, 2),
+    new NotificationOffers("book3", 12, 2),
+    new NotificationOffers("book4", 12, 2),
+    new NotificationOffers("book5", 12, 2)
   ];
 
   return Container(
@@ -44,7 +44,7 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                       style: mycontext.textTheme.headline6,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: mycontext.lowValue,
                     ),
                     AutoSizeText(
                       offer.book + " adlı kitaba teklifin var.",
@@ -64,10 +64,11 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         SizedBox(
-                          width: 30,
-                          height: 30,
+                          width: mycontext.mediumValue,
+                          height: mycontext.mediumValue,
                           child: FloatingActionButton(
-                            backgroundColor: Colors.red,
+                            onPressed: () {},
+                            backgroundColor: mycontext.colors.primary,
                             child: Icon(Icons.delete),
                           ),
                         ),
@@ -75,10 +76,11 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                           width: 10,
                         ),
                         SizedBox(
-                          width: 30,
-                          height: 30,
+                          width: mycontext.mediumValue,
+                          height: mycontext.mediumValue,
                           child: FloatingActionButton(
-                            backgroundColor: Colors.green,
+                            onPressed: () {},
+                            backgroundColor: mycontext.colors.onSurface,
                             child: Icon(Icons.done),
                           ),
                         )

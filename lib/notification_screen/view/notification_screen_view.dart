@@ -44,7 +44,7 @@ class NotificationScreenView extends NotificationScreenViewModel {
           ),
           body: TabBarView(
             children: [
-              tab_general_view_page(context),
+              generalview(),
               tab_offers_view_page(context),
             ],
           ),

@@ -5,41 +5,40 @@ import 'package:flutterfoodapp/sellers_screen/model/sellers_screen_model.dart';
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
 
-BuildContext mycontext;
-Container tab_general_view_page(BuildContext context) {
-  mycontext = context;
-  List<NotificationGeneral> generallist = [
-    new NotificationGeneral("eda", "k1", 2, 5),
-    new NotificationGeneral("eda", "k2", 2, 5),
-    new NotificationGeneral("eda", "k3", 2, 5),
-    new NotificationGeneral("eda", "k4", 2, 5),
-  ];
-  return Container(
-      child: Future.value(generallist).toBuild<List<NotificationGeneral>>(
-    onSuccess: (data) {
-      return ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemCount: data.length,
-          itemBuilder: (context, index) =>
-              notification_general_page_card(data[index]));
-    },
-  ));
+class generalview extends StatefulWidget {
+  @override
+  _generalviewState createState() => _generalviewState();
 }
 
-Container notification_general_page_card(NotificationGeneral general) =>
+class _generalviewState extends State<generalview> {
+  List<NotificationGeneral> generallist = [
+    new NotificationGeneral("eda", "kitap1", 2, 1),
+    new NotificationGeneral("eda", "kitap2", 7, 0),
+    new NotificationGeneral("eda", "kitap3", 12, 1),
+    new NotificationGeneral("eda", "kitap4", 13, 0),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Future.value(generallist).toBuild<List<NotificationGeneral>>(
+      onSuccess: (data) {
+        return ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: data.length,
+            itemBuilder: (context, index) =>
+                notification_general_page_card(data[index], context));
+      },
+    ));
+  }
+}
+
+Container notification_general_page_card(
+        NotificationGeneral general, BuildContext context) =>
     Container(
-      padding: mycontext.paddingNormal,
+      padding: context.paddingNormal,
       child: Column(
         children: [
-          AutoSizeText(
-            general.username +
-                " adlı kullanıcı " +
-                general.book +
-                " kitabına verdiğiniz teklifi kabul etti",
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-            style: mycontext.textTheme.bodyText1,
-          ),
+          get_text(general, context),
           Row(
             children: [
               Expanded(
@@ -48,14 +47,12 @@ Container notification_general_page_card(NotificationGeneral general) =>
                   children: [
                     Text(
                       general.username,
-                      style: mycontext.textTheme.bodyText2,
+                      style: context.textTheme.bodyText2,
                     ),
-                    SizedBox(
-                      width: 15,
-                    ),
+                    SizedBox(width: context.normalValue),
                     Text(
                       general.time.toString() + " saat önce",
-                      style: mycontext.textTheme.bodyText2,
+                      style: context.textTheme.bodyText2,
                     ),
                   ],
                 ),
@@ -63,19 +60,9 @@ Container notification_general_page_card(NotificationGeneral general) =>
               Expanded(
                 flex: 2,
                 child: SizedBox(
-                  child: RaisedButton(
-                    color: Colors.green,
-                    child: Text(
-                      "İletişim",
-                      style: TextStyle(
-                          fontSize: mycontext.normalValue,
-                          color: mycontext.colors.onPrimary),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(mycontext.lowValue),
-                    ),
-                    onPressed: () {},
-                  ),
+                  width: context.mediumValue,
+                  height: context.mediumValue,
+                  child: get_button(general.status, context),
                 ),
               ),
             ],
@@ -89,3 +76,59 @@ Container notification_general_page_card(NotificationGeneral general) =>
         ],
       ),
     );
+
+Widget get_text(NotificationGeneral general, BuildContext context) {
+  String case_1_text = general.username +
+      " adlı kullanıcı " +
+      general.book +
+      " kitabına verdiğiniz teklifi kabul etti";
+  String case_0_text = general.username +
+      " adlı kullanıcı " +
+      general.book +
+      " kitabına verdiğiniz teklifi reddetti";
+  switch (general.status) {
+    case 1:
+      return calling_book_status_text(case_1_text, context);
+      break;
+    case 0:
+      return calling_book_status_text(case_0_text, context);
+      break;
+    default:
+  }
+}
+
+AutoSizeText calling_book_status_text(String text, BuildContext context) {
+  return AutoSizeText(
+    text,
+    overflow: TextOverflow.ellipsis,
+    maxLines: 2,
+    style: context.textTheme.bodyText1,
+  );
+}
+
+Widget get_button(int status, BuildContext context) {
+  switch (status) {
+    case 1:
+      return calling_button("İletişim", context.colors.primary, context);
+      break;
+    case 0:
+      return calling_button("Sil", context.colors.onSurface, context);
+      break;
+    default:
+  }
+}
+
+RaisedButton calling_button(String text, Color color, BuildContext context) {
+  return RaisedButton(
+    color: color,
+    child: Text(
+      text,
+      style: TextStyle(
+          fontSize: context.normalValue, color: context.colors.onPrimary),
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(context.lowValue),
+    ),
+    onPressed: () {},
+  );
+}
