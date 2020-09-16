@@ -4,8 +4,7 @@ import 'package:flutterfoodapp/app/models/onboarding_screens_model.dart';
 import 'package:flutterfoodapp/app/views/onboarding_screens/onboarding_screens_view_model.dart';
 import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen.dart';
 
-class OnBoardingScreensView extends OnBoardingScreensViewModel{
-
+class OnBoardingScreensView extends OnBoardingScreensViewModel {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -18,10 +17,8 @@ class OnBoardingScreensView extends OnBoardingScreensViewModel{
           print("Skip");
         },
         getStartedClicked: (value) {
-          Navigator.push(
-            context, 
-            MaterialPageRoute(builder: (context) => SellersScreen())
-            );          
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SellersScreen()));
         },
       ),
     );

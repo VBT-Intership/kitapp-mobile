@@ -7,6 +7,8 @@ import 'package:flutterfoodapp/app/views/book_detail/book_detail.dart';
 import 'package:flutterfoodapp/app/views/login_screen/login_screen.dart';
 
 import 'app/views/book_sell_screen/book_sell_screen.dart';
+import 'core/init/navigation/navigation_route.dart';
+import 'core/init/navigation/navigation_service.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,6 +18,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       home: OnBoardingScreens(),
+      onGenerateRoute: NavigationRoute.instance.generateRoute,
+      navigatorKey: NavigationService.instance.navigatorKey,
     );
   }
 }
