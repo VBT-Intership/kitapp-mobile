@@ -64,7 +64,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return TextWidget(
       labelText: "Email Giriniz",
       warningText: "Email Karakter Sayısı Yetersiz",
-      icon: Icons.email_outlined,
+      icon: Icons.email,
       inputType: TextInputType.visiblePassword,
       controller: emailController,
     );
@@ -99,7 +99,7 @@ class LoginScreenView extends LoginScreenViewModel {
         Expanded(
             child: OutlineIconButton(
           icon: Icon(
-            Icons.login_outlined,
+            Icons.error,
             color: Colors.white,
           ),
           text: "Giriş Yap",
