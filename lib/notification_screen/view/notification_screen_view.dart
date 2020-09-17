@@ -8,6 +8,7 @@ import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/sellers_screen/model/sellers_screen_model.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
 
+// bottomAppBarColor
 class NotificationScreenView extends NotificationScreenViewModel {
   @override
   Widget build(BuildContext context) {
@@ -16,10 +17,10 @@ class NotificationScreenView extends NotificationScreenViewModel {
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
+            backgroundColor: context.theme.scaffoldBackgroundColor,
             elevation: 0,
             bottom: TabBar(
-              indicatorColor: context.theme.primaryColor,
+              indicatorColor: context.theme.selectedRowColor,
               onTap: (index) {
                 // Tab index when user select it, it start from zero
               },
@@ -27,25 +28,25 @@ class NotificationScreenView extends NotificationScreenViewModel {
                 Tab(
                   child: Text(
                     "Genel",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: context.theme.primaryColorLight),
                   ),
                 ),
                 Tab(
                   child: Text(
                     "Teklifler",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: context.theme.primaryColorLight),
                   ),
                 ),
               ],
             ),
             title: Text(
               'Bildirimler',
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: context.theme.primaryColorLight),
             ),
           ),
           body: TabBarView(
             children: [
-              generalview(),
+              tab_general_page_view(context),
               tab_offers_view_page(context),
             ],
           ),

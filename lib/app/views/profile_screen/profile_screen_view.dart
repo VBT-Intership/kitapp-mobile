@@ -13,14 +13,8 @@ class ProfileScreenView extends ProfileScreenViewModel {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        body: ProfileScreen(),
-      ),
+    return Scaffold(
+      body: ProfileScreen(),
     );
   }
 }
@@ -167,12 +161,14 @@ class ProfileListItem extends StatelessWidget {
   final IconData icon;
   final String text;
   final bool hasNavigation;
-  const ProfileListItem({
-    Key key,
-    this.icon,
-    this.text,
-    this.hasNavigation = true,
-  }) : super(key: key);
+  final ThemeNotifier buttonThemeProvider;
+  const ProfileListItem(
+      {Key key,
+      this.icon,
+      this.text,
+      this.hasNavigation = true,
+      this.buttonThemeProvider})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
