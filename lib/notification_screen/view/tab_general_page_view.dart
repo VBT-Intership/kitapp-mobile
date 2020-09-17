@@ -111,10 +111,10 @@ AutoSizeText calling_book_status_text(String text, BuildContext context) {
 Widget get_button(int status, BuildContext context) {
   switch (status) {
     case 1:
-      return calling_button("İletişim", context.colors.primary, context, 1);
+      return calling_button("İletişim", context.theme.primaryColor, context, 1);
       break;
     case 0:
-      return calling_button("Sil", context.colors.onSurface, context, 0);
+      return calling_button("Sil", context.theme.canvasColor, context, 0);
       break;
     default:
   }

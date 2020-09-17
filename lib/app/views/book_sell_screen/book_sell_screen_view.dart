@@ -69,10 +69,13 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                   child: SizedBox(
                     width: context.width,
                     child: OutlineIconButton(
-                      icon: Icon(Icons.scanner),
+                      icon: Icon(
+                        Icons.scanner,
+                        color: context.theme.bottomAppBarColor,
+                      ),
                       text: "Tara",
                       iconPadding: 10,
-                      color: Colors.green[500],
+                      color: context.theme.primaryColor,
                       onpressed: () {
                         _scan_barcode();
                       },
@@ -85,7 +88,7 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                 Expanded(
                   flex: 6,
                   child: TextWidget(
-                    labelText: "Fiyat Giriniz",
+                    labelText: "   Fiyat Giriniz",
                     warningText: "Karakter Sayısı Yetersiz",
                     inputType: TextInputType.number,
                     controller: emailController,
@@ -99,10 +102,10 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                   child: SizedBox(
                     width: context.width,
                     child: OutlineIconButton(
-                      icon: Icon(Icons.access_alarm),
+                      icon: Icon(Icons.attach_money, color: Colors.white),
                       text: "Ürünü Sat",
                       iconPadding: 10,
-                      color: Colors.green[500],
+                      color: context.theme.primaryColor,
                       onpressed: () {},
                     ),
                   ),

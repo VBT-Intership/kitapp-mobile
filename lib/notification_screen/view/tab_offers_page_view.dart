@@ -67,7 +67,10 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                           width: mycontext.mediumValue,
                           height: mycontext.mediumValue,
                           child: FloatingActionButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // delete
+                              delete(mycontext);
+                            },
                             backgroundColor: mycontext.colors.primary,
                             child: Icon(Icons.delete),
                           ),
@@ -79,7 +82,10 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                           width: mycontext.mediumValue,
                           height: mycontext.mediumValue,
                           child: FloatingActionButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // okey
+                              okey(mycontext);
+                            },
                             backgroundColor: mycontext.colors.onSurface,
                             child: Icon(Icons.done),
                           ),
@@ -107,3 +113,37 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
         ],
       ),
     );
+
+void delete(BuildContext context) {
+  // flutter defined function
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        content: SingleChildScrollView(
+          child: Center(
+            child: Text("Delete"),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+void okey(BuildContext context) {
+  // flutter defined function
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        content: SingleChildScrollView(
+          child: Center(
+            child: Text("Okey"),
+          ),
+        ),
+      );
+    },
+  );
+}

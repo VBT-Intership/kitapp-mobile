@@ -4,11 +4,15 @@ import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfoodapp/app/views/register_screen/register_screen.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import 'login_screen_view_model.dart';
+import '../../../core/extensions/context_entension.dart';
+
+BuildContext mycontext;
 
 class LoginScreenView extends LoginScreenViewModel {
   bool rememberMe = false;
@@ -16,6 +20,7 @@ class LoginScreenView extends LoginScreenViewModel {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    mycontext = context;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -25,7 +30,7 @@ class LoginScreenView extends LoginScreenViewModel {
                   width: context.width,
                   height: context.height,
                   padding: context.paddingMedium,
-                  color: Colors.white,
+                  color: context.theme.bottomAppBarColor,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -61,7 +66,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return TextWidget(
       labelText: "Şifre Giriniz",
       warningText: "Şifre Karakter Sayısı Yetersiz",
-      icon: Icons.security,
+      icon: Icons.vpn_key,
       inputType: TextInputType.emailAddress,
       minLength: 3,
       controller: passwordController,
@@ -72,7 +77,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return TextWidget(
       labelText: "Email Giriniz",
       warningText: "Email Karakter Sayısı Yetersiz",
-      icon: Icons.ac_unit,
+      icon: Icons.email,
       inputType: TextInputType.visiblePassword,
       controller: emailController,
     );
@@ -84,7 +89,7 @@ class LoginScreenView extends LoginScreenViewModel {
         Spacer(),
         Text(
           "Forgotten Password?",
-          style: context.textTheme.bodyText2,
+          style: mycontext.textTheme.bodyText2,
         )
       ],
     );
@@ -107,11 +112,11 @@ class LoginScreenView extends LoginScreenViewModel {
         Expanded(
             child: OutlineIconButton(
           icon: Icon(
-            Icons.ac_unit,
-            color: Colors.white,
+            Icons.input,
+            color: mycontext.theme.bottomAppBarColor,
           ),
           text: "Giriş Yap",
-          color: Colors.green[500],
+          color: mycontext.theme.primaryColor,
           onpressed: () {
             navigation.navigateToPage(
                 path: NavigationConstants.HOME_SCREEN_VIEW);
@@ -122,10 +127,10 @@ class LoginScreenView extends LoginScreenViewModel {
             icon: Image.asset('assets/images/google.ico'),
             text: "oogle",
             iconPadding: 0,
-            color: Colors.green[500],
+            color: mycontext.theme.primaryColor,
             onpressed: () {
               final popup = BeautifulPopup(
-                context: context,
+                context: mycontext,
                 template: TemplateGift,
               );
               popup.show(
@@ -134,7 +139,7 @@ class LoginScreenView extends LoginScreenViewModel {
                 actions: [
                   popup.button(
                     label: 'Kapat',
-                    onPressed: Navigator.of(context).pop,
+                    onPressed: Navigator.of(mycontext).pop,
                   ),
                 ],
                 // bool barrierDismissible = false,
@@ -152,21 +157,21 @@ class LoginScreenView extends LoginScreenViewModel {
       children: [
         Expanded(
           child: Divider(
-            color: Colors.black,
-            height: context.height * 0.01,
+            color: mycontext.colors.primaryVariant,
+            height: mycontext.height * 0.01,
             thickness: 1,
           ),
         ),
         Expanded(
           child: Text(
             "     ya da",
-            style: context.textTheme.headline5,
+            style: mycontext.textTheme.headline5,
           ),
         ),
         Expanded(
           child: Divider(
-            color: Colors.black,
-            height: context.height * 0.01,
+            color: mycontext.colors.primaryVariant,
+            height: mycontext.height * 0.01,
             thickness: 1,
           ),
         ),
@@ -179,7 +184,7 @@ class LoginScreenView extends LoginScreenViewModel {
       width: double.infinity,
       child: OutlineIconButton(
         text: "Ziyaret Et",
-        color: Colors.green[500],
+        color: mycontext.theme.primaryColor,
         onpressed: () {
           navigation.navigateToPage(path: NavigationConstants.HOME_SCREEN_VIEW);
         },
@@ -192,7 +197,7 @@ class LoginScreenView extends LoginScreenViewModel {
       width: double.infinity,
       child: OutlineIconButton(
         text: "Kayıt Ol",
-        color: Colors.green[500],
+        color: mycontext.theme.primaryColor,
         onpressed: () {
           navigation.navigateToPage(path: NavigationConstants.REGISTER_VIEW);
         },
