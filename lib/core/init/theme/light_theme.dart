@@ -14,20 +14,20 @@ final ThemeData myLightTheme = ThemeData(
     900: Color(0xff191919)
   }),
   brightness: Brightness.light,
-  primaryColor: Color(0xfff6f6f6),
+  primaryColor: Color(0xff5ABD8C), ////
   primaryColorBrightness: Brightness.light,
-  primaryColorLight: Color(0xffe6e6e6),
-  primaryColorDark: Color(0xff4d4d4d),
-  accentColor: Color(0xff808080),
+  primaryColorLight: Colors.black, ////
+  primaryColorDark: Colors.grey, ////
+  accentColor: Color(0xffBD5A69), ////
   accentColorBrightness: Brightness.dark,
-  canvasColor: Color(0xfffafafa),
+  canvasColor: Color(0xff918E8E), ////
   scaffoldBackgroundColor: Color(0xfffafafa),
-  bottomAppBarColor: Color(0xffffffff),
+  bottomAppBarColor: Colors.white, ////
   cardColor: Color(0xffffffff),
   dividerColor: Color(0x1f000000),
   highlightColor: Color(0x66bcbcbc),
   splashColor: Color(0x66c8c8c8),
-  selectedRowColor: Color(0xfff5f5f5),
+  selectedRowColor: Color(0x8a000000),
   unselectedWidgetColor: Color(0x8a000000),
   disabledColor: Color(0x61000000),
   buttonColor: Color(0xffe0e0e0),
@@ -68,7 +68,7 @@ final ThemeData myLightTheme = ThemeData(
       secondaryVariant: Color(0xff4d4d4d),
       surface: Color(0xffffffff),
       background: Color(0xffcccccc),
-      error: Color(0xffd32f2f),
+      error: Colors.amber,
       onPrimary: Color(0xff000000),
       onSecondary: Color(0xffffffff),
       onSurface: Color(0xff000000),

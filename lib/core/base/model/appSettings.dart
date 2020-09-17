@@ -17,9 +17,9 @@ const List<GeneralSettings> choices = const <GeneralSettings>[
   const GeneralSettings(
       type: GeneralSettingsEnum.DARK_THEME,
       title: 'Dark Theme',
-      icon: Icons.theater_comedy),
+      icon: Icons.access_alarm),
   const GeneralSettings(
       type: GeneralSettingsEnum.LIGHT_THEME,
       title: 'Light Theme',
-      icon: Icons.backpack),
+      icon: Icons.access_alarm),
 ];
