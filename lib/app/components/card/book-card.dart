@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
-class BookCard {
-  String author;
-  String name;
-  String imageURL;
-  double rating;
-
-  BookCard({this.author, this.name, this.imageURL, this.rating});
-}
+import 'package:flutterfoodapp/app/models/book_model.dart';
 
 class BookCardView extends StatelessWidget {
-  final BookCard book;
+  final Book book;
 
   const BookCardView({Key key, @required this.book}) : super(key: key);
 
@@ -32,7 +24,7 @@ class BookCardView extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                    book.imageURL,
+                    book.urlimage,
                     fit: BoxFit.cover,
                   ),
                 ),
