@@ -5,5 +5,84 @@
     "Price": "Adet",
     "Piece": "Fiyat",
     "DARK": "Siyah",
-    "LIGHT": "Acik"
+    "LIGHT": "Açık",
+    
+    "Use new secondhand books at great prices and find them near you.":"Yeni ikinci el kitapları harika fiyatlarla kullanın ve yakınınızda bulun.",
+    "Easily find the recipient of your secondhand book.":"İkinci el kitabınızın alıcısını kolayca bulun",
+    "Enjoy your new and cheap book.":"Yeni ve ucuz kitabınızın tadını çıkarın.",
+    "Available and Easily":"Bulunabilir ve Kolay",
+    "Near and Cheap":"Yakınınızda ve Ucuz",
+    "Enjoy..":"Keyfini Çıkarın..",
+    "Skip":"Atla",
+    "Let's Start":"Haydi Başla",
+    
+    "Sing in":"Giriş Yap",
+    "Sing up":"Kayıt Ol",
+    "E-mail":"Email",
+    "Password":"Parola",
+    "Enter E-mail":"Email Giriniz",
+    "Enter Password":"Parola Giriniz",
+    "Forgotten Pasword ?":"Şifremi Unuttum",
+    "Visit":"Ziyaret Et",
+    "OR":"YA DA",
+
+    "First & Last Name":"Adınız Soyadınız",
+    "Mobile Phone":"Cep Telefonu No",
+    "Group Special Code (optional)":"Grup Özel Kodu (isteğe bağlı)",
+    "Please sign me up for the monthly newsletter.":"Aylık haber bültenine kayıt ol.",
+
+    "Categories":"Kategoriler",
+    "Business":"İş",
+    "Children":"Çocuklar İçin",
+    "Graphic Novels":"Çizgi Romanlar",
+    "Politics":"Siyaset",
+    "History":"Tarih",
+    "Sci-fi":"Bilim Kurgu",
+    "Send":"Gönder",
+
+    "Main Page":"Ana Sayfa",
+    
+    "Buy":"Satın Al",
+    "Give Offer":"Teklif Ver",
+
+    "Notifications":"Bildirimler",
+    "To Contact":"İletişime Geç",
+
+    "Call Now":"Hemen Ara",
+
+
+    "About":"Künye",
+    "Overview":"Genel Bakış",
+    "Reviews":"Yorumlar",
+    "ISBN":"ISBN",
+    "Release Date":"Yayın Tarihi",
+    "Number of Prints":"Baskı Sayısı",
+    "Language":"Dil",
+    "Binding Type":"Cilt Tipi",
+    "Paper Type":"KAğıt Tipi",
+    "Book Size":"Boyut",
+    "Related Products":"İlgili Ürünler",
+    "Write a Review":"Yorum Yaz",
+
+    
+    "Cancel":"İptal",
+    "Scan":"Tara",
+
+    "Sell Book":"Kitap Sat",
+    "Sell the Product":"Ürünü Sat",
+
+    "Remove":"Sil",
+    "Contact":"İletişim",
+    "Offers":"Teklifler",
+    "General":"Genel",
+    "hours ago":"saat önce",
+
+    "Edit Profile":"Profil Düzenle",
+    "My Advertisement":"İlanlarım",
+    "Favorites":"Favoriler",
+    "Change Password":"Şifre Değiştir",
+    "Log Out":"Çıkış Yap"
+    
+
+
 }

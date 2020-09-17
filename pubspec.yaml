@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   easy_localization: ^2.3.3
+  flutter_localizations:
+    sdk: flutter
   provider: ^4.3.2+1
 
   google_fonts: ^1.1.0

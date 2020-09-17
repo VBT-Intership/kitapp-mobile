@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfoodapp/app/views/profile_screen/profile_screen.dart';
 
 import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen.dart';
 import 'package:flutterfoodapp/app/views/onboarding_screens/onboarding_screens.dart';
@@ -23,9 +24,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: myLightTheme,
       title: 'Material App',
+      
       home: OnBoardingScreens(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
+      
     );
   }
 }

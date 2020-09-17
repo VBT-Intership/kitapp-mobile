@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_screen_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../../../core/extensions/context_entension.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class ProfileScreenView extends ProfileScreenViewModel {
   // This widget is the root of your application.
@@ -99,18 +99,20 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   ProfileListItem(
-                      icon: LineAwesomeIcons.user, text: 'Profil Düzenle'),
+                      icon: LineAwesomeIcons.user, text: 'Edit Profile'.locale),
                   ProfileListItem(
-                      icon: LineAwesomeIcons.shopping_bag, text: 'İlanlarım'),
+                      icon: LineAwesomeIcons.shopping_bag, 
+                      text: 'My Advertisement'.locale
+                      ),
                   ProfileListItem(
                     icon: Icons.favorite,
-                    text: 'Favorilerim',
+                    text: 'Favorites'.locale,
                   ),
                   ProfileListItem(
-                      icon: Icons.accessibility, text: 'Şifre Değiştir'),
+                      icon: Icons.accessibility, text: 'Change Password'.locale),
                   ProfileListItem(
                     icon: LineAwesomeIcons.alternate_sign_out,
-                    text: 'Çıkış',
+                    text: 'Log Out'.locale,
                     hasNavigation: false,
                   ),
                 ],
