@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
 import 'package:flutterfoodapp/app/views/book_sell_screen/book_sell_screen_view_model.dart';
-import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import '../../components/button/loginRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import '../../components/card/book-card.dart';
@@ -70,7 +69,7 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                     width: context.width,
                     child: OutlineIconButton(
                       icon: Icon(
-                        Icons.scanner,
+                        Icons.center_focus_weak,
                         color: context.theme.bottomAppBarColor,
                       ),
                       text: "Tara",

@@ -24,14 +24,10 @@ class MyApp extends StatelessWidget {
       theme: myLightTheme,
       title: 'Material App',
 
-      home: Scaffold(
-        body: SearchScreen(),
-      ),
-
       home: OnBoardingScreens(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
-
+    
     );
   }
 }
