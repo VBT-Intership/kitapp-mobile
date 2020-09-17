@@ -36,6 +36,7 @@ dependencies:
   flutter_rating_bar: 3.0.1+1
   flutter_svg: 0.19.0
   curved_navigation_bar: ^0.3.4
+  flutter_beautiful_popup: ^1.5.0
 
   flutter_barcode_scanner: ^1.0.1
 

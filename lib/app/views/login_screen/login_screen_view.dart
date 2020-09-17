@@ -1,7 +1,9 @@
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfoodapp/app/views/register_screen/register_screen.dart';
+import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
@@ -14,36 +16,38 @@ class LoginScreenView extends LoginScreenViewModel {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Column(
-          children: [
-            Container(
-                width: context.width,
-                height: context.height,
-                padding: context.paddingMedium,
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Spacer(flex: 3),
-                    Expanded(flex: 22, child: loginHeadText),
-                    Spacer(flex: 5),
-                    Expanded(flex: 10, child: loginEmailInput),
-                    Spacer(flex: 1),
-                    Expanded(flex: 10, child: loginPasswordInput),
-                    Spacer(flex: 3),
-                    Expanded(flex: 5, child: loginChoices),
-                    Spacer(flex: 2),
-                    Expanded(flex: 12, child: loginButtons),
-                    Spacer(flex: 3),
-                    Expanded(flex: 10, child: loginButtonDivider),
-                    Spacer(flex: 1),
-                    Expanded(flex: 12, child: loginRegisterButton),
-                    Expanded(flex: 12, child: loginGuestButton),
-                  ],
-                )),
-          ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                  width: context.width,
+                  height: context.height,
+                  padding: context.paddingMedium,
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Spacer(flex: 3),
+                      Expanded(flex: 22, child: loginHeadText),
+                      Spacer(flex: 5),
+                      Expanded(flex: 10, child: loginEmailInput),
+                      Spacer(flex: 1),
+                      Expanded(flex: 10, child: loginPasswordInput),
+                      Spacer(flex: 3),
+                      Expanded(flex: 5, child: loginChoices),
+                      Spacer(flex: 2),
+                      Expanded(flex: 12, child: loginButtons),
+                      Spacer(flex: 3),
+                      Expanded(flex: 10, child: loginButtonDivider),
+                      Spacer(flex: 1),
+                      Expanded(flex: 12, child: loginRegisterButton),
+                      Expanded(flex: 12, child: loginGuestButton),
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     );
@@ -108,7 +112,24 @@ class LoginScreenView extends LoginScreenViewModel {
           ),
           text: "Giriş Yap",
           color: Colors.green[500],
-          onpressed: () {},
+          onpressed: () {
+            final popup = BeautifulPopup(
+              context: context,
+              template: TemplateGift,
+            );
+            popup.show(
+              title: 'Giriş başarılıysa ana sayfaaa!',
+              content: 'Hellloo',
+              actions: [
+                popup.button(
+                  label: 'Kapat',
+                  onPressed: Navigator.of(context).pop,
+                ),
+              ],
+              // bool barrierDismissible = false,
+              // Widget close,
+            );
+          },
         )),
         Expanded(
           child: OutlineIconButton(
@@ -116,7 +137,24 @@ class LoginScreenView extends LoginScreenViewModel {
             text: "oogle",
             iconPadding: 0,
             color: Colors.green[500],
-            onpressed: () {},
+            onpressed: () {
+              final popup = BeautifulPopup(
+                context: context,
+                template: TemplateGift,
+              );
+              popup.show(
+                title: 'Google auth yönlendirme',
+                content: 'Hellloo',
+                actions: [
+                  popup.button(
+                    label: 'Kapat',
+                    onPressed: Navigator.of(context).pop,
+                  ),
+                ],
+                // bool barrierDismissible = false,
+                // Widget close,
+              );
+            },
           ),
         )
       ],
@@ -168,10 +206,7 @@ class LoginScreenView extends LoginScreenViewModel {
         text: "Kayıt Ol",
         color: Colors.green[500],
         onpressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => RegisterScreen()),
-          );
+          navigation.navigateToPage(path: NavigationConstants.REGISTER_VIEW);
         },
       ),
     );

@@ -19,7 +19,7 @@ class OnBoardingScreensView extends OnBoardingScreensViewModel {
           print("Skip");
         },
         getStartedClicked: (value) {
-          navigation.navigateToPage(path: NavigationConstants.PROFILE_VIEW);
+          navigation.navigateToPage(path: NavigationConstants.LOGIN_VIEW);
         },
       ),
     );
