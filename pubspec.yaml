@@ -71,6 +71,7 @@ flutter:
     - assets/images/onBoarding1.png
     - assets/images/onBoarding2.png
     - assets/images/onBoarding3.png
+    - assets/images/login_cat_dark.png
     - assets/images/google.ico
     - assets/images/
   #   - images/a_dot_ham.jpeg

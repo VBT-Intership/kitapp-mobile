@@ -17,15 +17,16 @@ Container tab_offers_view_page(BuildContext context) {
   ];
 
   return Container(
+      color: context.theme.scaffoldBackgroundColor,
       child: Future.value(offerslist).toBuild<List<NotificationOffers>>(
-    onSuccess: (data) {
-      return ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemCount: data.length,
-          itemBuilder: (context, index) =>
-              notification_offers_page_card(data[index]));
-    },
-  ));
+        onSuccess: (data) {
+          return ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: data.length,
+              itemBuilder: (context, index) =>
+                  notification_offers_page_card(data[index]));
+        },
+      ));
 }
 
 Container notification_offers_page_card(NotificationOffers offer) => Container(
@@ -71,7 +72,7 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                               // delete
                               delete(mycontext);
                             },
-                            backgroundColor: mycontext.theme.accentColor,
+                            backgroundColor: Color(0xff5ABD8C),
                             child: Icon(Icons.delete),
                           ),
                         ),

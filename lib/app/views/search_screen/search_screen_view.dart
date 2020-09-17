@@ -53,6 +53,8 @@ class SearchScreenView extends SearchScreenViewModel {
                       children: [
                         SearchBar<Post>(
                           onSearch: search,
+                          textStyle:
+                              TextStyle(color: context.theme.selectedRowColor),
                           onItemFound: (Post list, int index) {
                             return ListTile(
                               onTap: () {

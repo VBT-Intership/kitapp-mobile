@@ -16,7 +16,7 @@ final ThemeData myDarkTheme = ThemeData(
   brightness: Brightness.dark,
   primaryColor: Color(0xff212121),
   primaryColorBrightness: Brightness.dark,
-  primaryColorLight: Color(0xff9e9e9e),
+  primaryColorLight: Color(0xffffffff),
   primaryColorDark: Color(0xff000000),
   accentColor: Color(0xff64ffda),
   accentColorBrightness: Brightness.light,
