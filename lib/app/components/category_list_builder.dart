@@ -26,7 +26,9 @@ class CategoryListBuilder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(categoryItem.name, style: context.textTheme.headline5),
+              Text(categoryItem.name,
+                  style: context.textTheme.headline5
+                      .copyWith(fontFamily: "Light")),
               Container(
                   width: double.infinity,
                   height: context.height * 0.43,

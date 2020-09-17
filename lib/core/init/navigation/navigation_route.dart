@@ -28,39 +28,39 @@ class NavigationRoute {
     // args.arguments
     switch (args.name) {
       case NavigationConstants.BOOK_DETAIL_VIEW:
-        return normalNavigate(BookDetail());
+        return normalNavigate(BookDetail(), args.arguments);
         break;
       case NavigationConstants.BOOK_RESULT_VIEW:
-        return normalNavigate(BookResult());
+        return normalNavigate(BookResult(), args.arguments);
         break;
       case NavigationConstants.BOOK_SELL_VIEW:
-        return normalNavigate(BookSellsScreen());
+        return normalNavigate(BookSellsScreen(), args.arguments);
       case NavigationConstants.LOGIN_VIEW:
-        return normalNavigate(LoginScreen());
+        return normalNavigate(LoginScreen(), args.arguments);
         break;
       case NavigationConstants.ONBOARDING_VIEW:
-        return normalNavigate(OnBoardingScreens());
+        return normalNavigate(OnBoardingScreens(), args.arguments);
         break;
       case NavigationConstants.PROFILE_VIEW:
-        return normalNavigate(ProfileScreen());
+        return normalNavigate(ProfileScreen(), args.arguments);
         break;
       case NavigationConstants.REGISTER_VIEW:
-        return normalNavigate(RegisterScreen());
+        return normalNavigate(RegisterScreen(), args.arguments);
         break;
       case NavigationConstants.SELLER_VIEW:
-        return normalNavigate(SellersScreen());
+        return normalNavigate(SellersScreen(), args.arguments);
         break;
       case NavigationConstants.CATEGORY_CHOOSE_VIEW:
-        return normalNavigate(CategoryChoose());
+        return normalNavigate(CategoryChoose(), args.arguments);
         break;
       case NavigationConstants.HOME_SCREEN_VIEW:
-        return normalNavigate(HomeScreen());
+        return normalNavigate(HomeScreen(), args.arguments);
         break;
       case NavigationConstants.NOTIFICATION_SCREEN_VIEW:
-        return normalNavigate(NotificationScreen());
+        return normalNavigate(NotificationScreen(), args.arguments);
         break;
       case NavigationConstants.SEARCH_SCREEN_VIEW:
-        return normalNavigate(SearchScreen());
+        return normalNavigate(SearchScreen(), args.arguments);
         break;
       default:
         return MaterialPageRoute(
@@ -73,9 +73,12 @@ class NavigationRoute {
     }
   }
 
-  MaterialPageRoute normalNavigate(Widget widget) {
+  MaterialPageRoute normalNavigate(Widget widget, int id) {
     return MaterialPageRoute(
       builder: (context) => widget,
+      settings: RouteSettings(
+        arguments: id,
+      ),
     );
   }
 }
