@@ -26,10 +26,10 @@ class CategoryListBuilder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(categoryItem.name, style: context.textTheme.headline4),
+              Text(categoryItem.name, style: context.textTheme.headline5),
               Container(
                   width: double.infinity,
-                  height: context.height * 0.45,
+                  height: context.height * 0.43,
                   child: BookCategoryListBuilder(books: categoryItem.books))
             ],
           ),

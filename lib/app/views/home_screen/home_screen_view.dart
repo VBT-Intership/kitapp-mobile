@@ -1,12 +1,14 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutterfoodapp/app/components/Book_category_list_builder.dart';
 import 'package:flutterfoodapp/app/components/card/book-card.dart';
 import 'package:flutterfoodapp/app/components/category_list_builder.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
 import 'package:flutterfoodapp/app/models/category_model.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+
 import 'package:flutterfoodapp/notification_screen/view/notification_screen.dart';
 
 import '../book_detail/book_detail.dart';
@@ -18,6 +20,9 @@ import '../profile_screen/profile_screen.dart';
 import '../register_screen/register_screen.dart';
 import '../sellers_screen/sellers_screen.dart';
 
+import '../../../core/extensions/context_entension.dart';
+
+
 import 'home_screen_view_model.dart';
 
 class HomeScreenView extends HomeScreenViewModel {
@@ -26,15 +31,7 @@ class HomeScreenView extends HomeScreenViewModel {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text("KitApp",
-            style: TextStyle(
-              fontWeight: FontWeight.w300,
-              color: Colors.black,
-            )),
-      ),
+
       body: _showPage,
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.greenAccent,
