@@ -7,4 +7,7 @@ class NavigationConstants {
   static const PROFILE_VIEW = "/profileView";
   static const REGISTER_VIEW = "/registerView";
   static const SELLER_VIEW = "/sellersView";
+  static const CATEGORY_CHOOSE_VIEW = "/categoryChoose";
+  static const HOME_SCREEN_VIEW = "/homeScreen";
+  static const NOTIFICATION_SCREEN_VIEW = "/notificationScreen";
 }

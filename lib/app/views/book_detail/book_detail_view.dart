@@ -2,6 +2,10 @@ import 'dart:ui';
 // import 'package:flutterfoodapp/app/components/loginRadiusButton.dart';
 // import 'package:flutterfoodapp/core/components/card/book-card.dart';
 
+import 'package:flutter_beautiful_popup/main.dart';
+import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import 'package:flutterfoodapp/core/init/navigation/navigation_service.dart';
+
 import 'book_detail_view_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
@@ -111,7 +115,9 @@ class BookDetailView extends BookDetailViewModel
       child: IconButton(
         color: Colors.white,
         icon: Icon(icon, color: color),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
     );
   }
@@ -183,7 +189,9 @@ class BookDetailView extends BookDetailViewModel
       disabledColor: Colors.white,
       focusColor: Colors.white,
       color: Colors.white,
-      onPressed: null,
+      onPressed: () {
+        navigation.navigateToPage(path: NavigationConstants.SELLER_VIEW);
+      },
       child: Text(
         "Satın Al",
         style: TextStyle(color: Colors.green),
@@ -462,7 +470,24 @@ class BookDetailView extends BookDetailViewModel
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        final popup = BeautifulPopup(
+                          context: context,
+                          template: TemplateGift,
+                        );
+                        popup.show(
+                          title: 'Yorumu yorumlara ekle',
+                          content: 'Hellloo',
+                          actions: [
+                            popup.button(
+                              label: 'Kapat',
+                              onPressed: Navigator.of(context).pop,
+                            ),
+                          ],
+                          // bool barrierDismissible = false,
+                          // Widget close,
+                        );
+                      },
                     ),
                   ),
                 )
@@ -548,7 +573,10 @@ class OtherBooksCardView extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        NavigationService.instance
+            .navigateToPage(path: NavigationConstants.BOOK_DETAIL_VIEW);
+      },
       child: Container(
         width: width * 0.35,
         height: height * 0.35,

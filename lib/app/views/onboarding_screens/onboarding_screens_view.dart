@@ -16,7 +16,7 @@ class OnBoardingScreensView extends OnBoardingScreensViewModel {
         themeColor: const Color(0x90189140),
         pages: pages,
         skipClicked: (value) {
-          print("Skip");
+          navigation.navigateToPage(path: NavigationConstants.LOGIN_VIEW);
         },
         getStartedClicked: (value) {
           navigation.navigateToPage(path: NavigationConstants.LOGIN_VIEW);

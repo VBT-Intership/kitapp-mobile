@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutterfoodapp/app/views/category_choose_screen/view/category_choose.dart';
+import 'package:flutterfoodapp/app/views/home_screen/home_screen.dart';
+import 'package:flutterfoodapp/notification_screen/view/notification_screen.dart';
 
 import '../../../app/views/book_detail/book_detail.dart';
 import '../../../app/views/book_result/book_result.dart';
@@ -44,6 +47,15 @@ class NavigationRoute {
         break;
       case NavigationConstants.SELLER_VIEW:
         return normalNavigate(SellersScreen());
+        break;
+      case NavigationConstants.CATEGORY_CHOOSE_VIEW:
+        return normalNavigate(CategoryChoose());
+        break;
+      case NavigationConstants.HOME_SCREEN_VIEW:
+        return normalNavigate(HomeScreen());
+        break;
+      case NavigationConstants.NOTIFICATION_SCREEN_VIEW:
+        return normalNavigate(NotificationScreen());
         break;
       default:
         return MaterialPageRoute(

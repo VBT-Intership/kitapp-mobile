@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutterfoodapp/app/models/sellers_screen_model.dart';
 import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen_view_model.dart';
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
@@ -100,7 +101,24 @@ class SellersScreenView extends SellersScreenViewModel {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                       side: BorderSide(color: Colors.green)),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    final popup = BeautifulPopup(
+                                      context: context,
+                                      template: TemplateGift,
+                                    );
+                                    popup.show(
+                                      title: 'Teklifiniz gönderildii :)',
+                                      content: 'Hellloo',
+                                      actions: [
+                                        popup.button(
+                                          label: 'Kapat',
+                                          onPressed: Navigator.of(context).pop,
+                                        ),
+                                      ],
+                                      // bool barrierDismissible = false,
+                                      // Widget close,
+                                    );
+                                  },
                                 ),
                               ),
                               Container(
@@ -118,7 +136,25 @@ class SellersScreenView extends SellersScreenViewModel {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      final popup = BeautifulPopup(
+                                        context: context,
+                                        template: TemplateGift,
+                                      );
+                                      popup.show(
+                                        title: 'Satın Alma gerçekleşti',
+                                        content: 'Hellloo',
+                                        actions: [
+                                          popup.button(
+                                            label: 'Kapat',
+                                            onPressed:
+                                                Navigator.of(context).pop,
+                                          ),
+                                        ],
+                                        // bool barrierDismissible = false,
+                                        // Widget close,
+                                      );
+                                    },
                                   ),
                                 ),
                               ),

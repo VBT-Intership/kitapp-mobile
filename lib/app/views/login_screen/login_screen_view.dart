@@ -113,22 +113,8 @@ class LoginScreenView extends LoginScreenViewModel {
           text: "Giriş Yap",
           color: Colors.green[500],
           onpressed: () {
-            final popup = BeautifulPopup(
-              context: context,
-              template: TemplateGift,
-            );
-            popup.show(
-              title: 'Giriş başarılıysa ana sayfaaa!',
-              content: 'Hellloo',
-              actions: [
-                popup.button(
-                  label: 'Kapat',
-                  onPressed: Navigator.of(context).pop,
-                ),
-              ],
-              // bool barrierDismissible = false,
-              // Widget close,
-            );
+            navigation.navigateToPage(
+                path: NavigationConstants.HOME_SCREEN_VIEW);
           },
         )),
         Expanded(
@@ -194,7 +180,9 @@ class LoginScreenView extends LoginScreenViewModel {
       child: OutlineIconButton(
         text: "Ziyaret Et",
         color: Colors.green[500],
-        onpressed: () {},
+        onpressed: () {
+          navigation.navigateToPage(path: NavigationConstants.HOME_SCREEN_VIEW);
+        },
       ),
     );
   }

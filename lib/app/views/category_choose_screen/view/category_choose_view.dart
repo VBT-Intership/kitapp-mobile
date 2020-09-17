@@ -1,5 +1,6 @@
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 
 import '../view_model/category_choose_viewmodel.dart';
 
@@ -86,7 +87,8 @@ class CategoryChooseView extends CategoryChooseViewModel {
             width: 300.0,
             child: GestureDetector(
               onTap: () {
-                print("okey");
+                navigation.navigateToPage(
+                    path: NavigationConstants.HOME_SCREEN_VIEW);
               },
               child: Container(
                 decoration: BoxDecoration(
