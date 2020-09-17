@@ -26,6 +26,29 @@ class ThemeNotifier extends ChangeNotifier {
     }
   }
 
+  AppThemes currentThemeEnum() {
+    AppThemes defaultTheme = LocaleManager.instance
+            .getStringValue(PreferencesKeys.THEME)
+            .toThemeEnum ??
+        AppThemes.LIGHT;
+    return defaultTheme;
+  }
+
+  void changeTheme() {
+    AppThemes defaultTheme = LocaleManager.instance
+            .getStringValue(PreferencesKeys.THEME)
+            .toThemeEnum ??
+        AppThemes.LIGHT;
+    if (defaultTheme == AppThemes.LIGHT)
+      defaultTheme = AppThemes.DARK;
+    else
+      defaultTheme = AppThemes.LIGHT;
+    _currentTheme = findTheme(defaultTheme);
+    LocaleManager.instance
+        .setStringValue(PreferencesKeys.THEME, defaultTheme.toString());
+    notifyListeners();
+  }
+
   void setTheme(AppThemes theme) {
     _currentTheme = findTheme(theme);
     LocaleManager.instance
