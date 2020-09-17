@@ -112,8 +112,10 @@ class LoginScreenView extends LoginScreenViewModel {
         Expanded(
             child: OutlineIconButton(
           icon: Icon(
+
             Icons.input,
             color: mycontext.theme.bottomAppBarColor,
+
           ),
           text: "Giriş Yap",
           color: mycontext.theme.primaryColor,

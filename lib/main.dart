@@ -5,11 +5,15 @@ import 'package:flutterfoodapp/app/views/onboarding_screens/onboarding_screens.d
 
 import 'package:flutterfoodapp/app/views/book_detail/book_detail.dart';
 import 'package:flutterfoodapp/app/views/login_screen/login_screen.dart';
+
+import 'package:flutterfoodapp/app/views/search_screen/search_screen.dart';
+
 import 'package:flutterfoodapp/core/init/theme/light_theme.dart';
 
 import 'app/views/book_sell_screen/book_sell_screen.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -19,9 +23,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: myLightTheme,
       title: 'Material App',
+
+      home: Scaffold(
+        body: SearchScreen(),
+      ),
+
       home: OnBoardingScreens(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
+
     );
   }
 }
