@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import 'app/views/home_screen/home_screen.dart';
@@ -35,9 +38,28 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       theme: Provider.of<ThemeNotifier>(context, listen: true).currentTheme,
       title: AppConstansts.APP_NAME,
-      home: getView(),
+      home: SplashScreen(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  startTimer(BuildContext context) {
+    Timer(Duration(seconds: 3), () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => getView()));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Lottie.asset('assets/images/splashlottie.json',
+          onLoaded: (composition) {
+        startTimer(context);
+      }),
     );
   }
 }
