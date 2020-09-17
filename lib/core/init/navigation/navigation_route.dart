@@ -20,6 +20,7 @@ class NavigationRoute {
   NavigationRoute._init();
 
   Route<dynamic> generateRoute(RouteSettings args) {
+    // args.arguments
     switch (args.name) {
       case NavigationConstants.BOOK_DETAIL_VIEW:
         return normalNavigate(BookDetail());
