@@ -7,10 +7,21 @@ import 'package:flutterfoodapp/app/components/category_list_builder.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
 import 'package:flutterfoodapp/app/models/category_model.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import 'package:flutterfoodapp/notification_screen/view/notification_screen.dart';
+
+import '../book_detail/book_detail.dart';
+import '../book_result/book_result.dart';
+import '../book_sell_screen/book_sell_screen.dart';
+import '../login_screen/login_screen.dart';
+import '../onboarding_screens/onboarding_screens.dart';
+import '../profile_screen/profile_screen.dart';
+import '../register_screen/register_screen.dart';
+import '../sellers_screen/sellers_screen.dart';
 
 import 'home_screen_view_model.dart';
 
 class HomeScreenView extends HomeScreenViewModel {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,47 +35,51 @@ class HomeScreenView extends HomeScreenViewModel {
               color: Colors.black,
             )),
       ),
-      body: Container(
-          padding: EdgeInsets.all(10),
-          child: CategoryListBuilder(categories: dummyCategory)),
+      body: _showPage,
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.greenAccent,
+        index: 0,
         items: <Widget>[
-          Icon(
-            Icons.home,
-            size: 20,
-          ),
+          Icon(Icons.home, size: 20),
           Icon(Icons.search, size: 20),
           Icon(Icons.book, size: 20),
           Icon(Icons.notifications_active, size: 20),
           Icon(Icons.supervised_user_circle, size: 20)
         ],
         onTap: (index) {
-          switch (index) {
-            case 0:
-              navigation.navigateToPage(
-                  path: NavigationConstants.HOME_SCREEN_VIEW);
-              break;
-            case 1:
-              navigation.navigateToPage(
-                  path: NavigationConstants.HOME_SCREEN_VIEW); // search gelicek
-              break;
-            case 2:
-              navigation.navigateToPage(
-                  path: NavigationConstants.BOOK_SELL_VIEW);
-              break;
-            case 3:
-              navigation.navigateToPage(
-                  path: NavigationConstants.NOTIFICATION_SCREEN_VIEW);
-              break;
-            case 4:
-              navigation.navigateToPage(path: NavigationConstants.PROFILE_VIEW);
-              break;
-
-            default:
-          }
+          setState(() {
+            _showPage = _pageChooser(index);
+          });
         },
       ),
     );
+  }
+
+Widget _showPage = Container(
+          padding: EdgeInsets.all(10),
+          child: CategoryListBuilder(categories: dummyCategory));
+
+  Widget _pageChooser(int page) {
+    switch (page) {
+      case 0:
+        return Container(
+          padding: EdgeInsets.all(10),
+          child: CategoryListBuilder(categories: dummyCategory)); //Anasayfa
+        break;
+      case 1:
+        return BookResult(); //search
+        break;
+      case 2:
+        return BookSellsScreen(); //kitap ekle
+      case 3:
+        return NotificationScreen(); //bildiririmler
+        break;
+      case 4:
+        return ProfileScreen();
+        break;
+
+      default:
+        return Center(child: Text("hatalı Sayfa"));
+    }
   }
 }
