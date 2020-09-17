@@ -141,7 +141,7 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
         ),
       ),
       bottomSheet: _currentPage == widget.pages.length - 1
-          ? _showGetStartedButton()
+          ? Container(color: Colors.white, child: _showGetStartedButton())
           : Text(''),
     );
   }

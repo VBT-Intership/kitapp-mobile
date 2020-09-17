@@ -10,4 +10,5 @@ class NavigationConstants {
   static const CATEGORY_CHOOSE_VIEW = "/categoryChoose";
   static const HOME_SCREEN_VIEW = "/homeScreen";
   static const NOTIFICATION_SCREEN_VIEW = "/notificationScreen";
+  static const SEARCH_SCREEN_VIEW = "/searchScreen";
 }

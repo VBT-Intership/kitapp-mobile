@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterfoodapp/app/views/category_choose_screen/view/category_choose.dart';
 import 'package:flutterfoodapp/app/views/home_screen/home_screen.dart';
+import 'package:flutterfoodapp/app/views/search_screen/search_screen.dart';
+import 'package:flutterfoodapp/app/views/search_screen/search_screen_view.dart';
 import 'package:flutterfoodapp/notification_screen/view/notification_screen.dart';
 
 import '../../../app/views/book_detail/book_detail.dart';
@@ -56,6 +58,9 @@ class NavigationRoute {
         break;
       case NavigationConstants.NOTIFICATION_SCREEN_VIEW:
         return normalNavigate(NotificationScreen());
+        break;
+      case NavigationConstants.SEARCH_SCREEN_VIEW:
+        return normalNavigate(SearchScreen());
         break;
       default:
         return MaterialPageRoute(

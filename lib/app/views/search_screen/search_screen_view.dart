@@ -4,6 +4,7 @@ import 'package:flutterfoodapp/app/views/search_screen/search_screen_view_model.
 import 'package:flutterfoodapp/app/models/search_screen_model.dart';
 import 'package:flutterfoodapp/app/views/search_screen/deneme_post.dart';
 import 'package:flutterfoodapp/app/components/button/loginRadiusButton.dart';
+import '../../../core/extensions/context_entension.dart';
 
 class SearchScreenView extends SearchScreenViewModel {
   @override
@@ -44,13 +45,15 @@ class ButtonContainer extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 60,
-      margin: new EdgeInsets.only(left: 10,right: 10,bottom:50),
-      
+      margin: new EdgeInsets.only(left: 10, right: 10, bottom: 50),
       child: OutlineIconButton(
-        icon: Icon(Icons.center_focus_weak),
+        icon: Icon(
+          Icons.center_focus_weak,
+          color: Colors.white,
+        ),
         text: 'TARA',
         iconPadding: 10,
-        color: Colors.green[500],
+        color: context.theme.primaryColor,
         onpressed: () {},
       ),
     );

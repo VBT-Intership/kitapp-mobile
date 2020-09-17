@@ -27,7 +27,7 @@ final ThemeData myLightTheme = ThemeData(
   dividerColor: Color(0x1f000000),
   highlightColor: Color(0x66bcbcbc),
   splashColor: Color(0x66c8c8c8),
-  selectedRowColor: Color(0xfff5f5f5),
+  selectedRowColor: Color(0x8a000000),
   unselectedWidgetColor: Color(0x8a000000),
   disabledColor: Color(0x61000000),
   buttonColor: Color(0xffe0e0e0),
