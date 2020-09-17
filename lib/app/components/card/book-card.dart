@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 import 'package:flutterfoodapp/core/init/navigation/navigation_service.dart';
+import '../../../core/extensions/context_entension.dart';
 
 class BookCardView extends StatelessWidget {
   final Book book;
@@ -44,7 +45,8 @@ class BookCardView extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     book.name,
-                    style: TextStyle(fontSize: 15, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 15, color: context.theme.selectedRowColor),
                     maxLines: 2,
                   ),
                 ),

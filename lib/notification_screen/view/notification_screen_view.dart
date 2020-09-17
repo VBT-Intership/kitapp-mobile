@@ -19,6 +19,7 @@ class NotificationScreenView extends NotificationScreenViewModel {
             backgroundColor: Colors.transparent,
             elevation: 0,
             bottom: TabBar(
+              indicatorColor: context.theme.primaryColor,
               onTap: (index) {
                 // Tab index when user select it, it start from zero
               },

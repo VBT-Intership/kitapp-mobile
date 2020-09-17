@@ -7,6 +7,7 @@ import 'package:flutterfoodapp/app/components/card/book-card.dart';
 import 'package:flutterfoodapp/app/components/category_list_builder.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
 import 'package:flutterfoodapp/app/models/category_model.dart';
+import 'package:flutterfoodapp/app/views/search_screen/search_screen.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 
 import 'package:flutterfoodapp/notification_screen/view/notification_screen.dart';
@@ -22,19 +23,16 @@ import '../sellers_screen/sellers_screen.dart';
 
 import '../../../core/extensions/context_entension.dart';
 
-
 import 'home_screen_view_model.dart';
 
 class HomeScreenView extends HomeScreenViewModel {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-
       body: _showPage,
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: context.theme.primaryColor,
         index: 0,
         items: <Widget>[
           Icon(Icons.home, size: 20),
@@ -52,24 +50,24 @@ class HomeScreenView extends HomeScreenViewModel {
     );
   }
 
-Widget _showPage = Container(
-          padding: EdgeInsets.all(10),
-          child: CategoryListBuilder(categories: dummyCategory));
+  Widget _showPage = Container(
+      padding: EdgeInsets.all(10),
+      child: CategoryListBuilder(categories: dummyCategory));
 
   Widget _pageChooser(int page) {
     switch (page) {
       case 0:
         return Container(
-          padding: EdgeInsets.all(10),
-          child: CategoryListBuilder(categories: dummyCategory)); //Anasayfa
+            padding: EdgeInsets.all(10),
+            child: CategoryListBuilder(categories: dummyCategory));
         break;
       case 1:
-        return BookResult(); //search
+        return SearchScreen();
         break;
       case 2:
-        return BookSellsScreen(); //kitap ekle
+        return BookSellsScreen();
       case 3:
-        return NotificationScreen(); //bildiririmler
+        return NotificationScreen();
         break;
       case 4:
         return ProfileScreen();

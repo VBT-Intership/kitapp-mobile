@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_screen_view_model.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import '../../../core/extensions/context_entension.dart';
 
 class ProfileScreenView extends ProfileScreenViewModel {
   // This widget is the root of your application.
@@ -45,7 +46,7 @@ class ProfileScreen extends StatelessWidget {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                        color: Colors.green, shape: BoxShape.circle),
+                        color: Color(0xff5ABD8C), shape: BoxShape.circle),
                     child: Icon(
                       LineAwesomeIcons.pen,
                       color: Colors.white,
@@ -142,7 +143,7 @@ class ProfileListItem extends StatelessWidget {
         horizontal: 16,
       ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50), color: Colors.green),
+          borderRadius: BorderRadius.circular(50), color: Color(0xff5ABD8C)),
       child: Row(
         children: [
           Icon(

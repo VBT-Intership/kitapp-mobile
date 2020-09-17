@@ -25,28 +25,6 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
-          onPressed: () {},
-        ),
-        title: Text(
-          "Kitap Sat",
-          style: TextStyle(color: context.colors.onSurface),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.sort),
-            color: Colors.black,
-            onPressed: () {},
-          )
-        ],
-      ),
       body: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
         child: SizedBox(
@@ -55,6 +33,10 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
             padding: EdgeInsets.symmetric(horizontal: context.normalValue),
             child: Column(
               children: [
+                Spacer(flex: 4),
+                Text("Kitap Sat",
+                    textAlign: TextAlign.start,
+                    style: TextStyle(fontSize: context.mediumValue)),
                 Expanded(
                     flex: 40,
                     child: BookCardView(

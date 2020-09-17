@@ -71,7 +71,7 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                               // delete
                               delete(mycontext);
                             },
-                            backgroundColor: mycontext.colors.primary,
+                            backgroundColor: mycontext.theme.accentColor,
                             child: Icon(Icons.delete),
                           ),
                         ),
@@ -86,7 +86,7 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                               // okey
                               okey(mycontext);
                             },
-                            backgroundColor: mycontext.colors.onSurface,
+                            backgroundColor: mycontext.theme.primaryColor,
                             child: Icon(Icons.done),
                           ),
                         )
