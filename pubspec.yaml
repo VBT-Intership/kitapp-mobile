@@ -66,6 +66,8 @@ flutter:
     - assets/images/onBoarding1.png
     - assets/images/onBoarding2.png
     - assets/images/onBoarding3.png
+    - assets/images/google.ico
+    - assets/images/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
