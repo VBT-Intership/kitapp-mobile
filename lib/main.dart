@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen.dart';
 import 'package:flutterfoodapp/app/views/onboarding_screens/onboarding_screens.dart';
-
 import 'package:flutterfoodapp/app/views/book_detail/book_detail.dart';
 import 'package:flutterfoodapp/app/views/login_screen/login_screen.dart';
-
 import 'package:flutterfoodapp/app/views/search_screen/search_screen.dart';
 import 'package:flutterfoodapp/core/init/theme/dark_theme.dart';
-
 import 'package:flutterfoodapp/core/init/theme/light_theme.dart';
-
 import 'app/views/book_sell_screen/book_sell_screen.dart';
+import 'app/views/home_screen/home_screen.dart';
+import 'core/constants/enums/locale_keys_enum.dart';
+import 'core/init/cache/locale_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 
@@ -23,10 +21,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: myLightTheme,
       title: 'Material App',
-      home: OnBoardingScreens(),
+      home: getView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
+  }
+}
+
+Widget getView() {
+  if (LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN) == null) {
+    if (LocaleManager.instance.getStringValue(PreferencesKeys.ONBOARDING) ==
+        null) {
+      LocaleManager.instance
+          .setStringValue(PreferencesKeys.ONBOARDING, 'onboarding');
+      return OnBoardingScreens();
+    } else {
+      return LoginScreen();
+    }
+  } else {
+    return HomeScreen();
   }
 }
 

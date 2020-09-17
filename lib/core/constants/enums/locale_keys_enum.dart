@@ -1,1 +1,1 @@
-enum PreferencesKeys { TOKEN, THEME }
+enum PreferencesKeys { ONBOARDING, TOKEN, THEME }
