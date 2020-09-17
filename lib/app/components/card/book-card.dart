@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
+import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import 'package:flutterfoodapp/core/init/navigation/navigation_service.dart';
 
 class BookCardView extends StatelessWidget {
   final Book book;
@@ -12,7 +14,10 @@ class BookCardView extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        NavigationService.instance
+            .navigateToPage(path: NavigationConstants.BOOK_DETAIL_VIEW);
+      },
       child: Container(
         width: width * 0.35,
         height: height * 0.425,
@@ -74,4 +79,8 @@ class BookCardView extends StatelessWidget {
       ),
     );
   }
+}
+
+abstract class BaseViewModel {
+  final NavigationService navigation = NavigationService.instance;
 }

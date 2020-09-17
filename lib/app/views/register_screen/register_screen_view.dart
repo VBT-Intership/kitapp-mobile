@@ -1,5 +1,6 @@
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/registerRadiusButton.dart';
@@ -79,7 +80,8 @@ class RegisterScreenView extends RegisterScreenViewModel {
             }),
         Text(
           "Kullanıcı Sözleşmesini Kabul Etmek İçin İşaretleyiniz..",
-          style: context.textTheme.bodyText2.copyWith(fontSize: 11),
+          style: context.textTheme.bodyText2
+              .copyWith(fontSize: context.width * 0.025),
         )
       ],
     );
@@ -151,7 +153,10 @@ class RegisterScreenView extends RegisterScreenViewModel {
       child: RegisterOutlineIconButton(
         text: "Kayıt Ol",
         color: Colors.green[500],
-        onpressed: () {},
+        onpressed: () {
+          navigation.navigateToPage(
+              path: NavigationConstants.CATEGORY_CHOOSE_VIEW);
+        },
       ),
     );
   }

@@ -23,7 +23,7 @@ class OutlineIconButton extends StatelessWidget {
       child: SizedBox(
           height: double.infinity,
           child: RaisedButton(
-            color: Colors.green[500],
+            color: this.color,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(40.0)),
             onPressed: onpressed,

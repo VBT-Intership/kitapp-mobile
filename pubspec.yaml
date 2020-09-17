@@ -26,8 +26,6 @@ dependencies:
   easy_localization: ^2.3.3
   provider: ^4.3.2+1
 
-
-  curved_navigation_bar: ^0.3.4
   google_fonts: ^1.1.0
   shared_preferences: ^0.5.7+3
   dio: ^3.0.10
@@ -37,7 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   flutter_rating_bar: 3.0.1+1
-  flutter_svg: 0.19.0
+  flutter_svg: ^0.19.0
+  curved_navigation_bar: ^0.3.4
+  flutter_beautiful_popup: ^1.5.0
 
   flutter_barcode_scanner: ^1.0.1
 
@@ -66,6 +66,8 @@ flutter:
     - assets/images/onBoarding1.png
     - assets/images/onBoarding2.png
     - assets/images/onBoarding3.png
+    - assets/images/google.ico
+    - assets/images/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

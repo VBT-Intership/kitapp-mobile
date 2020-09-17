@@ -11,12 +11,14 @@ class generalview extends StatefulWidget {
 }
 
 class _generalviewState extends State<generalview> {
+  @override
   List<NotificationGeneral> generallist = [
     new NotificationGeneral("eda", "kitap1", 2, 1),
     new NotificationGeneral("eda", "kitap2", 7, 0),
     new NotificationGeneral("eda", "kitap3", 12, 1),
     new NotificationGeneral("eda", "kitap4", 13, 0),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -109,16 +111,17 @@ AutoSizeText calling_book_status_text(String text, BuildContext context) {
 Widget get_button(int status, BuildContext context) {
   switch (status) {
     case 1:
-      return calling_button("İletişim", context.colors.primary, context);
+      return calling_button("İletişim", context.theme.primaryColor, context, 1);
       break;
     case 0:
-      return calling_button("Sil", context.colors.onSurface, context);
+      return calling_button("Sil", context.theme.canvasColor, context, 0);
       break;
     default:
   }
 }
 
-RaisedButton calling_button(String text, Color color, BuildContext context) {
+RaisedButton calling_button(
+    String text, Color color, BuildContext context, int status) {
   return RaisedButton(
     color: color,
     child: Text(
@@ -129,6 +132,45 @@ RaisedButton calling_button(String text, Color color, BuildContext context) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(context.lowValue),
     ),
-    onPressed: () {},
+    onPressed: () {
+      if (status == 1)
+        callmodal(context);
+      else if (status == 0) delete(context);
+    },
+  );
+}
+
+void delete(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      //generallist.removeAt(1);
+
+      return AlertDialog(
+        content: SingleChildScrollView(
+          child: Center(
+            child: Text("Delete"),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+void callmodal(BuildContext context) {
+  // flutter defined function
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        content: SingleChildScrollView(
+          child: Center(
+            child: Text("Ara"),
+          ),
+        ),
+      );
+    },
   );
 }
