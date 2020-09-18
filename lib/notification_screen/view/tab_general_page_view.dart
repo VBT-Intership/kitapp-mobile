@@ -50,7 +50,8 @@ Container notification_general_page_card(
                     SizedBox(width: context.normalValue),
                     Text(
                       general.time.toString() + " hours ago ".locale,
-                      style: context.textTheme.bodyText2,
+                      style: context.textTheme.bodyText2
+                          .copyWith(color: Colors.grey),
                     ),
                   ],
                 ),
