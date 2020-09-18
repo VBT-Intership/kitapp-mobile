@@ -33,7 +33,7 @@ class CategoryListBuilder extends StatelessWidget {
                       .copyWith(fontFamily: "Light")),
               Container(
                   width: double.infinity,
-                  height: context.height * 0.43,
+                  height: context.height * 0.40,
                   child: BookCategoryListBuilder(books: categoryItem.books))
             ],
           ),

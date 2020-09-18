@@ -25,7 +25,9 @@ class BookCardView extends StatelessWidget {
         width: width * 0.30,
         height: height * 0.32,
         child: Padding(
-          padding: EdgeInsets.only(left: 5.0, top: 5.0),
+          padding: EdgeInsets.only(
+            left: 5.0,
+          ),
           child: Column(
             children: [
               SizedBox(
