@@ -1,23 +1,14 @@
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfoodapp/app/views/search_screen/search_screen_view_model.dart';
-import 'package:flutterfoodapp/app/models/search_screen_model.dart';
-import 'package:flutterfoodapp/app/views/search_screen/deneme_post.dart';
-import 'package:flutterfoodapp/app/components/button/loginRadiusButton.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+
+import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../core/extensions/context_entension.dart';
+import '../../components/button/loginRadiusButton.dart';
+import '../../models/books_service_model.dart';
+import 'search_screen_view_model.dart';
 
 class SearchScreenView extends SearchScreenViewModel {
-  List<Post> list = [
-    new Post("ghjk", "ghjkl"),
-    new Post("ghjk", "ghjkl"),
-    new Post("ghjk", "ghjkl"),
-    new Post("ghjk", "ghjkl"),
-    new Post("ghjk", "ghjkl"),
-    new Post("ghjk", "ghjkl"),
-    new Post("ghjk", "ghjkl"),
-  ];
   String _scanned_code = "";
   String _value = "";
   Future _scan_barcode() async {
@@ -51,18 +42,18 @@ class SearchScreenView extends SearchScreenViewModel {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Stack(
                       children: [
-                        SearchBar<Post>(
+                        SearchBar<BooksModel>(
                           onSearch: search,
-                          onItemFound: (Post list, int index) {
+                          onItemFound: (BooksModel list, int index) {
                             return ListTile(
                               onTap: () {
                                 /// seçilen item ile kitap detaya barkod gönderme
                                 navigation.navigateToPage(
                                     path: NavigationConstants.BOOK_DETAIL_VIEW,
-                                    data: index);
+                                    data: list.bookId);
                               },
-                              title: Text(list.title),
-                              subtitle: Text(list.description),
+                              title: Text(list.bookName),
+                              subtitle: Text(list.bookDetail),
                             );
                           },
                         ),
@@ -93,5 +84,10 @@ class SearchScreenView extends SearchScreenViewModel {
         ),
       ),
     ));
+  }
+
+  Future<List<BooksModel>> search(String search) async {
+    await Future.delayed(Duration(seconds: 2));
+    return bookService.searchBook(search);
   }
 }

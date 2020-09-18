@@ -4,13 +4,11 @@ import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfoodapp/app/views/register_screen/register_screen.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import 'login_screen_view_model.dart';
-import '../../../core/extensions/context_entension.dart';
 
 BuildContext mycontext;
 

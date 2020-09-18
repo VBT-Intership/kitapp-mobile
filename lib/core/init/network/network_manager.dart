@@ -13,8 +13,8 @@ class NetworkManager {
 
   NetworkManager._init() {
     final baseOptions = BaseOptions(
-      baseUrl: "https://hasansahin.net/api/",
-    );
+        baseUrl: "https://hasansahin.net/api/",
+        contentType: "application/json");
     // _dio = Dio(baseOptions);
 
     coreDio = CoreDio(baseOptions);

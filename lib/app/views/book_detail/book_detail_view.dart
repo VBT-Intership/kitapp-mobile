@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'dart:ui';
 // import 'package:flutterfoodapp/app/components/loginRadiusButton.dart';
 // import 'package:flutterfoodapp/core/components/card/book-card.dart';
 
 import 'package:flutter_beautiful_popup/main.dart';
+import 'package:flutterfoodapp/app/components/Book_category_list_builder.dart';
+import 'package:flutterfoodapp/app/models/books_service_model.dart';
+import 'package:flutterfoodapp/app/service/books_service.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 import 'package:flutterfoodapp/core/init/navigation/navigation_service.dart';
 
@@ -23,9 +27,9 @@ import '../../../core/init/notifier/theme_notifer.dart';
 
 class BookDetailView extends BookDetailViewModel
     with SingleTickerProviderStateMixin {
-  String descText =
-      "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.";
-
+  TextEditingController commentText = TextEditingController();
+  double starcount = 3;
+  int bookId = 0;
   final List<Widget> myTabs = [
     Tab(text: 'Künye'),
     Tab(text: 'Genel Bakış'),
@@ -56,20 +60,34 @@ class BookDetailView extends BookDetailViewModel
   @override
   Widget build(BuildContext context) {
     /// gelen kitap barkodu
+    Timer timer = new Timer.periodic(new Duration(seconds: 2), (time) {
+      setState(() {});
+    });
+    if (book != null && bookList != null) timer.cancel();
     final int barcode = ModalRoute.of(context).settings.arguments;
-
-    print(ModalRoute.of(context).settings.arguments.toString());
+    bookId = barcode;
+    fillDetail(barcode);
+    setState(() {});
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            topCard(context),
-            tabBarArea(context),
-            otherBooksArea(context)
-          ],
-        ),
+        child: book == null
+            ? loadingButton()
+            : Column(
+                children: [
+                  topCard(context),
+                  tabBarArea(context),
+                  otherBooksArea(context)
+                ],
+              ),
       ),
     );
+  }
+
+  Container loadingButton() {
+    return Container(
+        padding: EdgeInsets.only(top: context.height * 0.45),
+        alignment: Alignment.center,
+        child: CircularProgressIndicator());
   }
 
 //---------------TOPCARD---------------
@@ -130,7 +148,7 @@ class BookDetailView extends BookDetailViewModel
     return Align(
       alignment: Alignment(0, 0.8),
       child: Container(
-        height: context.height * 0.35,
+        height: context.height * 0.38,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -159,8 +177,7 @@ class BookDetailView extends BookDetailViewModel
   DecorationImage imageArea() {
     return DecorationImage(
       fit: BoxFit.cover,
-      image: NetworkImage(
-          "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500"),
+      image: NetworkImage(book.imageUrl),
     );
   }
 
@@ -168,7 +185,7 @@ class BookDetailView extends BookDetailViewModel
     return SizedBox(
       width: context.width * 0.5,
       child: Center(
-        child: AutoSizeText("İnsan Güzeldir",
+        child: AutoSizeText(book.bookName,
             style: context.textTheme.headline5
                 .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
             maxLines: 1),
@@ -180,7 +197,7 @@ class BookDetailView extends BookDetailViewModel
     return SizedBox(
       width: context.width * 0.6,
       child: Center(
-        child: AutoSizeText("Sena Demirci",
+        child: AutoSizeText(book.writerName,
             style: context.textTheme.headline6
                 .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
             maxLines: 1),
@@ -230,9 +247,9 @@ class BookDetailView extends BookDetailViewModel
               left: context.mediumValue, right: context.mediumValue),
           child: Center(
             child: [
-              tabBarAttributeTab(),
+              tabBarAttributeCard(),
               tabBarDescTab(),
-              tabBarCommentTab(context),
+              tabBarCommentCard(context),
             ][_tabController.index],
           ),
         )
@@ -240,31 +257,38 @@ class BookDetailView extends BookDetailViewModel
     );
   }
 
-  Container tabBarDescTab() => Container(child: ReadMoreText(descText));
+  Container tabBarDescTab() => Container(child: ReadMoreText(book.bookDetail));
 
 //---------------tabBarAttribute---------------
 //---------------------------------------------
 
-  ListView tabBarAttributeTab() {
-    return ListView.separated(
-        physics: ClampingScrollPhysics(),
-        shrinkWrap: true,
-        separatorBuilder: (context, index) => Divider(),
-        itemCount: 8,
-        itemBuilder: (context, index) => tabBarAttributeCard(context));
+  Container tabBarAttributeCard() {
+    return Container(
+      child: Column(
+        children: [
+          bookinforow("Yazar", book.writerName),
+          bookinforow("Yayım Tarihi", book.publishedTime),
+          bookinforow("ISBN", book.isbn),
+          bookinforow("Baskı Sayısı", book.editionNumber.toString()),
+          bookinforow("Dil", book.language),
+          bookinforow("Cilt", book.coverType),
+          bookinforow("Sayfa Yapısı", book.typeofPaper),
+        ],
+      ),
+    );
   }
 
-  Container tabBarAttributeCard(BuildContext context) {
-    return Container(
+  Widget bookinforow(String title, String info) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           Text(
-            "Yayın Tarihi",
+            title + " :",
             style: context.textTheme.subtitle1,
           ),
-          Spacer(),
           Text(
-            "01.05.2020",
+            info,
           ),
         ],
       ),
@@ -277,62 +301,62 @@ class BookDetailView extends BookDetailViewModel
   //---------------tabbarComment---------------
   //-------------------------------------------
 
-  Container tabBarCommentTab(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          tabBarCommentHeader(context),
-          Divider(),
-          ListView.separated(
-              physics: ClampingScrollPhysics(),
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => Divider(),
-              itemCount: 8,
-              itemBuilder: (context, index) => tabBarCommentCard(context))
-        ],
-      ),
-    );
-  }
-
-  Container tabBarCommentCard(BuildContext context) {
-    return Container(
-        child: Column(
-      children: [
-        Row(
-          children: [
-            Text("fatihemre",
-                style: context.textTheme.subtitle1
-                    .copyWith(fontWeight: FontWeight.w500)),
-            Spacer(),
-            RatingBar(
-              initialRating: 3,
-              minRating: 1,
-              direction: Axis.horizontal,
-              allowHalfRating: true,
-              itemCount: 5,
-              itemSize: context.width * 0.04,
-              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-              itemBuilder: (context, _) => Icon(
-                Icons.star,
-                color: Colors.green,
-              ),
-              onRatingUpdate: (rating) {
-                print(rating);
-              },
-            )
-          ],
-        ),
-        Container(child: ReadMoreText(descText, height: context.height * 0.10)),
-        Row(
-          children: [
-            Spacer(),
-            Text("11.10.2020",
-                style:
-                    context.textTheme.subtitle2.copyWith(color: Colors.grey)),
-          ],
-        )
-      ],
-    ));
+  Widget tabBarCommentCard(BuildContext context) {
+    return book.comments == null
+        ? Container(
+            child: Column(
+            children: [
+              tabBarCommentHeader(context),
+              SizedBox(height: context.highValue),
+              Text("Henüz Yorum Yok"),
+              SizedBox(height: context.highValue),
+            ],
+          ))
+        : ListView.builder(
+            itemCount: book.comments.length,
+            itemBuilder: (context, index) {
+              Comments comment = book.comments[index];
+              return Container(
+                  child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(comment.users.name,
+                          style: context.textTheme.subtitle1
+                              .copyWith(fontWeight: FontWeight.w500)),
+                      Spacer(),
+                      RatingBar(
+                        initialRating: comment.userStarCount.toDouble(),
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemSize: context.width * 0.04,
+                        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: Colors.green,
+                        ),
+                        onRatingUpdate: (rating) {
+                          print(rating);
+                        },
+                      )
+                    ],
+                  ),
+                  Container(
+                      child: ReadMoreText(comment.comment,
+                          height: context.height * 0.10)),
+                  Row(
+                    children: [
+                      Spacer(),
+                      Text(comment.publisDate,
+                          style: context.textTheme.subtitle2
+                              .copyWith(color: Colors.grey)),
+                    ],
+                  )
+                ],
+              ));
+            });
   }
 
   Widget tabBarCommentHeader(BuildContext context) {
@@ -350,7 +374,9 @@ class BookDetailView extends BookDetailViewModel
 
   Text commentLengthText(BuildContext context) {
     return Text(
-      "Yorum(8)",
+      "Yorum(" +
+          (book.comments == null ? "0" : book.comments.length.toString()) +
+          ")",
       style: context.textTheme.subtitle1
           .copyWith(fontWeight: FontWeight.bold, color: Colors.grey),
     );
@@ -400,18 +426,7 @@ class BookDetailView extends BookDetailViewModel
           Container(
             width: double.infinity,
             height: context.height * 0.35,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (context, book) => OtherBooksCardView(
-                book: OtherBooksCard(
-                    author: "fatih emre",
-                    name: "Çile",
-                    imageURL:
-                        "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500",
-                    rating: 3),
-              ),
-            ),
+            child: BookCategoryListBuilder(books: bookList),
           )
         ]),
       ),
@@ -441,6 +456,7 @@ class BookDetailView extends BookDetailViewModel
                     style: context.textTheme.headline6
                         .copyWith(color: Colors.green)),
                 TextFormField(
+                  controller: commentText,
                   keyboardType: TextInputType.multiline,
                   maxLines: 5,
                   maxLength: 500,
@@ -459,6 +475,7 @@ class BookDetailView extends BookDetailViewModel
                   ),
                   onRatingUpdate: (rating) {
                     print(rating);
+                    starcount = rating;
                   },
                 ),
                 Padding(
@@ -475,13 +492,21 @@ class BookDetailView extends BookDetailViewModel
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       onPressed: () {
+                        dynamic data = BooksService.instance.makeComment(
+                            2, bookId, commentText.text, starcount);
+                        book.comments.add(Comments(
+                            bookId: bookId,
+                            userId: 1,
+                            comment: commentText.text,
+                            userStarCount: starcount.toInt(),
+                            publisDate: DateTime.now().toLocal().toString()));
                         final popup = BeautifulPopup(
                           context: context,
                           template: TemplateGift,
                         );
                         popup.show(
-                          title: 'Yorumu yorumlara ekle',
-                          content: 'Hellloo',
+                          title: 'Tebrikler!',
+                          content: 'Yorumunuz Eklenmiştir',
                           actions: [
                             popup.button(
                               label: 'Kapat',

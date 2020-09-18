@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
+import 'package:flutterfoodapp/app/models/books_service_model.dart';
 import 'package:flutterfoodapp/app/views/book_sell_screen/book_sell_screen_view_model.dart';
-import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import '../../components/button/loginRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import '../../components/card/book-card.dart';
@@ -42,12 +42,12 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                 Expanded(
                     flex: 40,
                     child: BookCardView(
-                        book: Book(
-                            author: "eda ersu",
-                            name: "book",
-                            urlimage:
+                        book: BooksModel(
+                            writerName: "eda ersu",
+                            bookName: "book",
+                            imageUrl:
                                 "https://img.kitapyurdu.com/v1/getImage/fn:11274484/wh:true/wi:500",
-                            rating: 3.5))),
+                            bookStarCount: 3.5))),
                 Expanded(
                   flex: 8,
                   child: SizedBox(

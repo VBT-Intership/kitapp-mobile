@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfoodapp/app/models/book_model.dart';
+import 'package:flutterfoodapp/app/models/categories_service_model.dart';
 import 'package:flutterfoodapp/app/models/category_model.dart';
 import '../../core/extensions/context_entension.dart';
 import 'Book_category_list_builder.dart';
 import 'card/book-card.dart';
 
 class CategoryListBuilder extends StatelessWidget {
-  final List<Category> categories;
+  final List<CategoriesModel> categories;
 
   const CategoryListBuilder({
     Key key,
@@ -20,13 +21,13 @@ class CategoryListBuilder extends StatelessWidget {
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        Category categoryItem = categories[index];
+        CategoriesModel categoryItem = categories[index];
         return Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(categoryItem.name,
+              Text(categoryItem.categoryName,
                   style: context.textTheme.headline5
                       .copyWith(fontFamily: "Light")),
               Container(
