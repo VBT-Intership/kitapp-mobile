@@ -41,7 +41,6 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
-      
     );
   }
 }
