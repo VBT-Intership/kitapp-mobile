@@ -6,33 +6,27 @@ import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
 import '../../core/extensions/string_extension.dart';
 
-class generalview extends StatefulWidget {
-  @override
-  _generalviewState createState() => _generalviewState();
-}
+BuildContext mycontext;
+List<NotificationGeneral> generallist = [
+  new NotificationGeneral("eda", "kitap1", 2, 1),
+  new NotificationGeneral("eda", "kitap2", 7, 0),
+  new NotificationGeneral("eda", "kitap3", 12, 1),
+  new NotificationGeneral("eda", "kitap4", 13, 0),
+];
 
-class _generalviewState extends State<generalview> {
-  @override
-  List<NotificationGeneral> generallist = [
-    new NotificationGeneral("eda", "kitap1", 2, 1),
-    new NotificationGeneral("eda", "kitap2", 7, 0),
-    new NotificationGeneral("eda", "kitap3", 12, 1),
-    new NotificationGeneral("eda", "kitap4", 13, 0),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Future.value(generallist).toBuild<List<NotificationGeneral>>(
-      onSuccess: (data) {
-        return ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: data.length,
-            itemBuilder: (context, index) =>
-                notification_general_page_card(data[index], context));
-      },
-    ));
-  }
+Container tab_general_page_view(BuildContext context) {
+  mycontext = context;
+  return Container(
+      color: context.theme.scaffoldBackgroundColor,
+      child: Future.value(generallist).toBuild<List<NotificationGeneral>>(
+        onSuccess: (data) {
+          return ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: data.length,
+              itemBuilder: (context, index) =>
+                  notification_general_page_card(data[index], context));
+        },
+      ));
 }
 
 Container notification_general_page_card(
@@ -50,7 +44,8 @@ Container notification_general_page_card(
                   children: [
                     Text(
                       general.username,
-                      style: context.textTheme.bodyText2,
+                      style:
+                          TextStyle(color: mycontext.theme.primaryColorLight),x 
                     ),
                     SizedBox(width: context.normalValue),
                     Text(
@@ -105,7 +100,7 @@ AutoSizeText calling_book_status_text(String text, BuildContext context) {
     text,
     overflow: TextOverflow.ellipsis,
     maxLines: 2,
-    style: context.textTheme.bodyText1,
+    style: TextStyle(color: mycontext.theme.primaryColorLight),
   );
 }
 

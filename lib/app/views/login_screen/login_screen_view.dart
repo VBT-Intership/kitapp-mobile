@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfoodapp/app/views/register_screen/register_screen.dart';
+import 'package:flutterfoodapp/core/constants/enums/app_theme_enum.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import 'package:flutterfoodapp/core/init/notifier/theme_notifer.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
@@ -21,6 +24,10 @@ class LoginScreenView extends LoginScreenViewModel {
   @override
   Widget build(BuildContext context) {
     mycontext = context;
+    var themeProvider = Provider.of<ThemeNotifier>(context);
+    Widget headerView = themeProvider.currentThemeEnum() == AppThemes.LIGHT
+        ? loginHeadTextLight
+        : loginHeadTextDark;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -35,7 +42,7 @@ class LoginScreenView extends LoginScreenViewModel {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Spacer(flex: 3),
-                      Expanded(flex: 22, child: loginHeadText),
+                      Expanded(flex: 22, child: headerView),
                       Spacer(flex: 5),
                       Expanded(flex: 10, child: loginEmailInput),
                       Spacer(flex: 1),
@@ -58,8 +65,17 @@ class LoginScreenView extends LoginScreenViewModel {
     );
   }
 
-  Widget get loginHeadText {
+  Widget get loginHeadTextLight {
     return SvgPicture.asset("assets/images/login_cat.svg");
+  }
+
+  Widget get loginHeadTextDark {
+    return Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: Image(
+            image: AssetImage("assets/images/login_cat_dark.png"),
+            fit: BoxFit.scaleDown));
   }
 
   TextWidget get loginPasswordInput {
