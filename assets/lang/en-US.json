@@ -3,7 +3,7 @@
     "What do you want to eat today?": "What do you want to eat today?",
     "Popular": "Popular",
     "Price": "Price",
-    "Piece": "Piece",
+    "Enter Price": "Enter Price",
     "DARK": "Dark",
     "LIGHT": "Light",
 
@@ -22,14 +22,21 @@
     "Password":"Password",
     "Enter E-mail":"Enter E-mail",
     "Enter Password":"Enter Password",
-    "Forgotten Pasword ?":"Forgotten Pasword ?",
+    "Forgotten Password ?":"Forgotten Password ?",
     "Visit":"Visit",
     "OR":"OR",
 
     "First & Last Name":"First & Last Name",
     "Mobile Phone":"Mobile Phone",
-    "Group Special Code (optional)":"Group Special Code (optional)",
-    "Please sign me up for the monthly newsletter.":"Please sign me up for the monthly newsletter.",
+    "Google auth forwarding":"Google auth forwarding",
+    "Insufficient Number of Characters":"Insufficient Number of Characters",
+    "Name Surname Number of Characters Insufficient":"Name Surname Number of Characters Insufficient",
+    "Insufficient Number of Email Characters":"Insufficient Number of Email Characters",
+    "Insufficient Phone Character Count":"Insufficient Phone Character Count",
+    "Enter Address (city / town)":"Enter Address (city / town)",
+    "Address Information is Insufficient":"Address Information is Insufficient",
+    "Password Insufficient Number of Characters":"Password Insufficient Number of Characters",
+    "Check to Accept User Agreement ...":"Check to Accept User Agreement ...",
 
     "Categories":"Categories",
     "Business":"Business",
@@ -39,11 +46,18 @@
     "History":"History",
     "Sci-fi":"Sci-fi",
     "Send":"Send",
+    "Biography":"Biography",
+    "Cookery":"Cookery",
+    "Philosopy":"Philosopy",
 
     "Main Page":"Main Page",
     
     "Buy":"Buy",
     "Give Offer":"Give Offer",
+    "km near":"km near",
+    "close":"close",
+    "Purchase Completed":"Purchase Completed",
+    "Your offer has been sent :)":"Your offer has been sent :)",
 
     "Notifications":"Notifications",
     "To Contact":"To Contact",
@@ -63,6 +77,7 @@
     "Book Size":"Book Size",
     "Related Products":"Related Products",
     "Write a Review":"Write a Review",
+    "Add Comment to Comments":"Add Comment to Comments",
 
     
     "Cancel":"Cancel",
@@ -76,6 +91,7 @@
     "Offers":"Offers",
     "General":"General",
     "hours ago":"hours ago",
+    "Notification":"Bildirimler",
 
     "Edit Profile":"Edit Profile",
     "My Advertisement":"My Advertisement",

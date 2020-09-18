@@ -6,6 +6,7 @@ import 'package:flutterfoodapp/app/views/search_screen/deneme_post.dart';
 import 'package:flutterfoodapp/app/components/button/loginRadiusButton.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import '../../../core/extensions/string_extension.dart';
 import '../../../core/extensions/context_entension.dart';
 
 class SearchScreenView extends SearchScreenViewModel {
@@ -80,7 +81,7 @@ class SearchScreenView extends SearchScreenViewModel {
                     Icons.center_focus_weak,
                     color: Colors.white,
                   ),
-                  text: 'Tara',
+                  text: 'Scan'.locale,
                   iconPadding: 10,
                   color: context.theme.primaryColor,
                   onpressed: () {

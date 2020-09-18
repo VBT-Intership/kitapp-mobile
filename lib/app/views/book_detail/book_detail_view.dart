@@ -20,6 +20,7 @@ import '../../../core/constants/app/app_constants.dart';
 import '../../../core/extensions/extensions_provider.dart';
 import '../../../core/extensions/future_builder.dart';
 import '../../../core/init/notifier/theme_notifer.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class BookDetailView extends BookDetailViewModel
     with SingleTickerProviderStateMixin {
@@ -27,9 +28,9 @@ class BookDetailView extends BookDetailViewModel
       "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.";
 
   final List<Widget> myTabs = [
-    Tab(text: 'Künye'),
-    Tab(text: 'Genel Bakış'),
-    Tab(text: 'Yorumlar'),
+    Tab(text: 'About'.locale),
+    Tab(text: 'Overview'.locale),
+    Tab(text: 'Reviews'.locale),
   ];
 
   TabController _tabController;
@@ -197,7 +198,7 @@ class BookDetailView extends BookDetailViewModel
         navigation.navigateToPage(path: NavigationConstants.SELLER_VIEW);
       },
       child: Text(
-        "Satın Al",
+        "Buy".locale,
         style: TextStyle(color: Colors.green),
       ),
       shape: RoundedRectangleBorder(
@@ -259,7 +260,7 @@ class BookDetailView extends BookDetailViewModel
       child: Row(
         children: [
           Text(
-            "Yayın Tarihi",
+            "Release Date".locale,
             style: context.textTheme.subtitle1,
           ),
           Spacer(),
@@ -340,14 +341,14 @@ class BookDetailView extends BookDetailViewModel
       padding: EdgeInsets.only(top: context.normalValue),
       child: Row(
         children: [
-          commentLengthText(context),
-          Spacer(),
+        //  commentLengthText(context),
+        //  Spacer(),
           commentButton(context)
         ],
       ),
     );
   }
-
+/*
   Text commentLengthText(BuildContext context) {
     return Text(
       "Yorum(8)",
@@ -355,7 +356,7 @@ class BookDetailView extends BookDetailViewModel
           .copyWith(fontWeight: FontWeight.bold, color: Colors.grey),
     );
   }
-
+*/
   Row commentButton(BuildContext context) {
     return Row(
       children: [
@@ -363,7 +364,7 @@ class BookDetailView extends BookDetailViewModel
           onTap: () {
             _commentModal();
           },
-          child: Text("Yorum Yaz",
+          child: Text("Write a Review".locale,
               style: context.textTheme.subtitle1
                   .copyWith(fontWeight: FontWeight.bold, color: Colors.green)),
         ),
@@ -393,7 +394,7 @@ class BookDetailView extends BookDetailViewModel
           Container(
               alignment: Alignment.topLeft,
               child: Text(
-                "İlgili Ürünler",
+                "Related Products".locale,
                 style: context.textTheme.headline5
                     .copyWith(fontWeight: FontWeight.bold),
               )),
@@ -437,7 +438,7 @@ class BookDetailView extends BookDetailViewModel
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Yorum Yaz",
+                Text("Write a Review".locale,
                     style: context.textTheme.headline6
                         .copyWith(color: Colors.green)),
                 TextFormField(
@@ -467,7 +468,7 @@ class BookDetailView extends BookDetailViewModel
                     child: RaisedButton(
                       color: Colors.green,
                       child: Text(
-                        "Gönder",
+                        "Send".locale,
                         style: context.textTheme.subtitle2
                             .copyWith(color: Colors.white),
                       ),
@@ -480,11 +481,11 @@ class BookDetailView extends BookDetailViewModel
                           template: TemplateGift,
                         );
                         popup.show(
-                          title: 'Yorumu yorumlara ekle',
+                          title: 'Add Comment to Comments',
                           content: 'Hellloo',
                           actions: [
                             popup.button(
-                              label: 'Kapat',
+                              label: 'close'.locale,
                               onPressed: Navigator.of(context).pop,
                             ),
                           ],

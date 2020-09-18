@@ -3,7 +3,7 @@
     "What do you want to eat today?": "Bugün ne yemek istersin?",
     "Popular": "Popüler",
     "Price": "Adet",
-    "Piece": "Fiyat",
+    "Enter Price": "Fiyat Girin",
     "DARK": "Siyah",
     "LIGHT": "Açık",
     
@@ -22,14 +22,21 @@
     "Password":"Parola",
     "Enter E-mail":"Email Giriniz",
     "Enter Password":"Parola Giriniz",
-    "Forgotten Pasword ?":"Şifremi Unuttum",
+    "Forgotten Password ?":"Şifremi Unuttum",
     "Visit":"Ziyaret Et",
     "OR":"YA DA",
 
     "First & Last Name":"Adınız Soyadınız",
     "Mobile Phone":"Cep Telefonu No",
-    "Group Special Code (optional)":"Grup Özel Kodu (isteğe bağlı)",
-    "Please sign me up for the monthly newsletter.":"Aylık haber bültenine kayıt ol.",
+    "Google auth forwarding":"Google auth yönlendirme",
+    "Insufficient Number of Characters":"Karakter Sayısı Yetersiz",
+    "Name Surname Number of Characters Insufficient":"Ad Soyad Karakter Sayısı Yetersiz",
+    "Insufficient Number of Email Characters":"Email Karakter Sayısı Yetersiz",
+    "Insufficient Phone Character Count": "Telefon Karakter Sayısı Yetersiz",
+    "Enter Address (city / town)":"Adres Giriniz (il / ilçe)",
+    "Address Information is Insufficient":"Adres Bilginiz Yetersiz",
+    "Password Insufficient Number of Characters":"Şifre Karekter Sayısı Yetersiz",
+    "Check to Accept User Agreement ...":"Kullanıcı Sözleşmesini Kabul Etmek İçin İşaretleyiniz..",
 
     "Categories":"Kategoriler",
     "Business":"İş",
@@ -39,11 +46,18 @@
     "History":"Tarih",
     "Sci-fi":"Bilim Kurgu",
     "Send":"Gönder",
+    "Biography":"Biyografi",
+    "Cookery":"Aşçılık",
+    "Philosopy":"Felsefe",
 
     "Main Page":"Ana Sayfa",
     
     "Buy":"Satın Al",
     "Give Offer":"Teklif Ver",
+    "km near":"km yakınında",
+    "close":"kapat",
+    "Purchase Completed":"Satın Alma Gerçekleşti",
+    "Your offer has been sent :)":"Teklifiniz Gönderildii :)",
 
     "Notifications":"Bildirimler",
     "To Contact":"İletişime Geç",
@@ -63,6 +77,7 @@
     "Book Size":"Boyut",
     "Related Products":"İlgili Ürünler",
     "Write a Review":"Yorum Yaz",
+    "Add Comment to Comments":"Yorumu Yorumlara Ekle",
 
     
     "Cancel":"İptal",

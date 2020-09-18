@@ -7,6 +7,7 @@ import 'package:flutterfoodapp/notification_screen/view_model/notification_scree
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/sellers_screen/model/sellers_screen_model.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
+import '../../core/extensions/string_extension.dart';
 
 class NotificationScreenView extends NotificationScreenViewModel {
   @override
@@ -26,20 +27,20 @@ class NotificationScreenView extends NotificationScreenViewModel {
               tabs: [
                 Tab(
                   child: Text(
-                    "Genel",
+                    "General".locale,
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    "Teklifler",
+                    "Offers".locale,
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
               ],
             ),
             title: Text(
-              'Bildirimler',
+              'Notifications'.locale,
               style: TextStyle(color: Colors.black),
             ),
           ),

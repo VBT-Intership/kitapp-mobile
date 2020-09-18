@@ -4,6 +4,7 @@ import 'package:flutterfoodapp/notification_screen/model/notification_general_mo
 import 'package:flutterfoodapp/sellers_screen/model/sellers_screen_model.dart';
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
+import '../../core/extensions/string_extension.dart';
 
 class generalview extends StatefulWidget {
   @override
@@ -53,7 +54,7 @@ Container notification_general_page_card(
                     ),
                     SizedBox(width: context.normalValue),
                     Text(
-                      general.time.toString() + " saat önce",
+                      general.time.toString() + "hours ago".locale,
                       style: context.textTheme.bodyText2,
                     ),
                   ],
@@ -111,10 +112,10 @@ AutoSizeText calling_book_status_text(String text, BuildContext context) {
 Widget get_button(int status, BuildContext context) {
   switch (status) {
     case 1:
-      return calling_button("İletişim", Color(0xff5ABD8C), context, 1);
+      return calling_button("Contact".locale, Color(0xff5ABD8C), context, 1);
       break;
     case 0:
-      return calling_button("Sil", Colors.grey, context, 0);
+      return calling_button("Remove".locale, Colors.grey, context, 0);
       break;
     default:
   }
@@ -150,7 +151,7 @@ void delete(BuildContext context) {
       return AlertDialog(
         content: SingleChildScrollView(
           child: Center(
-            child: Text("Delete"),
+            child: Text("Delete".locale),
           ),
         ),
       );
@@ -167,7 +168,7 @@ void callmodal(BuildContext context) {
       return AlertDialog(
         content: SingleChildScrollView(
           child: Center(
-            child: Text("Ara"),
+            child: Text("Call Now".locale),
           ),
         ),
       );
