@@ -4,6 +4,7 @@ import 'package:flutterfoodapp/notification_screen/model/notification_offers_mod
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
 import 'package:flutterfoodapp/notification_screen/view/tab_general_page_view.dart';
+import '../../core/extensions/string_extension.dart';
 
 BuildContext mycontext;
 Container tab_offers_view_page(BuildContext context) {
@@ -47,7 +48,7 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                       height: mycontext.lowValue,
                     ),
                     AutoSizeText(
-                      offer.book + " adlı kitaba teklifin var.",
+                      offer.book + " you have an offer for this book ".locale,
                       style: mycontext.textTheme.bodyText1,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -96,7 +97,7 @@ Container notification_offers_page_card(NotificationOffers offer) => Container(
                       height: mycontext.lowValue,
                     ),
                     Text(
-                      offer.time.toString() + " saat önce",
+                      offer.time.toString() +  " hours ago ".locale,
                       style: mycontext.textTheme.bodyText2,
                     )
                   ],

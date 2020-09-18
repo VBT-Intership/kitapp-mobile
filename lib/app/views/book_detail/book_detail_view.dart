@@ -617,7 +617,7 @@ class OtherBooksCardView extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "by " + book.author,
+                    "by".locale + book.author,
                     style: TextStyle(fontSize: 11, color: Colors.grey),
                     maxLines: 1,
                   ),

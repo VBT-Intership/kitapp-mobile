@@ -54,7 +54,7 @@ Container notification_general_page_card(
                     ),
                     SizedBox(width: context.normalValue),
                     Text(
-                      general.time.toString() + "hours ago".locale,
+                      general.time.toString() + " hours ago ".locale,
                       style: context.textTheme.bodyText2,
                     ),
                   ],
@@ -82,13 +82,13 @@ Container notification_general_page_card(
 
 Widget get_text(NotificationGeneral general, BuildContext context) {
   String case_1_text = general.username +
-      " adlı kullanıcı " +
+      " named user ".locale+
       general.book +
-      " kitabına verdiğiniz teklifi kabul etti";
+     " accepted your offer to the book ".locale;
   String case_0_text = general.username +
-      " adlı kullanıcı " +
+      " named user ".locale+
       general.book +
-      " kitabına verdiğiniz teklifi reddetti";
+      " rejected your offer to the book ".locale;
   switch (general.status) {
     case 1:
       return calling_book_status_text(case_1_text, context);

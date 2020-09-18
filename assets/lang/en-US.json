@@ -85,17 +85,23 @@
 
     "Sell Book":"Sell Book",
     "Sell the Product":"Sell the Product",
+    "by":"by ",
 
     "Remove":"Remove",
     "Contact":"Contact",
     "Offers":"Offers",
     "General":"General",
-    "hours ago":"hours ago",
+    " hours ago ":" hours ago ",
     "Notification":"Bildirimler",
 
     "Edit Profile":"Edit Profile",
     "My Advertisement":"My Advertisement",
     "Favorites":"Favorites",
     "Change Password":"Change Password",
-    "Log Out":"Log Out"
+    "Log Out":"Log Out",
+
+    " named user ":" named user ",
+    " accepted your offer to the book ":" accepted your offer to the book ",
+    " rejected your offer to the book ":" rejected your offer to the book ",
+    " you have an offer for this book ":" you have an offer for this book "
 }

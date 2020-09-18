@@ -85,19 +85,25 @@
 
     "Sell Book":"Kitap Sat",
     "Sell the Product":"Ürünü Sat",
+    "by":" ",
 
     "Remove":"Sil",
     "Contact":"İletişim",
     "Offers":"Teklifler",
     "General":"Genel",
-    "hours ago":"saat önce",
+    " hours ago ":" saat önce ",
 
     "Edit Profile":"Profil Düzenle",
     "My Advertisement":"İlanlarım",
     "Favorites":"Favoriler",
     "Change Password":"Şifre Değiştir",
-    "Log Out":"Çıkış Yap"
-    
+    "Log Out":"Çıkış Yap",
+
+    " named user ":"  adlı kullanıcı ",
+    " accepted your offer to the book ":" adlı kitaba verdiğiniz teklifi kabul etti ",
+    " rejected your offer to the book ":" adlı kitaba verdiğiniz teklifi reddetti ",
+    " you have an offer for this book ":" adlı kitaba teklifiniz var. "
+
 
 
 }

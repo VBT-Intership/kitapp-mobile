@@ -20,9 +20,8 @@ import '../onboarding_screens/onboarding_screens.dart';
 import '../profile_screen/profile_screen.dart';
 import '../register_screen/register_screen.dart';
 import '../sellers_screen/sellers_screen.dart';
-
+import '../../../core/extensions/string_extension.dart';
 import '../../../core/extensions/context_entension.dart';
-
 import 'home_screen_view_model.dart';
 
 class HomeScreenView extends HomeScreenViewModel {
