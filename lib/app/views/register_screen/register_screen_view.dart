@@ -1,12 +1,13 @@
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 
+import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../core/extensions/context_entension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../components/button/loginRadiusButton.dart';
 import '../../components/button/registerRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import 'register_screen_view_model.dart';
-import '../../../core/extensions/string_extension.dart';
 
 class RegisterScreenView extends RegisterScreenViewModel {
   bool agreement = false;
@@ -29,7 +30,7 @@ class RegisterScreenView extends RegisterScreenViewModel {
             onPressed: () {
               Navigator.pop(context);
             }),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -40,7 +41,6 @@ class RegisterScreenView extends RegisterScreenViewModel {
                 height: context.height,
                 padding: EdgeInsets.fromLTRB(
                     context.mediumValue, 0, context.mediumValue, 0),
-                color: Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -128,7 +128,7 @@ class RegisterScreenView extends RegisterScreenViewModel {
   TextWidget get registerAddressInput {
     return TextWidget(
       labelText: "Enter Address (city / town)".locale,
-      warningText:"Address Information is Insufficient".locale,
+      warningText: "Address Information is Insufficient".locale,
       icon: Icons.location_city,
       inputType: TextInputType.text,
       minLength: 3,
@@ -151,12 +151,11 @@ class RegisterScreenView extends RegisterScreenViewModel {
   Container get registerButton {
     return Container(
       width: double.infinity,
-      child: RegisterOutlineIconButton(
+      child: OutlineIconButton(
         text: "Sing up".locale,
-        color: Colors.green[500],
+        color: context.theme.primaryColor,
         onpressed: () {
-          navigation.navigateToPage(
-              path: NavigationConstants.CATEGORY_CHOOSE_VIEW);
+          navigation.navigateToPage(path: NavigationConstants.HOME_SCREEN_VIEW);
         },
       ),
     );

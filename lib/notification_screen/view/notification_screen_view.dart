@@ -29,21 +29,20 @@ class NotificationScreenView extends NotificationScreenViewModel {
                 Tab(
                   child: Text(
                     "General".locale,
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.grey),
                   ),
                 ),
                 Tab(
                   child: Text(
-
                     "Offers".locale,
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.grey),
                   ),
                 ),
               ],
             ),
             title: Text(
               'Notifications'.locale,
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.grey),
             ),
           ),
           body: TabBarView(

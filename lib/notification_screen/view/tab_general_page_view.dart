@@ -45,12 +45,13 @@ Container notification_general_page_card(
                     Text(
                       general.username,
                       style:
-                          TextStyle(color: mycontext.theme.primaryColorLight),x 
+                          TextStyle(color: mycontext.theme.primaryColorLight),
                     ),
                     SizedBox(width: context.normalValue),
                     Text(
                       general.time.toString() + " hours ago ".locale,
-                      style: context.textTheme.bodyText2,
+                      style: context.textTheme.bodyText2
+                          .copyWith(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -77,11 +78,11 @@ Container notification_general_page_card(
 
 Widget get_text(NotificationGeneral general, BuildContext context) {
   String case_1_text = general.username +
-      " named user ".locale+
+      " named user ".locale +
       general.book +
-     " accepted your offer to the book ".locale;
+      " accepted your offer to the book ".locale;
   String case_0_text = general.username +
-      " named user ".locale+
+      " named user ".locale +
       general.book +
       " rejected your offer to the book ".locale;
   switch (general.status) {

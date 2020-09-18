@@ -179,14 +179,13 @@ class LoginScreenView extends LoginScreenViewModel {
           ),
         ),
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32) ,
-            child:Text(
+            child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Text(
             "OR".locale,
-            style: mycontext.textTheme.headline5,
-          ), 
-            ) 
-        ),
+            style: mycontext.textTheme.headline6,
+          ),
+        )),
         Expanded(
           child: Divider(
             color: mycontext.colors.primaryVariant,
