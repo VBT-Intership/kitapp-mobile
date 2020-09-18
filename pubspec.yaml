@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   easy_localization: ^2.3.3
+  flutter_localizations:
+    sdk: flutter
   provider: ^4.3.2+1
 
   google_fonts: ^1.1.0
@@ -71,6 +73,7 @@ flutter:
     - assets/images/onBoarding1.png
     - assets/images/onBoarding2.png
     - assets/images/onBoarding3.png
+    - assets/images/login_cat_dark.png
     - assets/images/google.ico
     - assets/images/
   #   - images/a_dot_ham.jpeg
@@ -86,7 +89,8 @@ flutter:
   fonts:
     - family: OpenSans
       fonts:
-        - asset: assets/fonts/OpenSans-Italic.ttf
+        - asset: assets/fonts/OpenSans-Light.ttf
+        
           weight: 700
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

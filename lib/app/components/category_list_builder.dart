@@ -4,6 +4,7 @@ import 'package:flutterfoodapp/app/models/category_model.dart';
 import '../../core/extensions/context_entension.dart';
 import 'Book_category_list_builder.dart';
 import 'card/book-card.dart';
+import '../../core/extensions/string_extension.dart';
 
 class CategoryListBuilder extends StatelessWidget {
   final List<Category> categories;
@@ -26,7 +27,9 @@ class CategoryListBuilder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(categoryItem.name, style: context.textTheme.headline5),
+              Text(categoryItem.name.locale,
+                  style: context.textTheme.headline5),
+                    
               Container(
                   width: double.infinity,
                   height: context.height * 0.43,

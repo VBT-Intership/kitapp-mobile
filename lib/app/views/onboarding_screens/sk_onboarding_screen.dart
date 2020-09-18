@@ -3,6 +3,7 @@ library sk_onboarding_screen;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterfoodapp/app/views/onboarding_screens/sk_onboarding_model.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class SKOnboardingScreen extends StatefulWidget {
   final List<SkOnboardingModel> pages;
@@ -85,7 +86,7 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
                         widget.skipClicked("Skip Tapped");
                       },
                       child: Text(
-                        'Skip',
+                        'Skip'.locale,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Colors.grey,
@@ -192,7 +193,7 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
             borderRadius: new BorderRadius.all(Radius.circular(20.0))),
         child: new Center(
           child: new Text(
-            'Get Started',
+            "Let's Start".locale,
             style: new TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,

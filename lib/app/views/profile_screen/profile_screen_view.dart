@@ -1,30 +1,33 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'profile_screen_view_model.dart';
+import 'package:flutterfoodapp/core/constants/enums/app_theme_enum.dart';
+import 'package:flutterfoodapp/core/init/lang/language_service.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../../../core/extensions/context_entension.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/init/notifier/theme_notifer.dart';
+import 'profile_screen_view_model.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class ProfileScreenView extends ProfileScreenViewModel {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        body: ProfileScreen(),
-      ),
+    return Scaffold(
+      body: ProfileScreen(),
     );
   }
 }
 
 class ProfileScreen extends StatelessWidget {
+  // final locales;
   final String userName = 'Emre Cevik';
   final String profileImageURL = 'https://cutt.ly/3fDkQoz';
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeNotifier>(context);
+    var locales = EasyLocalization.of(context);
     // final width = MediaQuery.of(context).size.width;
     // final height = MediaQuery.of(context).size.height;
     var profile = Expanded(
@@ -72,16 +75,46 @@ class ProfileScreen extends StatelessWidget {
       children: <Widget>[
         SizedBox(width: 50),
         profile,
-        Container(
-          height: 40,
-          width: 40,
-          decoration:
-              BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-          child: Icon(
-            LineAwesomeIcons.sun,
-            color: Colors.black,
-            size: 20,
-          ),
+        Column(
+          children: [
+            InkWell(
+              onTap: () {
+                themeProvider.changeTheme();
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration:
+                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                child: Icon(
+                  themeProvider.currentThemeEnum() == AppThemes.LIGHT
+                      ? LineAwesomeIcons.sun
+                      : LineAwesomeIcons.cloud_with_sun,
+                  color: Colors.black,
+                  size: 20,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            InkWell(
+              onTap: () {
+                locales.locale = locales.locale.languageCode == "en"
+                    ? LanguageService.instance.trLocale
+                    : LanguageService.instance.enLocale;
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration:
+                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                child: Icon(
+                  LineAwesomeIcons.language,
+                  color: Colors.black,
+                  size: 20,
+                ),
+              ),
+            ),
+          ],
         ),
         SizedBox(width: 30),
       ],
@@ -99,18 +132,21 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   ProfileListItem(
-                      icon: LineAwesomeIcons.user, text: 'Profil Düzenle'),
+                      icon: LineAwesomeIcons.user,
+                      text: 'Edit Profile'.locale),
                   ProfileListItem(
-                      icon: LineAwesomeIcons.shopping_bag, text: 'İlanlarım'),
+                      icon: LineAwesomeIcons.shopping_bag, 
+                      text: 'My Advertisement'.locale
+                      ),
                   ProfileListItem(
                     icon: Icons.favorite,
-                    text: 'Favorilerim',
+                    text: 'Favorites'.locale,
                   ),
                   ProfileListItem(
-                      icon: Icons.accessibility, text: 'Şifre Değiştir'),
+                      icon: Icons.accessibility, text: 'Change Password'.locale),
                   ProfileListItem(
                     icon: LineAwesomeIcons.alternate_sign_out,
-                    text: 'Çıkış',
+                    text: 'Log Out'.locale,
                     hasNavigation: false,
                   ),
                 ],
@@ -127,12 +163,14 @@ class ProfileListItem extends StatelessWidget {
   final IconData icon;
   final String text;
   final bool hasNavigation;
-  const ProfileListItem({
-    Key key,
-    this.icon,
-    this.text,
-    this.hasNavigation = true,
-  }) : super(key: key);
+  final ThemeNotifier buttonThemeProvider;
+  const ProfileListItem(
+      {Key key,
+      this.icon,
+      this.text,
+      this.hasNavigation = true,
+      this.buttonThemeProvider})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
