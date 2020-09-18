@@ -55,6 +55,10 @@ class BookDetailView extends BookDetailViewModel
 
   @override
   Widget build(BuildContext context) {
+    /// gelen kitap barkodu
+    final int barcode = ModalRoute.of(context).settings.arguments;
+
+    print(ModalRoute.of(context).settings.arguments.toString());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

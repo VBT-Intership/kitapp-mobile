@@ -5,9 +5,19 @@ import 'package:flutterfoodapp/app/models/search_screen_model.dart';
 import 'package:flutterfoodapp/app/views/search_screen/deneme_post.dart';
 import 'package:flutterfoodapp/app/components/button/loginRadiusButton.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 import '../../../core/extensions/context_entension.dart';
 
 class SearchScreenView extends SearchScreenViewModel {
+  List<Post> list = [
+    new Post("ghjk", "ghjkl"),
+    new Post("ghjk", "ghjkl"),
+    new Post("ghjk", "ghjkl"),
+    new Post("ghjk", "ghjkl"),
+    new Post("ghjk", "ghjkl"),
+    new Post("ghjk", "ghjkl"),
+    new Post("ghjk", "ghjkl"),
+  ];
   String _scanned_code = "";
   String _value = "";
   Future _scan_barcode() async {
@@ -16,11 +26,17 @@ class SearchScreenView extends SearchScreenViewModel {
     setState(() {
       _value = _scanned_code;
       print("Taranan code : " + _scanned_code);
+      ///// tara butonu ile kitap detaya barkod gönderme
+      navigation.navigateToPage(
+          path: NavigationConstants.BOOK_DETAIL_VIEW,
+          data: int.parse(_scanned_code));
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    int number = 9786059851558;
+
     return Scaffold(
         body: SingleChildScrollView(
       child: SafeArea(
@@ -37,10 +53,16 @@ class SearchScreenView extends SearchScreenViewModel {
                       children: [
                         SearchBar<Post>(
                           onSearch: search,
-                          onItemFound: (Post post, int index) {
+                          onItemFound: (Post list, int index) {
                             return ListTile(
-                              title: Text(post.title),
-                              subtitle: Text(post.description),
+                              onTap: () {
+                                /// seçilen item ile kitap detaya barkod gönderme
+                                navigation.navigateToPage(
+                                    path: NavigationConstants.BOOK_DETAIL_VIEW,
+                                    data: index);
+                              },
+                              title: Text(list.title),
+                              subtitle: Text(list.description),
                             );
                           },
                         ),

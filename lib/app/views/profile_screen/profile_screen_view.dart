@@ -1,6 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'profile_screen_view_model.dart';
+import 'package:flutterfoodapp/core/constants/enums/app_theme_enum.dart';
+import 'package:flutterfoodapp/core/init/lang/language_service.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/init/notifier/theme_notifer.dart';
+import 'profile_screen_view_model.dart';
 import '../../../core/extensions/string_extension.dart';
 
 class ProfileScreenView extends ProfileScreenViewModel {
@@ -20,11 +26,14 @@ class ProfileScreenView extends ProfileScreenViewModel {
 }
 
 class ProfileScreen extends StatelessWidget {
+  // final locales;
   final String userName = 'Emre Cevik';
   final String profileImageURL = 'https://cutt.ly/3fDkQoz';
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeNotifier>(context);
+    var locales = EasyLocalization.of(context);
     // final width = MediaQuery.of(context).size.width;
     // final height = MediaQuery.of(context).size.height;
     var profile = Expanded(
@@ -72,16 +81,46 @@ class ProfileScreen extends StatelessWidget {
       children: <Widget>[
         SizedBox(width: 50),
         profile,
-        Container(
-          height: 40,
-          width: 40,
-          decoration:
-              BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-          child: Icon(
-            LineAwesomeIcons.sun,
-            color: Colors.black,
-            size: 20,
-          ),
+        Column(
+          children: [
+            InkWell(
+              onTap: () {
+                themeProvider.changeTheme();
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration:
+                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                child: Icon(
+                  themeProvider.currentThemeEnum() == AppThemes.LIGHT
+                      ? LineAwesomeIcons.sun
+                      : LineAwesomeIcons.cloud_with_sun,
+                  color: Colors.black,
+                  size: 20,
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            InkWell(
+              onTap: () {
+                locales.locale = locales.locale.languageCode == "en"
+                    ? LanguageService.instance.trLocale
+                    : LanguageService.instance.enLocale;
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration:
+                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                child: Icon(
+                  LineAwesomeIcons.language,
+                  color: Colors.black,
+                  size: 20,
+                ),
+              ),
+            ),
+          ],
         ),
         SizedBox(width: 30),
       ],
@@ -99,7 +138,8 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   ProfileListItem(
-                      icon: LineAwesomeIcons.user, text: 'Edit Profile'.locale),
+                      icon: LineAwesomeIcons.user,
+                      text: 'Edit Profile'.locale),
                   ProfileListItem(
                       icon: LineAwesomeIcons.shopping_bag, 
                       text: 'My Advertisement'.locale

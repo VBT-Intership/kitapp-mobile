@@ -18,7 +18,7 @@ extension ThemeTypeExtension on String {
       case "AppThemes.DARK":
         return AppThemes.DARK;
       default:
-        throw "ERROR TYPE";
+        return AppThemes.LIGHT;
     }
   }
 }

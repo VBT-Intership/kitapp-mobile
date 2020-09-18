@@ -8,6 +8,7 @@ import '../../components/card/book-card.dart';
 import '../../../core/extensions/context_entension.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
+//// input düzenle !
 class BookSellsScreenView extends BookSellsScreenViewModel {
   TextEditingController emailController = TextEditingController();
 
@@ -36,7 +37,8 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                 Spacer(flex: 4),
                 Text("Kitap Sat",
                     textAlign: TextAlign.start,
-                    style: TextStyle(fontSize: context.mediumValue)),
+                    style: context.textTheme.headline5
+                        .copyWith(fontFamily: "Light")),
                 Expanded(
                     flex: 40,
                     child: BookCardView(
