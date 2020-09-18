@@ -13,14 +13,8 @@ class ProfileScreenView extends ProfileScreenViewModel {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        body: ProfileScreen(),
-      ),
+    return Scaffold(
+      body: ProfileScreen(),
     );
   }
 }
@@ -139,18 +133,20 @@ class ProfileScreen extends StatelessWidget {
                 children: <Widget>[
                   ProfileListItem(
                       icon: LineAwesomeIcons.user,
-                      text: 'Profil Düzenle'.locale),
+                      text: 'Edit Profile'.locale),
                   ProfileListItem(
-                      icon: LineAwesomeIcons.shopping_bag, text: 'İlanlarım'),
+                      icon: LineAwesomeIcons.shopping_bag, 
+                      text: 'My Advertisement'.locale
+                      ),
                   ProfileListItem(
                     icon: Icons.favorite,
-                    text: 'Favorilerim',
+                    text: 'Favorites'.locale,
                   ),
                   ProfileListItem(
-                      icon: Icons.accessibility, text: 'Şifre Değiştir'),
+                      icon: Icons.accessibility, text: 'Change Password'.locale),
                   ProfileListItem(
                     icon: LineAwesomeIcons.alternate_sign_out,
-                    text: 'Çıkış',
+                    text: 'Log Out'.locale,
                     hasNavigation: false,
                   ),
                 ],
@@ -167,12 +163,14 @@ class ProfileListItem extends StatelessWidget {
   final IconData icon;
   final String text;
   final bool hasNavigation;
-  const ProfileListItem({
-    Key key,
-    this.icon,
-    this.text,
-    this.hasNavigation = true,
-  }) : super(key: key);
+  final ThemeNotifier buttonThemeProvider;
+  const ProfileListItem(
+      {Key key,
+      this.icon,
+      this.text,
+      this.hasNavigation = true,
+      this.buttonThemeProvider})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

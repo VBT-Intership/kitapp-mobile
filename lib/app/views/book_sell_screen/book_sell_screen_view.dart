@@ -7,6 +7,7 @@ import '../../components/input/text_input.dart';
 import '../../components/card/book-card.dart';
 import '../../../core/extensions/context_entension.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import '../../../core/extensions/string_extension.dart';
 
 //// input düzenle !
 class BookSellsScreenView extends BookSellsScreenViewModel {
@@ -35,7 +36,7 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
             child: Column(
               children: [
                 Spacer(flex: 4),
-                Text("Kitap Sat",
+                Text("Sell Book".locale,
                     textAlign: TextAlign.start,
                     style: context.textTheme.headline5
                         .copyWith(fontFamily: "Light")),
@@ -54,10 +55,10 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                     width: context.width,
                     child: OutlineIconButton(
                       icon: Icon(
-                        Icons.scanner,
+                        Icons.center_focus_weak,
                         color: context.theme.bottomAppBarColor,
                       ),
-                      text: "Tara",
+                      text: "Scan".locale,
                       iconPadding: 10,
                       color: context.theme.primaryColor,
                       onpressed: () {
@@ -72,8 +73,8 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                 Expanded(
                   flex: 6,
                   child: TextWidget(
-                    labelText: "   Fiyat Giriniz",
-                    warningText: "Karakter Sayısı Yetersiz",
+                    labelText: "Enter Price".locale,
+                    warningText: "Insufficient Number of Characters".locale,
                     inputType: TextInputType.number,
                     controller: emailController,
                   ),
@@ -87,7 +88,7 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                     width: context.width,
                     child: OutlineIconButton(
                       icon: Icon(Icons.attach_money, color: Colors.white),
-                      text: "Ürünü Sat",
+                      text: "Sell the Product".locale,
                       iconPadding: 10,
                       color: context.theme.primaryColor,
                       onpressed: () {},

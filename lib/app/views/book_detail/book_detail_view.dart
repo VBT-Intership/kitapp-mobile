@@ -24,6 +24,7 @@ import '../../../core/constants/app/app_constants.dart';
 import '../../../core/extensions/extensions_provider.dart';
 import '../../../core/extensions/future_builder.dart';
 import '../../../core/init/notifier/theme_notifer.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class BookDetailView extends BookDetailViewModel
     with SingleTickerProviderStateMixin {
@@ -31,9 +32,9 @@ class BookDetailView extends BookDetailViewModel
   double starcount = 3;
   int bookId = 0;
   final List<Widget> myTabs = [
-    Tab(text: 'Künye'),
-    Tab(text: 'Genel Bakış'),
-    Tab(text: 'Yorumlar'),
+    Tab(text: 'About'.locale),
+    Tab(text: 'Overview'.locale),
+    Tab(text: 'Reviews'.locale),
   ];
 
   TabController _tabController;
@@ -214,7 +215,7 @@ class BookDetailView extends BookDetailViewModel
         navigation.navigateToPage(path: NavigationConstants.SELLER_VIEW);
       },
       child: Text(
-        "Satın Al",
+        "Buy".locale,
         style: TextStyle(color: Colors.green),
       ),
       shape: RoundedRectangleBorder(
@@ -364,14 +365,15 @@ class BookDetailView extends BookDetailViewModel
       padding: EdgeInsets.only(top: context.normalValue),
       child: Row(
         children: [
-          commentLengthText(context),
-          Spacer(),
+          //  commentLengthText(context),
+          //  Spacer(),
           commentButton(context)
         ],
       ),
     );
   }
 
+/*
   Text commentLengthText(BuildContext context) {
     return Text(
       "Yorum(" +
@@ -381,7 +383,7 @@ class BookDetailView extends BookDetailViewModel
           .copyWith(fontWeight: FontWeight.bold, color: Colors.grey),
     );
   }
-
+*/
   Row commentButton(BuildContext context) {
     return Row(
       children: [
@@ -389,7 +391,7 @@ class BookDetailView extends BookDetailViewModel
           onTap: () {
             _commentModal();
           },
-          child: Text("Yorum Yaz",
+          child: Text("Write a Review".locale,
               style: context.textTheme.subtitle1
                   .copyWith(fontWeight: FontWeight.bold, color: Colors.green)),
         ),
@@ -419,7 +421,7 @@ class BookDetailView extends BookDetailViewModel
           Container(
               alignment: Alignment.topLeft,
               child: Text(
-                "İlgili Ürünler",
+                "Related Products".locale,
                 style: context.textTheme.headline5
                     .copyWith(fontWeight: FontWeight.bold),
               )),
@@ -452,7 +454,7 @@ class BookDetailView extends BookDetailViewModel
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Yorum Yaz",
+                Text("Write a Review".locale,
                     style: context.textTheme.headline6
                         .copyWith(color: Colors.green)),
                 TextFormField(
@@ -484,7 +486,7 @@ class BookDetailView extends BookDetailViewModel
                     child: RaisedButton(
                       color: Colors.green,
                       child: Text(
-                        "Gönder",
+                        "Send".locale,
                         style: context.textTheme.subtitle2
                             .copyWith(color: Colors.white),
                       ),
@@ -509,7 +511,7 @@ class BookDetailView extends BookDetailViewModel
                           content: 'Yorumunuz Eklenmiştir',
                           actions: [
                             popup.button(
-                              label: 'Kapat',
+                              label: 'close'.locale,
                               onPressed: Navigator.of(context).pop,
                             ),
                           ],
@@ -641,7 +643,7 @@ class OtherBooksCardView extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "by " + book.author,
+                    "by".locale + book.author,
                     style: TextStyle(fontSize: 11, color: Colors.grey),
                     maxLines: 1,
                   ),

@@ -5,6 +5,7 @@ import 'package:flutterfoodapp/app/models/books_service_model.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 import 'package:flutterfoodapp/core/init/navigation/navigation_service.dart';
 import '../../../core/extensions/context_entension.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class BookCardView extends StatelessWidget {
   final BooksModel book;
@@ -63,7 +64,7 @@ class BookCardView extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "by " + book.writerName,
+                    "by".locale + book.writerName,
                     style: TextStyle(fontSize: 11, color: Colors.grey),
                     maxLines: 1,
                   ),

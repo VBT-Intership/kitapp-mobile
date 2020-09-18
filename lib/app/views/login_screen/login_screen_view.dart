@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterfoodapp/app/views/register_screen/register_screen.dart';
+import 'package:flutterfoodapp/core/constants/enums/app_theme_enum.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import 'package:flutterfoodapp/core/init/notifier/theme_notifer.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import 'login_screen_view_model.dart';
+import '../../../core/extensions/string_extension.dart';
 
 BuildContext mycontext;
 
@@ -19,6 +24,10 @@ class LoginScreenView extends LoginScreenViewModel {
   @override
   Widget build(BuildContext context) {
     mycontext = context;
+    var themeProvider = Provider.of<ThemeNotifier>(context);
+    Widget headerView = themeProvider.currentThemeEnum() == AppThemes.LIGHT
+        ? loginHeadTextLight
+        : loginHeadTextDark;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -33,7 +42,7 @@ class LoginScreenView extends LoginScreenViewModel {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Spacer(flex: 3),
-                      Expanded(flex: 22, child: loginHeadText),
+                      Expanded(flex: 22, child: headerView),
                       Spacer(flex: 5),
                       Expanded(flex: 10, child: loginEmailInput),
                       Spacer(flex: 1),
@@ -56,14 +65,23 @@ class LoginScreenView extends LoginScreenViewModel {
     );
   }
 
-  Widget get loginHeadText {
+  Widget get loginHeadTextLight {
     return SvgPicture.asset("assets/images/login_cat.svg");
+  }
+
+  Widget get loginHeadTextDark {
+    return Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: Image(
+            image: AssetImage("assets/images/login_cat_dark.png"),
+            fit: BoxFit.scaleDown));
   }
 
   TextWidget get loginPasswordInput {
     return TextWidget(
-      labelText: "Şifre Giriniz",
-      warningText: "Şifre Karakter Sayısı Yetersiz",
+      labelText: "Enter Password".locale,
+      warningText: "Password Insufficient Number of Characters".locale,
       icon: Icons.vpn_key,
       inputType: TextInputType.emailAddress,
       minLength: 3,
@@ -73,8 +91,8 @@ class LoginScreenView extends LoginScreenViewModel {
 
   TextWidget get loginEmailInput {
     return TextWidget(
-      labelText: "Email Giriniz",
-      warningText: "Email Karakter Sayısı Yetersiz",
+      labelText: "Enter E-mail".locale,
+      warningText: "Insufficient Number of Email Characters".locale,
       icon: Icons.email,
       inputType: TextInputType.visiblePassword,
       controller: emailController,
@@ -86,7 +104,7 @@ class LoginScreenView extends LoginScreenViewModel {
       children: [
         Spacer(),
         Text(
-          "Forgotten Password?",
+          "Forgotten Password ?".locale,
           style: mycontext.textTheme.bodyText2,
         )
       ],
@@ -113,7 +131,7 @@ class LoginScreenView extends LoginScreenViewModel {
             Icons.input,
             color: Colors.white,
           ),
-          text: "Giriş Yap",
+          text: "Sing in".locale,
           color: mycontext.theme.primaryColor,
           onpressed: () {
             navigation.navigateToPage(
@@ -132,11 +150,11 @@ class LoginScreenView extends LoginScreenViewModel {
                 template: TemplateGift,
               );
               popup.show(
-                title: 'Google auth yönlendirme',
+                title: "Google auth forwarding".locale,
                 content: 'Hellloo',
                 actions: [
                   popup.button(
-                    label: 'Kapat',
+                    label: 'close'.locale,
                     onPressed: Navigator.of(mycontext).pop,
                   ),
                 ],
@@ -161,11 +179,13 @@ class LoginScreenView extends LoginScreenViewModel {
           ),
         ),
         Expanded(
+            child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Text(
-            "     ya da",
+            "OR".locale,
             style: mycontext.textTheme.headline5,
           ),
-        ),
+        )),
         Expanded(
           child: Divider(
             color: mycontext.colors.primaryVariant,
@@ -181,7 +201,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return Container(
       width: double.infinity,
       child: OutlineIconButton(
-        text: "Ziyaret Et",
+        text: "Visit".locale,
         color: mycontext.theme.primaryColor,
         onpressed: () {
           navigation.navigateToPage(path: NavigationConstants.HOME_SCREEN_VIEW);
@@ -194,7 +214,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return Container(
       width: double.infinity,
       child: OutlineIconButton(
-        text: "Kayıt Ol",
+        text: "Sing up".locale,
         color: mycontext.theme.primaryColor,
         onpressed: () {
           navigation.navigateToPage(path: NavigationConstants.REGISTER_VIEW);

@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
+      
     );
   }
 }
@@ -79,23 +80,3 @@ Widget getView() {
     return HomeScreen();
   }
 }
-
-/*
-
-bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.greenAccent,
-        items: <Widget>[
-          Icon(Icons.view_module, size: 20),
-          Icon(Icons.search, size: 20),
-          Icon(Icons.home, size: 20),
-          Icon(Icons.notification_important, size: 20),
-          Icon(Icons.person, size: 20),
-          Icon(Icons.book, size: 20)
-        ],
-        onTap: (index) {
-          //Handle button tap
-        },
-      ),
-
-
-      */

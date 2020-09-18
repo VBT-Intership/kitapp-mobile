@@ -2,7 +2,8 @@ import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-import '../../../core/constants/navigation/navigation_constants.dart';
+import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
+import '../../../core/extensions/string_extension.dart';
 import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
 import '../../models/books_service_model.dart';
@@ -71,7 +72,7 @@ class SearchScreenView extends SearchScreenViewModel {
                     Icons.center_focus_weak,
                     color: Colors.white,
                   ),
-                  text: 'Tara',
+                  text: 'Scan'.locale,
                   iconPadding: 10,
                   color: context.theme.primaryColor,
                   onpressed: () {

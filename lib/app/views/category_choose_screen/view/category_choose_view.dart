@@ -3,48 +3,49 @@ import 'package:flutter/material.dart';
 import 'package:flutterfoodapp/core/constants/navigation/navigation_constants.dart';
 
 import '../view_model/category_choose_viewmodel.dart';
+import '../../../../core/extensions/string_extension.dart';
 
 Color cardcolorgeneral = Color(0xffD3D3D3);
 List<String> indexList = new List();
 
 class CategoryChooseView extends CategoryChooseViewModel {
   Items item1 = new Items(
-      title: "Biography",
+      title: "Biography".locale,
       index: 0,
       istrue: false,
       cardcolor: cardcolorgeneral,
       description: "des1",
       totalbook: 12);
   Items item2 = new Items(
-      title: "Business",
+      title: "Business".locale,
       index: 1,
       istrue: false,
       cardcolor: cardcolorgeneral,
       description: "des2",
       totalbook: 14);
   Items item3 = new Items(
-      title: "Children",
+      title: "Children".locale,
       index: 2,
       istrue: false,
       cardcolor: cardcolorgeneral,
       description: "des3",
       totalbook: 16);
   Items item4 = new Items(
-      title: "Cookery",
+      title: "Cookery".locale,
       index: 3,
       istrue: false,
       cardcolor: cardcolorgeneral,
       description: "des4",
       totalbook: 18);
   Items item5 = new Items(
-      title: "Fiction",
+      title: "Sci-fi".locale,
       index: 4,
       istrue: false,
       cardcolor: cardcolorgeneral,
       description: "des5",
       totalbook: 19);
   Items item6 = new Items(
-      title: "Graphic novels",
+      title: "Graphic Novels".locale,
       index: 5,
       istrue: false,
       cardcolor: cardcolorgeneral,
@@ -68,7 +69,7 @@ class CategoryChooseView extends CategoryChooseViewModel {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Kategoriler",
+                          "Categories".locale,
                           style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 24,
@@ -105,7 +106,7 @@ class CategoryChooseView extends CategoryChooseViewModel {
                   children: <Widget>[
                     Center(
                       child: Text(
-                        "Send",
+                        "Send".locale,
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Montserrat',

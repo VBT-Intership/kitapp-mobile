@@ -22,7 +22,7 @@ import '../onboarding_screens/onboarding_screens.dart';
 import '../profile_screen/profile_screen.dart';
 import '../register_screen/register_screen.dart';
 import '../sellers_screen/sellers_screen.dart';
-
+import '../../../core/extensions/string_extension.dart';
 import '../../../core/extensions/context_entension.dart';
 import '../../../core/extensions/future_builder.dart';
 import 'home_screen_view_model.dart';
@@ -34,14 +34,17 @@ class HomeScreenView extends HomeScreenViewModel {
       resizeToAvoidBottomInset: false,
       body: _showPage,
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: context.theme.primaryColor,
+        // backgroundColor: context.theme.primaryColor,
+        backgroundColor: context.theme.scaffoldBackgroundColor,
+        color: context.theme.primaryColor,
+        buttonBackgroundColor: Color(0xff5ABD8C),
         index: 0,
         items: <Widget>[
-          Icon(Icons.home, size: 20),
-          Icon(Icons.search, size: 20),
-          Icon(Icons.book, size: 20),
-          Icon(Icons.notifications_active, size: 20),
-          Icon(Icons.supervised_user_circle, size: 20)
+          Icon(Icons.home, size: 20, color: Colors.white),
+          Icon(Icons.search, size: 20, color: Colors.white),
+          Icon(Icons.book, size: 20, color: Colors.white),
+          Icon(Icons.notifications_active, size: 20, color: Colors.white),
+          Icon(Icons.supervised_user_circle, size: 20, color: Colors.white)
         ],
         onTap: (index) {
           setState(() {
