@@ -9,4 +9,6 @@ abstract class IBooksService {
   Future<BooksModel> getBookDetail(int userId, int bookId);
   Future<response> makeComment(
       int userId, int bookId, String comment, double starCount);
+
+  Future<BooksModel> getBookBarcode(int userId, String barcode);
 }

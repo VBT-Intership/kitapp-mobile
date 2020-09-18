@@ -62,4 +62,12 @@ class BooksService extends BaseService implements IBooksService {
         .data;
     return data;
   }
+
+  Future<BooksModel> getBookBarcode(int userId, String barcode) async {
+    return (await coreDio.fetch<BooksModel, BooksModel>(
+            "/api/Books/GetBookwithISBN/$userId/$barcode",
+            type: HttpTypes.GET,
+            parseModel: BooksModel()))
+        .data;
+  }
 }

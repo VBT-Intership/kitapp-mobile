@@ -8,6 +8,7 @@ import '../../components/card/book-card.dart';
 import '../../../core/extensions/context_entension.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import '../../../core/extensions/string_extension.dart';
+import '../../../core/extensions/future_builder.dart';
 
 //// input düzenle !
 class BookSellsScreenView extends BookSellsScreenViewModel {
@@ -19,6 +20,7 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
     _scanned_code = await FlutterBarcodeScanner.scanBarcode(
         "#ff6666", "Cancel", false, ScanMode.DEFAULT);
     setState(() {
+      getBarcodeID = _scanned_code; //????????????????????????????????
       _value = _scanned_code;
       print("Taranan code : " + _scanned_code);
     });
@@ -91,7 +93,12 @@ class BookSellsScreenView extends BookSellsScreenViewModel {
                       text: "Sell the Product".locale,
                       iconPadding: 10,
                       color: context.theme.primaryColor,
-                      onpressed: () {},
+                      onpressed: () {
+                        /* Future.value(getBookwithIsbn(_value))
+                            .toBuild<BooksModel>(onSuccess: (data) {  //????????????????????????????????
+                          return Text(data.bookId.toString());
+                        }); */
+                      },
                     ),
                   ),
                 ),

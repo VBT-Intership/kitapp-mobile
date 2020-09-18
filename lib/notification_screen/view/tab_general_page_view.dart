@@ -45,7 +45,7 @@ Container notification_general_page_card(
                     Text(
                       general.username,
                       style:
-                          TextStyle(color: mycontext.theme.primaryColorLight),x 
+                          TextStyle(color: mycontext.theme.primaryColorLight),
                     ),
                     SizedBox(width: context.normalValue),
                     Text(
