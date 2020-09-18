@@ -6,6 +6,7 @@ import '../../../core/extensions/context_entension.dart';
 import '../../components/button/registerRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import 'register_screen_view_model.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class RegisterScreenView extends RegisterScreenViewModel {
   bool agreement = false;
@@ -79,7 +80,7 @@ class RegisterScreenView extends RegisterScreenViewModel {
               });
             }),
         Text(
-          "Kullanıcı Sözleşmesini Kabul Etmek İçin İşaretleyiniz..",
+          "Check to Accept User Agreement ...".locale,
           style: context.textTheme.bodyText2
               .copyWith(fontSize: context.width * 0.025),
         )
@@ -88,14 +89,14 @@ class RegisterScreenView extends RegisterScreenViewModel {
   }
 
   Widget get registerHeadText {
-    return Text("Kayıt Ol",
+    return Text("Sing up".locale,
         style: context.textTheme.headline3.copyWith(fontFamily: "OpenSans"));
   }
 
   TextWidget get registerNameInput {
     return TextWidget(
-      labelText: "Ad ve Soyad Giriniz",
-      warningText: "Ad Soyad Karakter Sayısı Yetersiz",
+      labelText: "First & Last Name".locale,
+      warningText: "Name Surname Number of Characters Insufficient".locale,
       icon: Icons.supervised_user_circle,
       inputType: TextInputType.text,
       controller: nameController,
@@ -104,9 +105,9 @@ class RegisterScreenView extends RegisterScreenViewModel {
 
   TextWidget get registerEmailInput {
     return TextWidget(
-      labelText: "Email Giriniz",
-      warningText: "Email Karakter Sayısı Yetersiz",
-      icon: Icons.ac_unit,
+      labelText: "Enter E-mail".locale,
+      warningText: "Insufficient Number of Email Characters".locale,
+      icon: Icons.mail,
       inputType: TextInputType.emailAddress,
       minLength: 3,
       controller: emailController,
@@ -115,8 +116,8 @@ class RegisterScreenView extends RegisterScreenViewModel {
 
   TextWidget get registerPhoneInput {
     return TextWidget(
-      labelText: "Telefon Giriniz",
-      warningText: "Telefon Karakter Sayısı Yetersiz",
+      labelText: "Mobile Phone".locale,
+      warningText: "Insufficient Phone Character Count".locale,
       icon: Icons.phone,
       inputType: TextInputType.phone,
       minLength: 3,
@@ -126,8 +127,8 @@ class RegisterScreenView extends RegisterScreenViewModel {
 
   TextWidget get registerAddressInput {
     return TextWidget(
-      labelText: "Adres Giriniz (şehir/ilçe)",
-      warningText: "Telefon Karakter Sayısı Yetersiz",
+      labelText: "Enter Address (city / town)".locale,
+      warningText:"Address Information is Insufficient".locale,
       icon: Icons.location_city,
       inputType: TextInputType.text,
       minLength: 3,
@@ -138,8 +139,8 @@ class RegisterScreenView extends RegisterScreenViewModel {
   TextWidget get registerPasswordInput {
     return TextWidget(
       isSecret: true,
-      labelText: "Şifre Giriniz",
-      warningText: "Şifre Karakter Sayısı Yetersiz",
+      labelText: "Enter Password".locale,
+      warningText: "Password Insufficient Number of Characters".locale,
       icon: Icons.security,
       inputType: TextInputType.text,
       minLength: 3,
@@ -151,7 +152,7 @@ class RegisterScreenView extends RegisterScreenViewModel {
     return Container(
       width: double.infinity,
       child: RegisterOutlineIconButton(
-        text: "Kayıt Ol",
+        text: "Sing up".locale,
         color: Colors.green[500],
         onpressed: () {
           navigation.navigateToPage(

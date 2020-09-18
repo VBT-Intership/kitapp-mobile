@@ -13,7 +13,7 @@ import '../../../core/extensions/context_entension.dart';
 import '../../components/button/loginRadiusButton.dart';
 import '../../components/input/text_input.dart';
 import 'login_screen_view_model.dart';
-import '../../../core/extensions/context_entension.dart';
+import '../../../core/extensions/string_extension.dart';
 
 BuildContext mycontext;
 
@@ -80,8 +80,8 @@ class LoginScreenView extends LoginScreenViewModel {
 
   TextWidget get loginPasswordInput {
     return TextWidget(
-      labelText: "Şifre Giriniz",
-      warningText: "Şifre Karakter Sayısı Yetersiz",
+      labelText: "Enter Password".locale,
+      warningText: "Password Insufficient Number of Characters".locale,
       icon: Icons.vpn_key,
       inputType: TextInputType.emailAddress,
       minLength: 3,
@@ -91,8 +91,8 @@ class LoginScreenView extends LoginScreenViewModel {
 
   TextWidget get loginEmailInput {
     return TextWidget(
-      labelText: "Email Giriniz",
-      warningText: "Email Karakter Sayısı Yetersiz",
+      labelText: "Enter E-mail".locale,
+      warningText: "Insufficient Number of Email Characters".locale,
       icon: Icons.email,
       inputType: TextInputType.visiblePassword,
       controller: emailController,
@@ -104,7 +104,7 @@ class LoginScreenView extends LoginScreenViewModel {
       children: [
         Spacer(),
         Text(
-          "Forgotten Password?",
+          "Forgotten Password ?".locale,
           style: mycontext.textTheme.bodyText2,
         )
       ],
@@ -131,8 +131,8 @@ class LoginScreenView extends LoginScreenViewModel {
             Icons.input,
             color: Colors.white,
           ),
-          text: "Giriş Yap",
-          color: context.theme.primaryColor,
+          text: "Sing in".locale,
+          color: mycontext.theme.primaryColor,
           onpressed: () {
             navigation.navigateToPage(
                 path: NavigationConstants.HOME_SCREEN_VIEW);
@@ -150,11 +150,11 @@ class LoginScreenView extends LoginScreenViewModel {
                 template: TemplateGift,
               );
               popup.show(
-                title: 'Google auth yönlendirme',
+                title: "Google auth forwarding".locale,
                 content: 'Hellloo',
                 actions: [
                   popup.button(
-                    label: 'Kapat',
+                    label: 'close'.locale,
                     onPressed: Navigator.of(mycontext).pop,
                   ),
                 ],
@@ -179,10 +179,13 @@ class LoginScreenView extends LoginScreenViewModel {
           ),
         ),
         Expanded(
-          child: Text(
-            "     ya da",
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32) ,
+            child:Text(
+            "OR".locale,
             style: mycontext.textTheme.headline5,
-          ),
+          ), 
+            ) 
         ),
         Expanded(
           child: Divider(
@@ -199,7 +202,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return Container(
       width: double.infinity,
       child: OutlineIconButton(
-        text: "Ziyaret Et",
+        text: "Visit".locale,
         color: mycontext.theme.primaryColor,
         onpressed: () {
           navigation.navigateToPage(path: NavigationConstants.HOME_SCREEN_VIEW);
@@ -212,7 +215,7 @@ class LoginScreenView extends LoginScreenViewModel {
     return Container(
       width: double.infinity,
       child: OutlineIconButton(
-        text: "Kayıt Ol",
+        text: "Sing up".locale,
         color: mycontext.theme.primaryColor,
         onpressed: () {
           navigation.navigateToPage(path: NavigationConstants.REGISTER_VIEW);

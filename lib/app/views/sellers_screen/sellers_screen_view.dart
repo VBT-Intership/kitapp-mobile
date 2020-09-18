@@ -3,6 +3,7 @@ import 'package:flutter_beautiful_popup/main.dart';
 import 'package:flutterfoodapp/app/models/sellers_screen_model.dart';
 import 'package:flutterfoodapp/app/views/sellers_screen/sellers_screen_view_model.dart';
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class SellersScreenView extends SellersScreenViewModel {
   List<Sellers> sellers = [
@@ -71,7 +72,7 @@ class SellersScreenView extends SellersScreenViewModel {
                         SizedBox(
                           height: 7,
                         ),
-                        Text(seller.km.toString() + " km yakınında"),
+                        Text(seller.km.toString() + " km near".locale),
                       ],
                     ),
                   ),
@@ -90,10 +91,10 @@ class SellersScreenView extends SellersScreenViewModel {
                             children: [
                               SizedBox(
                                 height: 30,
-                                width: 80,
+                                width: 90,
                                 child: RaisedButton(
                                   child: Text(
-                                    "Teklif Ver",
+                                    "Give Offer".locale,
                                     style: TextStyle(
                                         fontSize: 11, color: Colors.green),
                                   ),
@@ -107,11 +108,11 @@ class SellersScreenView extends SellersScreenViewModel {
                                       template: TemplateGift,
                                     );
                                     popup.show(
-                                      title: 'Teklifiniz gönderildii :)',
+                                      title: 'Your offer has  been sent :)'.locale,
                                       content: 'Hellloo',
                                       actions: [
                                         popup.button(
-                                          label: 'Kapat',
+                                          label: 'close'.locale,
                                           onPressed: Navigator.of(context).pop,
                                         ),
                                       ],
@@ -125,11 +126,11 @@ class SellersScreenView extends SellersScreenViewModel {
                                 padding: EdgeInsets.only(left: 5),
                                 child: SizedBox(
                                   height: 30,
-                                  width: 80,
+                                  width: 70,
                                   child: RaisedButton(
                                     color: Colors.green,
                                     child: Text(
-                                      "Satın Al",
+                                      "Buy".locale,
                                       style: TextStyle(
                                           fontSize: 11, color: Colors.white),
                                     ),
@@ -142,11 +143,11 @@ class SellersScreenView extends SellersScreenViewModel {
                                         template: TemplateGift,
                                       );
                                       popup.show(
-                                        title: 'Satın Alma gerçekleşti',
+                                        title: 'Purchase Completed'.locale,
                                         content: 'Hellloo',
                                         actions: [
                                           popup.button(
-                                            label: 'Kapat',
+                                            label: 'close'.locale,
                                             onPressed:
                                                 Navigator.of(context).pop,
                                           ),

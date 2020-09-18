@@ -3,6 +3,7 @@ import 'package:flutterfoodapp/sellers_screen/model/sellers_screen_model.dart';
 import 'package:flutterfoodapp/sellers_screen/view/sellers_screen.dart';
 import 'package:flutterfoodapp/sellers_screen/view_model/sellers_screen_view_model.dart';
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
+import '../../core/extensions/string_extension.dart';
 
 class SellersScreenView extends SellersScreenViewModel {
   List<Sellers> sellers = [
@@ -71,7 +72,7 @@ class SellersScreenView extends SellersScreenViewModel {
                         SizedBox(
                           height: 7,
                         ),
-                        Text(seller.km.toString() + " km yakınında"),
+                        Text(seller.km.toString() + "km near".locale),
                       ],
                     ),
                   ),
@@ -93,7 +94,7 @@ class SellersScreenView extends SellersScreenViewModel {
                                 width: 80,
                                 child: RaisedButton(
                                   child: Text(
-                                    "Teklif Ver",
+                                    "Give Offer".locale,
                                     style: TextStyle(
                                         fontSize: 11, color: Colors.green),
                                   ),
@@ -112,7 +113,7 @@ class SellersScreenView extends SellersScreenViewModel {
                                   child: RaisedButton(
                                     color: Colors.green,
                                     child: Text(
-                                      "Satın Al",
+                                      "Buy".locale,
                                       style: TextStyle(
                                           fontSize: 11, color: Colors.white),
                                     ),

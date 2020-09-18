@@ -4,6 +4,7 @@ import 'package:flutterfoodapp/notification_screen/model/notification_general_mo
 import 'package:flutterfoodapp/sellers_screen/model/sellers_screen_model.dart';
 import 'package:flutterfoodapp/core/extensions/future_builder.dart';
 import 'package:flutterfoodapp/core/extensions/context_entension.dart';
+import '../../core/extensions/string_extension.dart';
 
 BuildContext mycontext;
 List<NotificationGeneral> generallist = [
@@ -44,13 +45,12 @@ Container notification_general_page_card(
                     Text(
                       general.username,
                       style:
-                          TextStyle(color: mycontext.theme.primaryColorLight),
+                          TextStyle(color: mycontext.theme.primaryColorLight),x 
                     ),
                     SizedBox(width: context.normalValue),
                     Text(
-                      general.time.toString() + " saat önce",
-                      style:
-                          TextStyle(color: mycontext.theme.primaryColorLight),
+                      general.time.toString() + " hours ago ".locale,
+                      style: context.textTheme.bodyText2,
                     ),
                   ],
                 ),
@@ -77,13 +77,13 @@ Container notification_general_page_card(
 
 Widget get_text(NotificationGeneral general, BuildContext context) {
   String case_1_text = general.username +
-      " adlı kullanıcı " +
+      " named user ".locale+
       general.book +
-      " kitabına verdiğiniz teklifi kabul etti";
+     " accepted your offer to the book ".locale;
   String case_0_text = general.username +
-      " adlı kullanıcı " +
+      " named user ".locale+
       general.book +
-      " kitabına verdiğiniz teklifi reddetti";
+      " rejected your offer to the book ".locale;
   switch (general.status) {
     case 1:
       return calling_book_status_text(case_1_text, context);
@@ -107,10 +107,10 @@ AutoSizeText calling_book_status_text(String text, BuildContext context) {
 Widget get_button(int status, BuildContext context) {
   switch (status) {
     case 1:
-      return calling_button("İletişim", Color(0xff5ABD8C), context, 1);
+      return calling_button("Contact".locale, Color(0xff5ABD8C), context, 1);
       break;
     case 0:
-      return calling_button("Sil", Colors.grey, context, 0);
+      return calling_button("Remove".locale, Colors.grey, context, 0);
       break;
     default:
   }
@@ -146,7 +146,7 @@ void delete(BuildContext context) {
       return AlertDialog(
         content: SingleChildScrollView(
           child: Center(
-            child: Text("Delete"),
+            child: Text("Delete".locale),
           ),
         ),
       );
@@ -163,7 +163,7 @@ void callmodal(BuildContext context) {
       return AlertDialog(
         content: SingleChildScrollView(
           child: Center(
-            child: Text("Ara"),
+            child: Text("Call Now".locale),
           ),
         ),
       );

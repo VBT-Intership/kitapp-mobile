@@ -133,18 +133,20 @@ class ProfileScreen extends StatelessWidget {
                 children: <Widget>[
                   ProfileListItem(
                       icon: LineAwesomeIcons.user,
-                      text: 'Profil Düzenle'.locale),
+                      text: 'Edit Profile'.locale),
                   ProfileListItem(
-                      icon: LineAwesomeIcons.shopping_bag, text: 'İlanlarım'),
+                      icon: LineAwesomeIcons.shopping_bag, 
+                      text: 'My Advertisement'.locale
+                      ),
                   ProfileListItem(
                     icon: Icons.favorite,
-                    text: 'Favorilerim',
+                    text: 'Favorites'.locale,
                   ),
                   ProfileListItem(
-                      icon: Icons.accessibility, text: 'Şifre Değiştir'),
+                      icon: Icons.accessibility, text: 'Change Password'.locale),
                   ProfileListItem(
                     icon: LineAwesomeIcons.alternate_sign_out,
-                    text: 'Çıkış',
+                    text: 'Log Out'.locale,
                     hasNavigation: false,
                   ),
                 ],

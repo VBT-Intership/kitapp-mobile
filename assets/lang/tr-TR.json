@@ -3,7 +3,107 @@
     "What do you want to eat today?": "Bugün ne yemek istersin?",
     "Popular": "Popüler",
     "Price": "Adet",
-    "Piece": "Fiyat",
+    "Enter Price": "Fiyat Girin",
     "DARK": "Siyah",
-    "LIGHT": "Acik"
+    "LIGHT": "Açık",
+    
+    "Use new secondhand books at great prices and find them near you.":"Yeni ikinci el kitapları harika fiyatlarla kullanın ve yakınınızda bulun.",
+    "Easily find the recipient of your secondhand book.":"İkinci el kitabınızın alıcısını kolayca bulun",
+    "Enjoy your new and cheap book.":"Yeni ve ucuz kitabınızın tadını çıkarın.",
+    "Available and Easily":"Bulunabilir ve Kolay",
+    "Near and Cheap":"Yakınınızda ve Ucuz",
+    "Enjoy..":"Keyfini Çıkarın..",
+    "Skip":"Atla",
+    "Let's Start":"Haydi Başla",
+    
+    "Sing in":"Giriş Yap",
+    "Sing up":"Kayıt Ol",
+    "E-mail":"Email",
+    "Password":"Parola",
+    "Enter E-mail":"Email Giriniz",
+    "Enter Password":"Parola Giriniz",
+    "Forgotten Password ?":"Şifremi Unuttum",
+    "Visit":"Ziyaret Et",
+    "OR":"YA DA",
+
+    "First & Last Name":"Adınız Soyadınız",
+    "Mobile Phone":"Cep Telefonu No",
+    "Google auth forwarding":"Google auth yönlendirme",
+    "Insufficient Number of Characters":"Karakter Sayısı Yetersiz",
+    "Name Surname Number of Characters Insufficient":"Ad Soyad Karakter Sayısı Yetersiz",
+    "Insufficient Number of Email Characters":"Email Karakter Sayısı Yetersiz",
+    "Insufficient Phone Character Count": "Telefon Karakter Sayısı Yetersiz",
+    "Enter Address (city / town)":"Adres Giriniz (il / ilçe)",
+    "Address Information is Insufficient":"Adres Bilginiz Yetersiz",
+    "Password Insufficient Number of Characters":"Şifre Karekter Sayısı Yetersiz",
+    "Check to Accept User Agreement ...":"Kullanıcı Sözleşmesini Kabul Etmek İçin İşaretleyiniz..",
+
+    "Categories":"Kategoriler",
+    "Business":"İş",
+    "Children":"Çocuklar İçin",
+    "Graphic Novels":"Çizgi Romanlar",
+    "Politics":"Siyaset",
+    "History":"Tarih",
+    "Sci-fi":"Bilim Kurgu",
+    "Send":"Gönder",
+    "Biography":"Biyografi",
+    "Cookery":"Aşçılık",
+    "Philosopy":"Felsefe",
+
+    "Main Page":"Ana Sayfa",
+    
+    "Buy":"Satın Al",
+    "Give Offer":"Teklif Ver",
+    "km near":"km yakınında",
+    "close":"kapat",
+    "Purchase Completed":"Satın Alma Gerçekleşti",
+    "Your offer has been sent :)":"Teklifiniz Gönderildii :)",
+
+    "Notifications":"Bildirimler",
+    "To Contact":"İletişime Geç",
+
+    "Call Now":"Hemen Ara",
+
+
+    "About":"Künye",
+    "Overview":"Genel Bakış",
+    "Reviews":"Yorumlar",
+    "ISBN":"ISBN",
+    "Release Date":"Yayın Tarihi",
+    "Number of Prints":"Baskı Sayısı",
+    "Language":"Dil",
+    "Binding Type":"Cilt Tipi",
+    "Paper Type":"KAğıt Tipi",
+    "Book Size":"Boyut",
+    "Related Products":"İlgili Ürünler",
+    "Write a Review":"Yorum Yaz",
+    "Add Comment to Comments":"Yorumu Yorumlara Ekle",
+
+    
+    "Cancel":"İptal",
+    "Scan":"Tara",
+
+    "Sell Book":"Kitap Sat",
+    "Sell the Product":"Ürünü Sat",
+    "by":" ",
+
+    "Remove":"Sil",
+    "Contact":"İletişim",
+    "Offers":"Teklifler",
+    "General":"Genel",
+    " hours ago ":" saat önce ",
+
+    "Edit Profile":"Profil Düzenle",
+    "My Advertisement":"İlanlarım",
+    "Favorites":"Favoriler",
+    "Change Password":"Şifre Değiştir",
+    "Log Out":"Çıkış Yap",
+
+    " named user ":"  adlı kullanıcı ",
+    " accepted your offer to the book ":" adlı kitaba verdiğiniz teklifi kabul etti ",
+    " rejected your offer to the book ":" adlı kitaba verdiğiniz teklifi reddetti ",
+    " you have an offer for this book ":" adlı kitaba teklifiniz var. "
+
+
+
 }

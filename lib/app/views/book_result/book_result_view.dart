@@ -14,6 +14,7 @@ import '../../../core/constants/app/app_constants.dart';
 import '../../../core/extensions/extensions_provider.dart';
 import '../../../core/extensions/future_builder.dart';
 import '../../../core/init/notifier/theme_notifer.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class BookResultView extends BookResultViewModel {
   @override
@@ -24,7 +25,7 @@ class BookResultView extends BookResultViewModel {
         backgroundColor: Colors.transparent,
         leading: Icon(Icons.chevron_left, color: Colors.black),
         title: Text(
-          "Felsefe",
+          "Philosopy".locale,
           style:
               context.textTheme.headline5.copyWith(fontWeight: FontWeight.bold),
         ),
@@ -168,7 +169,7 @@ class BookResultCardView extends StatelessWidget {
         padding: EdgeInsets.only(
             left: context.lowValue, right: context.lowValue, top: 1, bottom: 1),
         child: Text(
-          "felsefe",
+          "Philosopy".locale,
           style: context.textTheme.bodyText1.copyWith(color: Colors.green),
         ),
       ),
